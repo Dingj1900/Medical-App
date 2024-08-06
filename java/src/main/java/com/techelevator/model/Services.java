@@ -5,10 +5,24 @@ public class Services {
     private String serviceName;
     private String serviceDetails;
 
-    public Services(int serviceId, String serviceName, String serviceDetails) {
+    private double hourlyRate;
+
+    public Services() {
+    }
+
+    public Services(int serviceId, String serviceName, String serviceDetails,double hourlyRate) {
         this.serviceId = serviceId;
         this.serviceName = serviceName;
         this.serviceDetails = serviceDetails;
+        this.hourlyRate=hourlyRate;
+    }
+
+    public double getHourlyRate() {
+        return hourlyRate;
+    }
+
+    public void setHourlyRate(double hourlyRate) {
+        this.hourlyRate = hourlyRate;
     }
 
     public int getServiceId() {

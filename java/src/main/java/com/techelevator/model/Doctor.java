@@ -10,7 +10,7 @@ public class Doctor {
     private String gender;
     private String phoneNumber;
     private String email;
-    private double hourlyRate;
+
     private LocalTime hoursFrom;
     private LocalTime hoursTo;
 
@@ -22,7 +22,11 @@ public class Doctor {
     private boolean isSaturday;
     private boolean isSunday;
 
-    public Doctor(int doctorId, String firstName, String lastName, String gender, String phoneNumber, String email, double hourlyRate,
+    public Doctor() {
+
+    }
+
+    public Doctor(int doctorId, String firstName, String lastName, String gender, String phoneNumber, String email,
                   LocalTime hoursFrom, LocalTime hoursTo, boolean isMonday, boolean isTuesday, boolean isWednesday, boolean isThursday, boolean isFriday, boolean isSaturday, boolean isSunday) {
         this.doctorId = doctorId;
         this.firstName = firstName;
@@ -30,7 +34,6 @@ public class Doctor {
         this.gender = gender;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.hourlyRate = hourlyRate;
         this.hoursFrom = hoursFrom;
         this.hoursTo = hoursTo;
         this.isMonday = isMonday;
@@ -90,13 +93,6 @@ public class Doctor {
         this.email = email;
     }
 
-    public double getHourlyRate() {
-        return hourlyRate;
-    }
-
-    public void setHourlyRate(double hourlyRate) {
-        this.hourlyRate = hourlyRate;
-    }
 
     public LocalTime getHoursFrom() {
         return hoursFrom;

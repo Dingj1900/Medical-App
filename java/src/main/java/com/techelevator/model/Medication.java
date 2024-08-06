@@ -7,6 +7,10 @@ public class Medication {
     private String description;
     private String dosage;
 
+    public Medication(){
+
+    }
+
     public Medication(int medicationId, String medicationName, String description, String dosage) {
         this.medicationId = medicationId;
         this.medicationName = medicationName;

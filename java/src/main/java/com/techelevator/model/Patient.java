@@ -17,6 +17,10 @@ public class Patient {
     private String stateAbbreviation;
     private String zipCode;
 
+    public Patient(){
+
+    }
+
     public Patient(int patient_Id, String firstName, String lastName, char middleInitials, String gender, String phoneNumber, String email,
                    Date dateOfBirth, String patientAddress, String city, String stateAbbreviation, String zipCode) {
         this.patient_Id = patient_Id;
