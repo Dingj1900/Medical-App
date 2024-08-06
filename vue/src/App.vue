@@ -1,9 +1,21 @@
 <template>
   <div id="capstone-app">
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'logout' }" v-if="this.$store.state.token != ''">Logout</router-link>
+      <navbar />
     </div>
     <router-view />
+    <!-- <footer /> -->
   </div>
 </template>
+
+<script>
+import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
+
+export default {
+  components: {
+    Navbar,
+    Footer
+  }
+}
+</script>
