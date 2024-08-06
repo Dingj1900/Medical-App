@@ -4,7 +4,7 @@
       <navbar />
     </div>
     <router-view />
-    <footer />
+    <!-- <footer /> -->
   </div>
 </template>
 

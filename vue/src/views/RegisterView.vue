@@ -1,6 +1,4 @@
 <template>
-
-
   <div id="register" class="text-center">
     <form v-on:submit.prevent="register">
       <h1>Create Account</h1>
@@ -20,19 +18,15 @@
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
       <button type="submit">Create Account</button>
-      <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in</router-link></p>
+      <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
   </div>
 </template>
 
-
-
 <script>
-import Navbar from '../components/Navbar.vue';
 import authService from '../services/AuthService';
 
 export default {
-  components: { Navbar },
   data() {
     return {
       user: {

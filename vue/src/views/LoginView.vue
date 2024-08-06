@@ -21,8 +21,7 @@
       <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
   </div>
-  </template>
-
+</template>
 
 <script>
 import authService from "../services/AuthService";
