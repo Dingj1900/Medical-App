@@ -31,8 +31,8 @@ import AppointmentService from '../services/AppointmentService.js';
 export default {
   
   components: {
-    PatientSettings,
-    BookAppointment,
+  //  PatientSettings,
+   // BookAppointment,
     AppointmentsListVue
     
   },
