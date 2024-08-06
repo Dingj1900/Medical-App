@@ -7,6 +7,10 @@ public class TimePeriod {
     private LocalDate startDate;
     private LocalDate endDate;
 
+    public TimePeriod(){
+
+    }
+
     public TimePeriod(int period_id, LocalDate startDate, LocalDate endDate) {
         this.period_id = period_id;
         this.startDate = startDate;

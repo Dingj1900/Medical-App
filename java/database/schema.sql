@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, role, userRole CASCADE;
+DROP TABLE IF EXISTS users, roles, userRole CASCADE;
 
 DROP TABLE IF EXISTS patient,doctor,office ,appointment, medication,time_period, prescription,
 doctor_services,services,review CASCADE ;
@@ -14,9 +14,10 @@ CREATE TABLE users (
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
-CREATE TABLE role(
+-- role was highlighted in pg admin so i changed it to roles and changed variable role to rowname in pgAdmin
+CREATE TABLE roles(
 role_id SERIAL,
-role varchar(20) NOT NULL,
+roleName varchar(20) NOT NULL,
 
 CONSTRAINT pk_role PRIMARY KEY (role_id)
 );
@@ -62,7 +63,6 @@ CREATE TABLE doctor (
 	first_name varchar (20) NOT NULL,
 	last_name varchar (20) NOT NULL,
 	gender varchar (20) NOT NULL,
-	hourly_rate money NOT NULL,
 	phone_number varchar(20) NOT NULL,
 	email varchar (50) UNIQUE,
 	hours_from time NOT NULL,
@@ -89,16 +89,26 @@ CREATE TABLE office(
 	hours_to time NOT NULL,
 	day_from varchar(10) NOT NULL,
 	day_to varchar(10) NOT NULL,
-	doctor_id int NOT NULL,
+
 
 
 	CONSTRAINT pk_office PRIMARY KEY (office_id),
-	CONSTRAINT fk_doctor FOREIGN KEY(doctor_id)REFERENCES doctor(doctor_id),
 
 	CONSTRAINT day_from_check CHECK (day_from IN ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
 												  'Saturday', 'Sunday')),
 	CONSTRAINT day_to_check CHECK (day_to IN ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
 												  'Saturday', 'Sunday'))
+
+);
+
+
+CREATE TABLE doctor_office(
+doctor_id int NOT NULL;
+office_id int NOT NULL;
+
+CONSTRAINT fk_doctor FOREIGN KEY (doctor_id)REFERENCES doctor(doctor_id),
+CONSTRAINT fk_office FOREIGN KEY (office_id)REFERENCES office(office_id),
+CONSTRAINT pk_doctor_offices PRIMARY KEY(doctor_id,office_id)
 
 );
 
@@ -120,17 +130,6 @@ CREATE TABLE appointment(
 
 );
 
-
--- -- Association Table
--- CREATE TABLE calendar (
--- 	doctor_id NOT NULL,
--- 	appointment_id NOT NULL,
-
--- 	CONSTRAINT fk_doctor FOREIGN KEY(doctor_id)REFERENCES doctor(doctor_id),
--- 	CONSTRAINT fk_appointment FOREIGN KEY (appointment_id)REFERENCES appointment(appointment_id),
--- 	CONSTRAINT pk_calendar PRIMARY(doctor_id, appointment_id),
-
--- );
 
 CREATE TABLE time_period(
 	period_id SERIAL,
@@ -170,6 +169,7 @@ CREATE TABLE services(
 	service_id Serial,
 	service_name varchar (50) NOT NULL,
 	service_details varchar(200)NOT NULL,
+	hourly_rate numeric(9,2) NOT NULL,
 
 	CONSTRAINT pk_services PRIMARY KEY (service_id)
 

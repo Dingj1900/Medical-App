@@ -12,6 +12,10 @@ public class Office {
     private String dayTo;
     private int doctorId; //check with team
 
+    public Office(){
+
+    }
+
     public Office(int officeId, String officeAddress, String phoneNumber,
                   LocalTime hoursFrom, LocalTime hoursTo, String dayFrom, String dayTo, int doctorId) {
         this.officeId = officeId;
