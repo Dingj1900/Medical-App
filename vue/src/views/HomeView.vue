@@ -2,7 +2,7 @@
   <div class="home">
     <h1>Home</h1>
     <p>You must be authenticated to see this</p>
-    </div>
+  </div>
     </template>
 
 
@@ -13,7 +13,6 @@ import
 export default {
 }
 </script>
-
 
 
 <style scoped>

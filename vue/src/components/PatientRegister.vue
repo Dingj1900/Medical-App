@@ -108,7 +108,7 @@
           <label for="confirmPassword">Confirm Password</label>
           <input type="password" id="confirmPassword" v-model="patient.confirmPassword" required />
         </div>
-        <button id="createAccount" type="submit">Create Account</button>
+        <button id="createAccount" type="submit" @click.prevent="handleSubmit">Create Account</button>
         <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
       </form>
     </div>
@@ -141,7 +141,8 @@
             zipcode: '',
             phoneNumber: '',
             emailAddress: '',
-            password: '',  
+            password: '', 
+            userId: '', 
         },
   
         registrationErrors: false,
@@ -149,6 +150,21 @@
       };
     },
     methods: {
+        handleSubmit() {
+            const newPatient = {
+                firstName: this.firstName,
+                lastName: this.lastName,
+                middleInitials: this.middleInitials,
+                gender: this.gender,
+                phoneNumber: this.phoneNumber,
+                email: this.email,
+                dateOfBirth: this.dateOfBirth,
+                patientAddress: this.patientAddress,
+                city: this.city,
+                stateAbbreviation: this.stateAbbreviation,
+                zipcode: this.zipcode
+            }
+        },
       register() {
         if (this.user.password != this.user.confirmPassword) {
           this.registrationErrors = true;

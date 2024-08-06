@@ -86,8 +86,8 @@ CREATE TABLE office(
 
 
 CREATE TABLE doctor_office(
-doctor_id int NOT NULL;
-office_id int NOT NULL;
+doctor_id int NOT NULL,
+office_id int NOT NULL,
 
 CONSTRAINT fk_doctor FOREIGN KEY (doctor_id)REFERENCES doctor(doctor_id),
 CONSTRAINT fk_office FOREIGN KEY (office_id)REFERENCES office(office_id),
