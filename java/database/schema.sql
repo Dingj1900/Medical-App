@@ -3,7 +3,7 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS users, roles, userRole CASCADE;
 
 DROP TABLE IF EXISTS patient,doctor,office ,appointment, medication,time_period, prescription,
-doctor_services,services,review CASCADE ;
+doctor_services,services,review,doctor_office CASCADE ;
 
 
 CREATE TABLE users (
