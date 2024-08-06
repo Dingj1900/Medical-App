@@ -67,5 +67,5 @@ public class PatientController {
 
     }
 
-    @RequestMapping(path ="", method = )
+//    @RequestMapping(path ="", method = RequestMethod.PUT)
 }
