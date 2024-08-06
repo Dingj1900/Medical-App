@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.UserDao;
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.Appointment;
 import com.techelevator.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -38,8 +39,6 @@ public class PatientController {
     public List<Patient> getPatientAppointments(Principal principal){
         List<Patient> patientList = new ArrayList<>();
 
-
-
         try{
 
             //get patient by user Id
@@ -52,4 +51,21 @@ public class PatientController {
 
         return patientList;
     }
+
+    @RequestMapping(path = "/patient/appointment", method = RequestMethod.POST)
+    public Appointment createPatientAppointment(@RequestBody Appointment appointment){
+        Appointment newAppointment = null;
+
+        try{
+            //add appointment to database;
+
+        }catch(DaoException error){
+
+        }
+
+        return newAppointment;
+
+    }
+
+    @RequestMapping(path ="", method = )
 }
