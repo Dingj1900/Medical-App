@@ -3,9 +3,17 @@
     <h1>Home</h1>
     <p>You must be authenticated to see this</p>
   </div>
-</template>
+    </template>
+
+
 
 <script>
 export default {
 };
 </script>
+
+
+<style scoped>
+
+
+</style>
