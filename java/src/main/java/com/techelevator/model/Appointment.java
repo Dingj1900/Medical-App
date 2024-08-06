@@ -23,6 +23,11 @@ public class Appointment {
         return appointmentId;
     }
 
+//    public boolean createAppointment(Appointment appointment){
+//
+//        return false;
+//    }
+
     public void setAppointmentId(int appointmentId) {
         this.appointmentId = appointmentId;
     }
