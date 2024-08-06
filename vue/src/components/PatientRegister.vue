@@ -142,7 +142,6 @@
             phoneNumber: '',
             emailAddress: '',
             password: '', 
-            userId: '', 
         },
   
         registrationErrors: false,
@@ -163,7 +162,9 @@
                 city: this.city,
                 stateAbbreviation: this.stateAbbreviation,
                 zipcode: this.zipcode
-            }
+            };
+            this.register();
+          
         },
       register() {
         if (this.user.password != this.user.confirmPassword) {
@@ -174,6 +175,8 @@
             .register(this.user)
             .then((response) => {
               if (response.status == 201) {
+                
+
                 this.$router.push({
                   path: '/login',
                   query: { registration: 'success' },
