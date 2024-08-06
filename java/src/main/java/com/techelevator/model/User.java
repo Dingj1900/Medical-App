@@ -1,6 +1,7 @@
 package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -74,6 +75,8 @@ public class User {
       }
    }
 
+
+
    @Override
    public boolean equals(Object o) {
       if (this == o) return true;
@@ -100,4 +103,5 @@ public class User {
               ", authorities=" + authorities +
               '}';
    }
+
 }

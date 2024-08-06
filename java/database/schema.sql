@@ -14,24 +14,6 @@ CREATE TABLE users (
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
--- role was highlighted in pg admin so i changed it to roles and changed variable role to rowname in pgAdmin
-CREATE TABLE roles(
-role_id SERIAL,
-roleName varchar(20) NOT NULL,
-
-CONSTRAINT pk_role PRIMARY KEY (role_id)
-);
-
-CREATE TABLE userRole(
-user_id int,
-role_id int,
-
-CONSTRAINT pk_userRole PRIMARY KEY (user_id, role_id),
-CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users (user_id),
-CONSTRAINT fk_role_id FOREIGN KEY (role_id) REFERENCES role (role_id)
-
-);
-
 --MEDICAL APP TABLES FROM PG-ADMIN >>>>
 
 CREATE TABLE patient(
@@ -47,6 +29,7 @@ CREATE TABLE patient(
 	city varchar(50) NOT NULL,
 	state_abbreviation varchar(2) NOT NULL,
 	zip_code varchar (5) NOT NULL,
+	user_id int,
 
     CONSTRAINT  pk_patient PRIMARY KEY (patient_id),
 	CONSTRAINT gender_check CHECK (gender IN ('Male', 'Female', 'Others')),
@@ -73,6 +56,7 @@ CREATE TABLE doctor (
 	is_friday boolean,
 	is_saturday boolean,
 	is_sunday boolean,
+	user_id int,
 
 	CONSTRAINT pk_doctor PRIMARY KEY (doctor_id),
 	CONSTRAINT gender_check CHECK (gender IN ('Male', 'Female', 'Others'))
