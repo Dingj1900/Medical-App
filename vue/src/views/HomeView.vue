@@ -14,7 +14,7 @@
       </div>
       <div class="content-center">
         <div class="container">
-          <h1 class="title">HealMeNow!</h1>
+          <h1 class="title">HealMeNOW!</h1>
             <h2 class="subtitle">Connecting Patients with the Finest Doctors</h2>
           <div class="text-center">
           </div>
