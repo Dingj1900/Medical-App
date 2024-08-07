@@ -7,18 +7,15 @@
 <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
 <body class="landing-page sidebar-collapse">
-  <!-- Navbar -->
 
-  <!-- <navbar /> -->
-
-  <!-- End Navbar -->
   <div class="wrapper">
     <div class="page-header page-header-small">
-      <div class="page-header-image" data-parallax="true" style="background-image: url('https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/bgs6.jpg');">
+      <div class="page-header-image" data-parallax="true" style="background-image: url('https://wallpapercave.com/wp/wp6938358.jpg');">
       </div>
       <div class="content-center">
         <div class="container">
-          <h1 class="title">HealMeNow! (maybe)</h1>
+          <h1 class="title">HealMeNow!
+            <br> (possibly)</h1>
           <div class="text-center">
           </div>
         </div>
@@ -36,18 +33,18 @@
         <div class="section-story-overview">
           <div class="row">
             <div class="col-md-6">
-              <div class="image-container image-left" style="background-image: url('https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/login.jpg')">
+              <div class="image-container image-left" style="background-image: url('https://thumbs.dreamstime.com/b/doctors-office-cartoon-doctors-office-cartoon-patient-vector-illustration-graphic-design-113897631.jpg')">
                 <!-- First image on the left side -->
                 <p class="blockquote blockquote-primary">"Lorem ipsum, dolor sit amet consectetur adipisicing elit."
                   <br>
                 </p>
               </div>
               <!-- Second image on the left side of the article -->
-              <div class="image-container" style="background-image: url('https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/bg3.jpg')"></div>
+              <div class="image-container" style="background-image: url('https://www.ghp-news.com/wp-content/uploads/2020/06/doctors-office-1920-x-1080.jpg')"></div>
             </div>
             <div class="col-md-5">
               <!-- First image on the right side, above the article -->
-              <div class="image-container image-right" style="background-image: url('https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/bg1.jpg')"></div>
+              <div class="image-container image-right" style="background-image: url('https://thumbs.dreamstime.com/b/doctor-s-office-4055581.jpg')"></div>
               <h3>Why use our services?</h3>
               <p>We connect patients with doctors! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi reiciendis molestias asperiores facere illo quisquam! Pariatur atque corporis corrupti est quisquam? Obcaecati quod voluptatibus possimus labore ad neque deserunt voluptates.
               </p>
@@ -67,7 +64,7 @@
             <div class="col-md-4">
               <div class="team-player">
                 <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/avatar.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
-                <h4 class="title">Romina Hadid</h4>
+                <h4 class="title">Dr. Romina Hadid</h4>
                 <p class="category text-primary">Pediatrician</p>
                 <p class="description">Add information about Doctors in your area or the top providers overall!</p>
               </div>
@@ -75,8 +72,8 @@
             <div class="col-md-4">
               <div class="team-player">
                 <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/ryan.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
-                <h4 class="title">Ryan Tompson</h4>
-                <p class="category text-primary">Oncologist</p>
+                <h4 class="title">Ryan Tompson, AOCNP</h4>
+                <p class="category text-primary">Oncology Nurse Practitioner</p>
                 <p class="description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some</p>
               </div>
             </div>
@@ -108,12 +105,9 @@
 
 
 <script>
-import Navbar from '../components/Navbar.vue'
 
 export default {
-  components: {
-    Navbar
-  }
+
 }
 
 
@@ -834,7 +828,7 @@ img {
 }
 
 .landing-page .section-team .team .team-player img {
-  max-width: 100px;
+  max-width: 50px;
 }
 
 .landing-page .section-team .team-player {
