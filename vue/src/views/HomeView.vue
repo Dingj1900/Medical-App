@@ -1,16 +1,28 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+    
+<Navbar />
+<router-view />
+<Footer />
+
+
   </div>
     </template>
 
 
 
 <script>
+import Navbar from '../components/Navbar.vue';
+import Footer from '../components/Footer.vue';
+
 export default {
-};
+  components: {
+    Navbar,
+    Footer
+  }
+}
 </script>
+
 
 
 <style scoped>
