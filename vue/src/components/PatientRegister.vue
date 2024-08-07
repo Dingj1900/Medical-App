@@ -1,35 +1,48 @@
 <template>
     <div id="register" class="text-center">
+        <div class="container">
+      <h1>Create Account</h1>
       <form v-on:submit.prevent="register">
-        <h1>Create Account</h1>
-        <div role="alert" v-if="registrationErrors">
+       
+        <div role="alert" v-if="registrationErrors" >
           {{ registrationErrorMsg }}
         </div>
+        <div class="fields">
         <div class="form-input-group">
           <label for="lastName">Last Name</label>
           <input type="text" id="lastName" v-model="patient.lastName" required autofocus />
+          </div>
+          <div class="form-input-group">
           <label for="firstName">First Name</label>
           <input type="text" id="firstName" v-model="patient.firstName" required autofocus />
+          </div>
+          <div class="form-input-group">
           <label for="middleInitial">Middle Initial</label>
           <input type="text" id="middleInitial" v-model="patient.middleInitial" />
-        </div>
-        <div class="form-input-group">
+          </div>
+          <div class="form-input-group">
           <label for="dateOfBirth">Date of Birth</label>
           <input type="date" id="dateOfBirth" v-model="patient.dateOfBirth" required autofocus />
+          </div>
+          <div class="form-input-group">
           <label for="gender">Gender</label>
             <b-dropdown id="dropdown-1" text="Dropdown Button" v-model="patient.gender" required autofocus /> 
             <select name="gender" id="gender" >
-      <option disabled selected>Please select one</option>
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-      <option value="other">Other</option>
+            <option disabled selected>Please select one</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
             </select>
-        </div>
-        <div class="form-input-group">
+          </div>
+          <div class="form-input-group">
           <label for="address">Address</label>
           <input type="text" id="address" v-model="patient.address" required autofocus />
+          </div>
+          <div class="form-input-group">
           <label for="city">City</label>
           <input type="text" id="city" v-model="patient.city" required autofocus />
+          </div>
+          <div class="form-input-group">
           <label for="state">State</label>
           <b-dropdown id="state" v-model="patient.state" required autofocus />
           <select name="state" id="state" >
@@ -85,33 +98,51 @@
     <option value="wi">WI</option>
     <option value="wy">WY</option>
    </select>
+   </div>
+   <div class="form-input-group">
     <label for="zipcode">Zipcode</label>
           <input type="text" id="zipcode" v-model="patient.zipcode" required autofocus />
         </div>
         <div class="form-input-group">
           <label for="phoneNumber">Phone Number</label>
           <input type="text" id="phoneNumber" v-model="patient.phoneNumber" required autofocus />
+         <!--<div class="form-input-group">
           <input type="radio" id="homePhone" name="homePhone" value="homePhone" required />
           <label for="homePhone">Home</label>
+          </div>
+          <div class="form-input-group">
           <input type="radio" id="cellPhone" name="cellPhone" value="cellPhone" required />
           <label for="cellPhone">Cell Phone</label>
-        </div>
+          </div>-->
+          </div>
         <div class="form-input-group">
           <label for="emailAddress">Email Address</label>
           <input type="text" id="emailAddress" v-model="patient.emailAddress" required autofocus />
+          </div>
+          <div class="form-input-group">
           <label for="username">Username</label>
           <input type="text" id="username" v-model="patient.username" required autofocus />
-        </div>
-        <div class="form-input-group">
+         </div>
+         <div class="form-input-group">
           <label for="password">Password</label>
           <input type="password" id="password" v-model="patient.password" required />
+          </div>
+          <div class="form-input-group">
           <label for="confirmPassword">Confirm Password</label>
           <input type="password" id="confirmPassword" v-model="patient.confirmPassword" required />
-        </div>
+          </div>
+          </div>
+        <div class="submitBttn">
         <button id="createAccount" type="submit" @click.prevent="handleSubmit">Create Account</button>
+        </div>
+        <div class="loginLnk">
         <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+        
+        </div>
       </form>
     </div>
+    </div>
+    
   </template>
   
   <script>
@@ -176,7 +207,7 @@
             .then((response) => {
               if (response.status == 201) {
                 
-
+//patientservice
                 this.$router.push({
                   path: '/login',
                   query: { registration: 'success' },
@@ -209,8 +240,34 @@
   }
 
   #register {
-      background: #8ab0c3;
-      background: radial-gradient(circle, #8ab0c3 50%, rgba(92,133,120,1) 100%);
+      background: #3ba0d2;
+      background: radial-gradient(circle, #7db2cc 50%, rgb(92, 124, 133) 100%);
+  }
+
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #4070f4;
+  }
+
+  .container{
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    border-radius: 6px;
+    padding: 30px;
+    margin: 0 15px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   }
 
   #createAccount {
@@ -228,5 +285,83 @@
     text-align:center;
     text-transform: uppercase;
     text-decoration: none;
+    transition: all 0.3s linear;
+    cursor: pointer;
 }
+
+form #createAccount:hover{
+    background-color: #4070f4;
+}
+
+form button i{
+    margin: 0 6px;
+}
+
+.container h1{
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.container h1::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 3px;
+    width: 27px;
+    border-radius: 8px;
+    background-color: #192649;
+}
+
+.container form{
+    position: relative;
+    margin-top: 16px;
+    min-height: 490px;
+    background-color: #fff;
+}
+
+.container form .fields{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+form .fields .form-input-group{
+    display: flex;
+    width: calc(100% / 3 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+label{
+    font-size: 12px;
+    font-weight: 500;
+    color: #2e2e2e;
+}
+input{
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 15px;
+    height: 42px;
+    margin: 8px 0;
+}
+
+input:is(:focus, :valid){
+    box-shadow: 0 3px 6px rgba(0,0,0,0.13);
+}
+
+input[type="date"]{
+    color: #707070;
+}
+
+input[type="date"]:valid{
+    color: #333;
+}
+
   </style>
