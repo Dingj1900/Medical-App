@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS patient,doctor,office ,appointment, medication,time_period,
 doctor_services,services,review,doctor_office CASCADE ;
 
 
-CREATE TABLE users (
+CREATE TABLE user (
 	user_id SERIAL,
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
@@ -113,8 +113,8 @@ CREATE TABLE appointment(
 
 	CONSTRAINT pk_appointment PRIMARY KEY(appointment_id),
 	CONSTRAINT fk_office FOREIGN KEY(office_id)REFERENCES office(office_id),
-	CONSTRAINT fk_users FOREIGN KEY(patient_id)REFERENCES users(patient_id),
-	CONSTRAINT fk_users FOREIGN KEY(doctor_id)REFERENCES users(doctor_id)
+	CONSTRAINT fk_user FOREIGN KEY(patient_id)REFERENCES user(patient_id),
+	CONSTRAINT fk_user FOREIGN KEY(doctor_id)REFERENCES user(doctor_id)
 
 );
 
@@ -147,8 +147,8 @@ CREATE TABLE prescription(
 	CONSTRAINT pk_prescription PRIMARY KEY (doctor_id, patient_id, medication_id, period_id),
 
 	CONSTRAINT fk_time_period FOREIGN KEY (period_id)REFERENCES time_period(period_id),
-	CONSTRAINT fk_users FOREIGN KEY (doctor_id) REFERENCES users(doctor_id),
-	CONSTRAINT fk_users FOREIGN KEY (patient_id) REFERENCES users(patient_id),
+	CONSTRAINT fk_user FOREIGN KEY (doctor_id) REFERENCES user(doctor_id),
+	CONSTRAINT fk_user FOREIGN KEY (patient_id) REFERENCES user(patient_id),
 	CONSTRAINT fk_medication FOREIGN KEY (medication_id)REFERENCES medication(medication_id)
 );
 
@@ -168,7 +168,7 @@ CREATE TABLE services(
   service_id int NOT NULL,
 
 	CONSTRAINT fk_services FOREIGN KEY(service_id)REFERENCES services(service_id),
-	CONSTRAINT fk_users FOREIGN KEY (doctor_id)REFERENCES users(doctor_id),
+	CONSTRAINT fk_user FOREIGN KEY (doctor_id)REFERENCES user(doctor_id),
 	CONSTRAINT pk_doctor_services PRIMARY KEY(doctor_id, service_id)
 
  );
@@ -181,8 +181,8 @@ CREATE TABLE services(
 
 	 CONSTRAINT pk_review PRIMARY KEY (patient_id, doctor_id),
 
-	 CONSTRAINT fk_users FOREIGN KEY (doctor_id) REFERENCES users(doctor_id),
-	 CONSTRAINT fk_users FOREIGN KEY (patient_id) REFERENCES users(patient_id)
+	 CONSTRAINT fk_user FOREIGN KEY (doctor_id) REFERENCES user(doctor_id),
+	 CONSTRAINT fk_user FOREIGN KEY (patient_id) REFERENCES user(patient_id)
 
  );
 
