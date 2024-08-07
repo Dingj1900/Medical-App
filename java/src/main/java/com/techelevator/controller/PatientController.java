@@ -21,6 +21,7 @@ public class PatientController {
     @Autowired
     private UserDao userDao;
 
+    //create a patient after login in Authentication Controller
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/patient/register", method = RequestMethod.POST)
     public Patient createPatientForUser(@RequestBody Patient patient, Principal principal){
@@ -40,6 +41,31 @@ public class PatientController {
         return createdPatient;
     }
 
+    //get a single patient based off user
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/patient", method = RequestMethod.GET)
+    public Patient getPatientById(Principal principal) {
+
+        Patient patient = null;
+
+        int patientId = userDao.getUserByUsername(principal.getName()).getId();
+
+        try{
+
+            //get patient by id
+
+            //loop through appointments where patientId are the same;
+
+        }catch(DaoException error){
+
+        }
+
+        return patient;
+    }
+
+
+
+    //Get all appointments for a patient
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/patient/appointments", method = RequestMethod.GET)
     public List<Patient> getPatientAppointments(Principal principal){
@@ -60,6 +86,7 @@ public class PatientController {
         return patientList;
     }
 
+    //create a new appointment for a patient
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/patient/appointment", method = RequestMethod.POST)
     public Appointment createPatientAppointment(@RequestBody Appointment appointment, Principal principal){
@@ -79,7 +106,8 @@ public class PatientController {
 
     }
 
-    @RequestMapping(path ="/patient/appointment/{id}", method = RequestMethod.PUT)
+    //update an existing patient appointment
+    @RequestMapping(path = "/patient/appointment/{id}", method = RequestMethod.PUT)
     public Appointment updatePatientAppointment(@PathVariable int id,Principal principal){
         Appointment newAppointment = null;
 
@@ -97,6 +125,7 @@ public class PatientController {
         return newAppointment;
     }
 
+    //delete a existing patient appointment
     @RequestMapping(path = "/patient/appointment/{id}", method = RequestMethod.DELETE)
     public void deletePatientAppointment(@PathVariable int id){
         Appointment newAppointment = null;
