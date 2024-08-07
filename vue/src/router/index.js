@@ -1,7 +1,6 @@
 import { createRouter as createRouter, createWebHistory } from 'vue-router'
 import { useStore } from 'vuex'
 
-
 // Import components
 import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
@@ -10,9 +9,7 @@ import RegisterView from '../views/RegisterView.vue';
 import PatientView from '../views/PatientView.vue';
 import PatientSettings from '../components/PatientSettings.vue';
 import BookAppointment from '../components/BookAppointment.vue';
-import Navbar from '../components/Navbar.vue';
-import Footer from '../components/Footer.vue';
-import ProviderView from '../views/ProviderView';
+import ProviderView from '../views/ProviderView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
