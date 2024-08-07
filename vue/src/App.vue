@@ -3,8 +3,12 @@
     <div id="nav">
       <navbar />
     </div>
+    <div id="body">
     <router-view />
-    <!-- <footer /> -->
+  </div>
+    <div id="footer">
+    <Footer />
+    </div>
   </div>
 </template>
 
@@ -15,7 +19,13 @@ import Footer from './components/Footer.vue'
 export default {
   components: {
     Navbar,
-    // Footer
+    Footer
   }
 }
 </script>
+
+<style scoped>
+
+
+
+</style>
