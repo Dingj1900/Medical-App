@@ -62,6 +62,7 @@
 <script>
 import $ from 'jquery';
 import authService from "../services/AuthService";
+import PatientService from "../services/PatientService.js";
 
 export default {
   props: {
@@ -100,7 +101,12 @@ export default {
           if (response.status === 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+           if (this.$store.state.user.role === 'provider') {
+            this.$router.push("/provider");
+           }
+           else {
+            this.$router.push("/patient");
+           }
           }
         })
         .catch(error => {

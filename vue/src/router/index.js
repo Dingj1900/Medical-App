@@ -1,7 +1,6 @@
 import { createRouter as createRouter, createWebHistory } from 'vue-router'
 import { useStore } from 'vuex'
 
-
 // Import components
 import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
@@ -10,6 +9,7 @@ import RegisterView from '../views/RegisterView.vue';
 import PatientView from '../views/PatientView.vue';
 import PatientSettings from '../components/PatientSettings.vue';
 import BookAppointment from '../components/BookAppointment.vue';
+import ProviderView from '../views/ProviderView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -25,7 +25,7 @@ const routes = [
     name: 'home',
     component: HomeView,
     meta: {
-      requiresAuth: true
+      requiresAuth: false
     }
   },
   {
@@ -74,6 +74,14 @@ const routes = [
     component: BookAppointment,
     meta: {
       requiresAuth: false
+    }
+  },
+  {
+    path: "/provider",
+    name: "providerView",
+    component: ProviderView,
+    meta: {
+      requiresAuth: true
     }
   }
 ];

@@ -21,7 +21,7 @@ public class DoctorController {
     @Autowired
     private UserDao userDao;
 
-    @RequestMapping(path = "/doctor/register/role")
+    @RequestMapping(path = "/doctor/register", method = RequestMethod.POST)
     public Doctor createDoctorForUser(@RequestBody Doctor doctor, Principal principal){
 
         Doctor newDoctor = null;
