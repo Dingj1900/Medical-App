@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export default {
 
-  createDoctor(doctorObject) {
-    return axios.post('/doctor/register', doctorObject);
-  }
+  // createDoctor(doctorObject) {
+  //   return axios.post('/doctor/register', doctorObject);
+  // }
 
 }

@@ -12,6 +12,7 @@ import PatientSettings from '../components/PatientSettings.vue';
 import BookAppointment from '../components/BookAppointment.vue';
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
+import ProviderView from '../views/ProviderView';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -76,6 +77,14 @@ const routes = [
     component: BookAppointment,
     meta: {
       requiresAuth: false
+    }
+  },
+  {
+    path: "/provider",
+    name: "providerView",
+    component: ProviderView,
+    meta: {
+      requiresAuth: true
     }
   }
 ];
