@@ -5,9 +5,11 @@ import com.techelevator.exception.DaoException;
 import com.techelevator.model.Appointment;
 import com.techelevator.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.DatagramPacket;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +21,13 @@ public class PatientController {
     @Autowired
     private UserDao userDao;
 
+    @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/patient/register", method = RequestMethod.POST)
-    public Patient createPatientForUser(@RequestBody Patient patient){
+    public Patient createPatientForUser(@RequestBody Patient patient, Principal principal){
 
         Patient createdPatient = null;
+
+        int patientId = userDao.getUserByUsername(principal.getName()).getId();
 
         try{
 
@@ -32,16 +37,19 @@ public class PatientController {
 
         }
 
-        return patient;
+        return createdPatient;
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/patient/appointments", method = RequestMethod.GET)
     public List<Patient> getPatientAppointments(Principal principal){
         List<Patient> patientList = new ArrayList<>();
 
+        int patientId = userDao.getUserByUsername(principal.getName()).getId();
+
         try{
 
-            //get patient by user Id
+            //get patient by id
 
             //loop through appointments where patientId are the same;
 
@@ -52,9 +60,13 @@ public class PatientController {
         return patientList;
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/patient/appointment", method = RequestMethod.POST)
-    public Appointment createPatientAppointment(@RequestBody Appointment appointment){
+    public Appointment createPatientAppointment(@RequestBody Appointment appointment, Principal principal){
         Appointment newAppointment = null;
+
+        int patientId = userDao.getUserByUsername(principal.getName()).getId();
+
 
         try{
             //add appointment to database;
@@ -67,5 +79,43 @@ public class PatientController {
 
     }
 
-//    @RequestMapping(path ="", method = RequestMethod.PUT)
+    @RequestMapping(path ="/patient/appointment/{id}", method = RequestMethod.PUT)
+    public Appointment updatePatientAppointment(@PathVariable int id,Principal principal){
+        Appointment newAppointment = null;
+
+        int patientId = userDao.getUserByUsername(principal.getName()).getId();
+
+        try{
+            //find appointment by id, if does not exist
+
+            //update appointment
+
+        }catch(DaoException error){
+
+        }
+
+        return newAppointment;
+    }
+
+    @RequestMapping(path = "/patient/appointment/{id}", method = RequestMethod.DELETE)
+    public void deletePatientAppointment(@PathVariable int id){
+        Appointment newAppointment = null;
+
+        try{
+            //find appointment by id, if does not exist
+
+            //update appointment
+
+        }catch(DaoException error){
+
+        }
+
+    }
+
 }
+
+
+
+
+
+
