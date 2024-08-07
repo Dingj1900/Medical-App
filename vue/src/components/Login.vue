@@ -53,8 +53,9 @@
         <div role="alert" v-if="formErrors">
       {{ formErrorMsg }}
        </div>
-        <router-link :to="{ name: 'register' }">
+       <router-link :to="{ name: 'register' }">-
           <button @click="handleSubmit">SIGN UP</button>
+       
         </router-link>
       </div>
     </div>
@@ -132,25 +133,12 @@ export default {
 
       
       if (this.selectedOption.includes('yes')) {
-        this.$router.push({ name: 'register' });
+        this.$router.push("/register");
       } else if (this.selectedOption.includes('no')) {
-        this.$router.push({ name: 'registerProvider' });
+        this.$router.push("/register/provider");
       }
     }
   },
-    //signUp() {
-     // this.$validator.validateAll().then((result) => {
-        //if (result === 'yes') {
-         // alert('You selected you are a patient.');
-        // return;
-       // } else if (result === 'no') {
-       //   alert('You selected you are a provider.');
-      //    return;
-      //  }
-        
-    //    alert('You need to select an option before sign up.');
-   //   });
-  //  },
   mounted() {
     this.$nextTick(() => {
       $('#switch1').on('click', () => {
