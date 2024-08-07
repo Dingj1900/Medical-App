@@ -10,6 +10,7 @@ import PatientView from '../views/PatientView.vue';
 import PatientSettings from '../components/PatientSettings.vue';
 import BookAppointment from '../components/BookAppointment.vue';
 import ProviderView from '../views/ProviderView.vue';
+import ProviderRegisterView from '../views/ProviderRegisterView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -48,6 +49,14 @@ const routes = [
     path: "/register",
     name: "register",
     component: RegisterView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/register/provider",
+    name: "registerProvider",
+    component: ProviderRegisterView,
     meta: {
       requiresAuth: false
     }
