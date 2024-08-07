@@ -10,23 +10,23 @@
         <div class="fields">
         <div class="form-input-group">
           <label for="lastName">Last Name</label>
-          <input type="text" id="lastName" v-model="patient.lastName" required autofocus />
+          <input type="text" id="lastName" v-model="user.lastName" required autofocus />
           </div>
           <div class="form-input-group">
           <label for="firstName">First Name</label>
-          <input type="text" id="firstName" v-model="patient.firstName" required autofocus />
+          <input type="text" id="firstName" v-model="user.firstName" required autofocus />
           </div>
           <div class="form-input-group">
           <label for="middleInitial">Middle Initial</label>
-          <input type="text" id="middleInitial" v-model="patient.middleInitial" />
+          <input type="text" id="middleInitial" v-model="user.middleInitial" />
           </div>
           <div class="form-input-group">
           <label for="dateOfBirth">Date of Birth</label>
-          <input type="date" id="dateOfBirth" v-model="patient.dateOfBirth" required autofocus />
+          <input type="date" id="dateOfBirth" v-model="user.dateOfBirth" required autofocus />
           </div>
           <div class="form-input-group">
           <label for="gender">Gender</label>
-            <b-dropdown id="dropdown-1" text="Dropdown Button" v-model="patient.gender" required autofocus /> 
+            <b-dropdown id="dropdown-1" text="Dropdown Button" v-model="user.gender" required autofocus /> 
             <select name="gender" id="gender" >
             <option disabled selected>Please select one</option>
             <option value="male">Male</option>
@@ -36,15 +36,15 @@
           </div>
           <div class="form-input-group">
           <label for="address">Address</label>
-          <input type="text" id="address" v-model="patient.address" required autofocus />
+          <input type="text" id="address" v-model="user.address" required autofocus />
           </div>
           <div class="form-input-group">
           <label for="city">City</label>
-          <input type="text" id="city" v-model="patient.city" required autofocus />
+          <input type="text" id="city" v-model="user.city" required autofocus />
           </div>
           <div class="form-input-group">
           <label for="state">State</label>
-          <b-dropdown id="state" v-model="patient.state" required autofocus />
+          <b-dropdown id="state" v-model="user.state" required autofocus />
           <select name="state" id="state" >
           <option disabled selected>Please select one</option>
     <option value="al">AL</option>
@@ -101,11 +101,11 @@
    </div>
    <div class="form-input-group">
     <label for="zipcode">Zipcode</label>
-          <input type="text" id="zipcode" v-model="patient.zipcode" required autofocus />
+          <input type="text" id="zipcode" v-model="user.zipcode" required autofocus />
         </div>
         <div class="form-input-group">
           <label for="phoneNumber">Phone Number</label>
-          <input type="text" id="phoneNumber" v-model="patient.phoneNumber" required autofocus />
+          <input type="text" id="phoneNumber" v-model="user.phoneNumber" required autofocus />
          <!--<div class="form-input-group">
           <input type="radio" id="homePhone" name="homePhone" value="homePhone" required />
           <label for="homePhone">Home</label>
@@ -117,19 +117,19 @@
           </div>
         <div class="form-input-group">
           <label for="emailAddress">Email Address</label>
-          <input type="text" id="emailAddress" v-model="patient.emailAddress" required autofocus />
+          <input type="text" id="emailAddress" v-model="user.emailAddress" required autofocus />
           </div>
           <div class="form-input-group">
           <label for="username">Username</label>
-          <input type="text" id="username" v-model="patient.username" required autofocus />
+          <input type="text" id="username" v-model="user.username" required autofocus />
          </div>
          <div class="form-input-group">
           <label for="password">Password</label>
-          <input type="password" id="password" v-model="patient.password" required />
+          <input type="password" id="password" v-model="user.password" required />
           </div>
           <div class="form-input-group">
           <label for="confirmPassword">Confirm Password</label>
-          <input type="password" id="confirmPassword" v-model="patient.confirmPassword" required />
+          <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
           </div>
           </div>
         <div class="submitBttn">
@@ -159,8 +159,6 @@
           password: '',
           confirmPassword: '',
           role: 'patient',
-        },
-        patient:{
             lastName: '',
             firstName: '',
             middleInitial: '',
@@ -172,7 +170,6 @@
             zipcode: '',
             phoneNumber: '',
             emailAddress: '',
-            password: '', 
         },
   
         registrationErrors: false,
@@ -206,8 +203,6 @@
             .register(this.user)
             .then((response) => {
               if (response.status == 201) {
-                
-//patientservice
                 this.$router.push({
                   path: '/login',
                   query: { registration: 'success' },
@@ -310,7 +305,7 @@ form button i{
     left: 0;
     bottom: -2px;
     height: 3px;
-    width: 27px;
+    width: 850px;
     border-radius: 8px;
     background-color: #192649;
 }
@@ -362,6 +357,39 @@ input[type="date"]{
 
 input[type="date"]:valid{
     color: #333;
+}
+
+select #gender, #state{
+    color: #707070;
+}
+
+select #gender, #state:valid{
+    color: #333;
+}
+
+select:is(:focus, :valid) {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.13);
+}
+
+select {
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 10px 15px; 
+    height: auto;
+    line-height: 1.5;
+    margin: 8px 0;
+    background-color: #fff;
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    appearance: none; 
+    background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg width="10" height="6" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M0 0l5 5 5-5H0z" fill="%23333" /%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
 }
 
   </style>

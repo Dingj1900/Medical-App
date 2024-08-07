@@ -44,14 +44,17 @@
         <div>
           <p>Would you be a patient?</p>
           <label for="yes">
-          <input type="checkbox" id="yes" v-validate= "required" :checked="isYes" @change="updateSelection('yes')" required/>
+          <input type="checkbox" id="yes" v-model="selectedOption" :checked="isYes" @change="updateSelection('yes')" required/>
           Yes</label>
           <label for="no">
-          <input type="checkbox" id="no" v-validate= "required" :checked="isNo" @change="updateSelection('no')" required/>
+          <input type="checkbox" id="no" v-model="selectedOption" :checked="isNo" @change="updateSelection('no')" required/>
           No</label>
         </div>
+        <div role="alert" v-if="formErrors">
+      {{ formErrorMsg }}
+       </div>
         <router-link :to="{ name: 'register' }">
-          <button @click="signup">SIGN UP</button>
+          <button @click="handleSubmit">SIGN UP</button>
         </router-link>
       </div>
     </div>
@@ -62,7 +65,6 @@
 <script>
 import $ from 'jquery';
 import authService from "../services/AuthService";
-import PatientService from "../services/PatientService.js";
 
 export default {
   props: {
@@ -70,9 +72,13 @@ export default {
   },
   data() {
     return {
+      selectedOption: [], 
+      isSignup: true, 
+      formErrors: false,
+      formErrorMsg: 'You need to select an option before signing up.',
       isYes: false,
       isNo: false,
-      isSignup: false,
+      //isSignup: false,
       isMoving: false,
       loginForm: {
         username: "",
@@ -116,6 +122,22 @@ export default {
           }
         });
     },
+    handleSubmit() {
+      if (this.selectedOption.length === 0) {
+        this.formErrors = true;
+        return; 
+      }
+      
+      this.formErrors = false;
+
+      
+      if (this.selectedOption.includes('yes')) {
+        this.$router.push({ name: 'patientForm' });
+      } else if (this.selectedOption.includes('no')) {
+        this.$router.push({ name: 'providerForm' });
+      }
+    }
+  },
     signUp() {
       this.$validator.validateAll().then((result) => {
         if (result === 'yes') {
@@ -128,8 +150,7 @@ export default {
         
         alert('You need to select an option before sign up.');
       });
-    }
-  },
+    },
   mounted() {
     this.$nextTick(() => {
       $('#switch1').on('click', () => {

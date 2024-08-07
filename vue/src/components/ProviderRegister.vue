@@ -10,15 +10,15 @@
         <div class="fields">
         <div class="form-input-group">
           <label for="lastName">Last Name</label>
-          <input type="text" id="lastName" v-model="doctor.lastName" required autofocus />
+          <input type="text" id="lastName" v-model="user.lastName" required autofocus />
          </div>
           <div class="form-input-group">
           <label for="firstName">First Name</label>
-          <input type="text" id="firstName" v-model="doctor.firstName" required autofocus />
+          <input type="text" id="firstName" v-model="user.firstName" required autofocus />
         </div>
         <div class="form-input-group">
     <label for="gender">Gender</label>
-          <b-dropdown id="dropdown-1" text="Dropdown Button" v-model="doctor.gender" required autofocus /> 
+          <b-dropdown id="dropdown-1" text="Dropdown Button" v-model="user.gender" required autofocus /> 
           <select name="gender" id="gender" >
     <option disabled selected>Please select one</option>
     <option value="male">Male</option>
@@ -28,7 +28,7 @@
         </div>
         <div class="form-input-group">
           <label for="officeName">Office Location</label>
-          <b-dropdown id="officeName" v-model="doctor.officeName" required autofocus />
+          <b-dropdown id="officeName" v-model="user.officeName" required autofocus />
           <select name="officeName" id="officeName" >
           <option disabled selected>Please select one</option>
     <option value="office1">Office Name</option>
@@ -43,7 +43,7 @@
         </div>
         <div class="form-input-group">
           <label for="phoneNumber">Phone Number</label>
-          <input type="text" id="phoneNumber" v-model="doctor.phoneNumber" required autofocus />
+          <input type="text" id="phoneNumber" v-model="user.phoneNumber" required autofocus />
           <!--<input type="radio" id="homePhone" name="homePhone" value="homePhone" required />
           <label for="homePhone">Home</label>
           <input type="radio" id="cellPhone" name="cellPhone" value="cellPhone" required />
@@ -51,19 +51,19 @@
         </div>
         <div class="form-input-group">
           <label for="emailAddress">Email Address</label>
-          <input type="text" id="emailAddress" v-model="doctor.emailAddress" required autofocus />
+          <input type="text" id="emailAddress" v-model="user.emailAddress" required autofocus />
         </div>
         <div class="form-input-group">
           <label for="username">Username</label>
-          <input type="text" id="username" v-model="doctor.username" required autofocus />
+          <input type="text" id="username" v-model="user.username" required autofocus />
         </div>
         <div class="form-input-group">
           <label for="password">Password</label>
-          <input type="password" id="password" v-model="doctor.password" required />
+          <input type="password" id="password" v-model="user.password" required />
         </div>
         <div class="form-input-group">
           <label for="confirmPassword">Confirm Password</label>
-          <input type="password" id="confirmPassword" v-model="doctor.confirmPassword" required />
+          <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
         </div>
       </div>
       <div class="submitBttn">
@@ -91,17 +91,13 @@
           username: '',
           password: '',
           confirmPassword: '',
-          role: 'doctor',
-        },
-        doctor:{
+          role: 'provider',
             lastName: '',
             firstName: '',
             gender: '',
             officeName: '',
             phoneNumber: '',
             emailAddress: '',
-            username: '',
-            password: '',
         },
         registrationErrors: false,
         registrationErrorMsg: 'There were problems registering this user.',
@@ -217,7 +213,7 @@ form button i{
     left: 0;
     bottom: -2px;
     height: 3px;
-    width: 27px;
+    width: 850px;
     border-radius: 8px;
     background-color: #192649;
 }
@@ -247,6 +243,7 @@ label{
     font-weight: 500;
     color: #2e2e2e;
 }
+
 input{
     outline: none;
     font-size: 14px;
@@ -271,5 +268,50 @@ input[type="date"]:valid{
     color: #333;
 }
 
+select{
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 15px;
+    height: 42px;
+    margin: 8px 0;
+}
+
+select #gender, #state{
+    color: #707070;
+}
+
+select #gender, #state:valid{
+    color: #333;
+}
+
+select:is(:focus, :valid) {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.13);
+}
+
+
+select {
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 10px 15px; 
+    height: auto;
+    line-height: 1.5;
+    margin: 8px 0;
+    background-color: #fff;
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    appearance: none; 
+    background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg width="10" height="6" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M0 0l5 5 5-5H0z" fill="%23333" /%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+}
   </style>
   
