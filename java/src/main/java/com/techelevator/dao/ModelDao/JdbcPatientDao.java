@@ -10,6 +10,6 @@ public class JdbcPatientDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-
+    
 
 }
