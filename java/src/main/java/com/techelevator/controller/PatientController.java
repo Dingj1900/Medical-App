@@ -81,7 +81,7 @@ public class PatientController {
             //add appointment to database;
 
         }catch(DaoException error){
-            throw new ResponseStatusException()
+            //throw new ResponseStatusException();
         }
 
         return newAppointment;

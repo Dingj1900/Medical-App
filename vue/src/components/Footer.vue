@@ -2,6 +2,16 @@
 
       <footer class="footer footer-default">
       <div class="container">
+        <nav>
+          <ul>
+            <li>
+              <a href="contact">
+                <i class="fa-solid fa-hospital"></i>
+                Contact Us
+              </a>
+            </li>
+          </ul>
+        </nav>
         <div class="copyright" id="copyright">
           <p>Copyright &#169; 2024 Team Charlie </p>
         </div>

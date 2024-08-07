@@ -14,8 +14,8 @@
       </div>
       <div class="content-center">
         <div class="container">
-          <h1 class="title">HealMeNow!
-            <br> (possibly)</h1>
+          <h1 class="title">HealMeNow!</h1>
+            <h2 class="subtitle">Connecting Patients with the Finest Doctors</h2>
           <div class="text-center">
           </div>
         </div>
@@ -35,8 +35,7 @@
             <div class="col-md-6">
               <div class="image-container image-left" style="background-image: url('https://thumbs.dreamstime.com/b/doctors-office-cartoon-doctors-office-cartoon-patient-vector-illustration-graphic-design-113897631.jpg')">
                 <!-- First image on the left side -->
-                <p class="blockquote blockquote-primary">"Lorem ipsum, dolor sit amet consectetur adipisicing elit."
-                  <br>
+                <p class="blockquote blockquote-primary">"I found a kick ass doctor thanks to HealMeNow!"
                 </p>
               </div>
               <!-- Second image on the left side of the article -->
@@ -58,7 +57,7 @@
     </div>
     <div class="section section-team text-center">
       <div class="container">
-        <h2 class="title">Top Doctors:</h2>
+        <h2 class="title">A few of our top Doctors:</h2>
         <div class="team">
           <div class="row">
             <div class="col-md-4">
@@ -72,7 +71,7 @@
             <div class="col-md-4">
               <div class="team-player">
                 <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/ryan.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
-                <h4 class="title">Ryan Tompson, AOCNP</h4>
+                <h4 class="title">Ryan Johnson, AOCNP</h4>
                 <p class="category text-primary">Oncology Nurse Practitioner</p>
                 <p class="description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some</p>
               </div>
@@ -531,13 +530,13 @@ h5.category,
 
 p {
   line-height: 1.61em;
-  font-weight: 300;
+  font-weight: 500;
   font-size: 1.2em;
 }
 
 .title {
   font-weight: 700;
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
 .title+.category {

@@ -6,62 +6,67 @@ DROP TABLE IF EXISTS patient,doctor,office ,appointment, medication,time_period,
 doctor_services,services,review,doctor_office CASCADE ;
 
 
-CREATE TABLE users (
+CREATE TABLE user (
 	user_id SERIAL,
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
-	CONSTRAINT PK_user PRIMARY KEY (user_id)
-);
 
+--	CONSTRAINT PK_user PRIMARY KEY (user_id)
 --MEDICAL APP TABLES FROM PG-ADMIN >>>>
+--CREATE TABLE users(
 
-CREATE TABLE patient(
-	patient_id SERIAL,
 	first_name varchar (20) NOT NULL,
 	last_name varchar(20)NOT NULL,
 	middle_initials varchar(2) NULL,
 	gender varchar(10) NOT NULL,
 	phone_number varchar(20) NOT NULL,
 	email varchar (50) UNIQUE,
-	date_of_birth date NOT NULL,
-	patient_address varchar(100) NOT NULL,
+	date_of_birth date NULL,
+	address varchar(100) NOT NULL,
 	city varchar(50) NOT NULL,
 	state_abbreviation varchar(2) NOT NULL,
 	zip_code varchar (5) NOT NULL,
-	user_id int,
+	hours_from time NOT NULL,
+    hours_to time NOT NULL,
+	is_monday boolean,
+    is_tuesday boolean,
+    is_wednesday boolean,
+    is_thursday boolean,
+    is_friday boolean,
+    is_saturday boolean,
+    is_sunday boolean,
 
-    CONSTRAINT  pk_patient PRIMARY KEY (patient_id),
-	CONSTRAINT gender_check CHECK (gender IN ('Male', 'Female', 'Others')),
+    CONSTRAINT  pk_user PRIMARY KEY (user_id),
+	CONSTRAINT gender_check CHECK (gender IN ('Male', 'Female', 'Other')),
 	CONSTRAINT state_abbreviation_check CHECK (state_abbreviation IN ('AL',  'AK ',  'AZ', 'AR', 'CA',  'CO',  'CT',  'DE',  'FL', 'GA', 'HI', 'ID', 'IL',  'IN', 'IA',  'KS',  'KY',
 																	  'LA',  'ME', 'MD', 'MA', 'MI', 'MN', 'MS',  'MO', 'MT', 'NE', 'NV', 'NH' , 'NJ', 'NM' , 'NY', 'NC', 'ND', 'OH',
 																	  'OK', 'MN', 'MS',  'MO', 'MT', 'NE', 'NV', 'NH',  'NJ',  'NM',  'NY',  'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI',
 																	  'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'))
-
 );
-
-CREATE TABLE doctor (
-	doctor_id SERIAL,
-	first_name varchar (20) NOT NULL,
-	last_name varchar (20) NOT NULL,
-	gender varchar (20) NOT NULL,
-	phone_number varchar(20) NOT NULL,
-	email varchar (50) UNIQUE,
-	hours_from time NOT NULL,
-	hours_to time NOT NULL,
-	is_monday boolean,
-	is_tuesday boolean,
-	is_wednesday boolean,
-	is_thursday boolean,
-	is_friday boolean,
-	is_saturday boolean,
-	is_sunday boolean,
-	user_id int,
-
-	CONSTRAINT pk_doctor PRIMARY KEY (doctor_id),
-	CONSTRAINT gender_check CHECK (gender IN ('Male', 'Female', 'Others'))
-
-);
+--
+--CREATE TABLE doctor (
+--	doctor_id SERIAL,
+--	first_name varchar (20) NOT NULL,
+--	last_name varchar (20) NOT NULL,
+--	gender varchar (20) NOT NULL,
+--	phone_number varchar(20) NOT NULL,
+--	email varchar (50) UNIQUE,
+--	hours_from time NOT NULL,
+--	hours_to time NOT NULL,
+--	is_monday boolean,
+--	is_tuesday boolean,
+--	is_wednesday boolean,
+--	is_thursday boolean,
+--	is_friday boolean,
+--	is_saturday boolean,
+--	is_sunday boolean,
+--	user_id int,
+--
+--	CONSTRAINT pk_doctor PRIMARY KEY (doctor_id),
+--	CONSTRAINT gender_check CHECK (gender IN ('Male', 'Female', 'Other'))
+--
+--);
 
 
 CREATE TABLE office(
@@ -89,7 +94,7 @@ CREATE TABLE doctor_office(
 doctor_id int NOT NULL,
 office_id int NOT NULL,
 
-CONSTRAINT fk_doctor FOREIGN KEY (doctor_id)REFERENCES doctor(doctor_id),
+CONSTRAINT fk_users FOREIGN KEY (doctor_id)REFERENCES users(doctor_id),
 CONSTRAINT fk_office FOREIGN KEY (office_id)REFERENCES office(office_id),
 CONSTRAINT pk_doctor_offices PRIMARY KEY(doctor_id,office_id)
 
@@ -108,8 +113,8 @@ CREATE TABLE appointment(
 
 	CONSTRAINT pk_appointment PRIMARY KEY(appointment_id),
 	CONSTRAINT fk_office FOREIGN KEY(office_id)REFERENCES office(office_id),
-	CONSTRAINT fk_patient FOREIGN KEY(patient_id)REFERENCES patient(patient_id),
-	CONSTRAINT fk_doctor FOREIGN KEY(doctor_id)REFERENCES doctor(doctor_id)
+	CONSTRAINT fk_user FOREIGN KEY(patient_id)REFERENCES user(patient_id),
+	CONSTRAINT fk_user FOREIGN KEY(doctor_id)REFERENCES user(doctor_id)
 
 );
 
@@ -142,8 +147,8 @@ CREATE TABLE prescription(
 	CONSTRAINT pk_prescription PRIMARY KEY (doctor_id, patient_id, medication_id, period_id),
 
 	CONSTRAINT fk_time_period FOREIGN KEY (period_id)REFERENCES time_period(period_id),
-	CONSTRAINT fk_doctor FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
-	CONSTRAINT fk_patient FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
+	CONSTRAINT fk_user FOREIGN KEY (doctor_id) REFERENCES user(doctor_id),
+	CONSTRAINT fk_user FOREIGN KEY (patient_id) REFERENCES user(patient_id),
 	CONSTRAINT fk_medication FOREIGN KEY (medication_id)REFERENCES medication(medication_id)
 );
 
@@ -163,7 +168,7 @@ CREATE TABLE services(
   service_id int NOT NULL,
 
 	CONSTRAINT fk_services FOREIGN KEY(service_id)REFERENCES services(service_id),
-	CONSTRAINT fk_doctor FOREIGN KEY (doctor_id)REFERENCES doctor(doctor_id),
+	CONSTRAINT fk_user FOREIGN KEY (doctor_id)REFERENCES user(doctor_id),
 	CONSTRAINT pk_doctor_services PRIMARY KEY(doctor_id, service_id)
 
  );
@@ -176,8 +181,8 @@ CREATE TABLE services(
 
 	 CONSTRAINT pk_review PRIMARY KEY (patient_id, doctor_id),
 
-	 CONSTRAINT fk_doctor FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
-	 CONSTRAINT fk_patient FOREIGN KEY (patient_id) REFERENCES patient(patient_id)
+	 CONSTRAINT fk_user FOREIGN KEY (doctor_id) REFERENCES user(doctor_id),
+	 CONSTRAINT fk_user FOREIGN KEY (patient_id) REFERENCES user(patient_id)
 
  );
 
