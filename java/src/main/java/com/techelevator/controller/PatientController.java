@@ -21,26 +21,6 @@ public class PatientController {
     @Autowired
     private UserDao userDao;
 
-    //create a patient after login in Authentication Controller
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/patient/register", method = RequestMethod.POST)
-    public Patient createPatientForUser(@RequestBody Patient patient, Principal principal){
-
-        Patient createdPatient = null;
-
-        int patientId = userDao.getUserByUsername(principal.getName()).getId();
-
-        try{
-
-            //create dao for adding a patient object
-
-        }catch(DaoException error){
-
-        }
-
-        return createdPatient;
-    }
-
     //get a single patient based off user
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/patient", method = RequestMethod.GET)
