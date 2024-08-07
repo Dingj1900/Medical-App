@@ -1,16 +1,16 @@
 <template>
   <div id="capstone-app">
-    <div id="nav">
       <navbar />
-    </div>
-    <div id="body">
+
     <router-view />
-  </div>
+
     <div id="footer">
     <Footer />
-    </div>
   </div>
+</div>
+
 </template>
+
 
 <script>
 import Navbar from './components/Navbar.vue';
@@ -24,8 +24,17 @@ export default {
 }
 </script>
 
-<style scoped>
 
 
+<style>
 
+#capstone-app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#footer {
+  margin-top: auto;
+}
 </style>
