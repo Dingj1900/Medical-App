@@ -4,10 +4,12 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Appointment;
 import com.techelevator.model.Patient;
+import com.techelevator.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.net.DatagramPacket;
 import java.security.Principal;
@@ -24,9 +26,9 @@ public class PatientController {
     //get a single patient based off user
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/patient", method = RequestMethod.GET)
-    public Patient getPatientById(Principal principal) {
+    public User getPatientById(Principal principal) {
 
-        Patient patient = null;
+        User patient = null;
 
         int patientId = userDao.getUserByUsername(principal.getName()).getId();
 
@@ -48,8 +50,8 @@ public class PatientController {
     //Get all appointments for a patient
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/patient/appointments", method = RequestMethod.GET)
-    public List<Patient> getPatientAppointments(Principal principal){
-        List<Patient> patientList = new ArrayList<>();
+    public List<User> getPatientAppointments(Principal principal){
+        List<User> patientList = new ArrayList<>();
 
         int patientId = userDao.getUserByUsername(principal.getName()).getId();
 
@@ -79,7 +81,7 @@ public class PatientController {
             //add appointment to database;
 
         }catch(DaoException error){
-
+            throw new ResponseStatusException()
         }
 
         return newAppointment;

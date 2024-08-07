@@ -206,8 +206,6 @@
             .register(this.user)
             .then((response) => {
               if (response.status == 201) {
-                
-//patientservice
                 this.$router.push({
                   path: '/login',
                   query: { registration: 'success' },
