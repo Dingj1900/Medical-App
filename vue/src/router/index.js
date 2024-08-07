@@ -10,6 +10,8 @@ import RegisterView from '../views/RegisterView.vue';
 import PatientView from '../views/PatientView.vue';
 import PatientSettings from '../components/PatientSettings.vue';
 import BookAppointment from '../components/BookAppointment.vue';
+import Navbar from '../components/Navbar.vue';
+import Footer from '../components/Footer.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -25,7 +27,7 @@ const routes = [
     name: 'home',
     component: HomeView,
     meta: {
-      requiresAuth: true
+      requiresAuth: false
     }
   },
   {
