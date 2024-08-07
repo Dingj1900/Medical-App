@@ -4,7 +4,7 @@
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Brand -->
-  <a class="navbar-brand" href="#">(Our Company Name)</a>
+  <a class="navbar-brand" href="#">HealMeNow!</a>
 
   <!-- Links -->
 
@@ -56,6 +56,7 @@
   padding-bottom: 0.625rem;
   min-height: 53px;
   margin-bottom: 20px;
+  padding-left: 40px;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
 }
 
@@ -72,7 +73,7 @@
   margin: 0;
   line-height: 21px;
   font-weight: inherit;
-  font-size: inherit;
+  font-size: 50px;
 }
 
 .navbar .navbar-nav .nav-link.btn {
@@ -97,7 +98,7 @@
 
 .navbar .navbar-nav .nav-link:not(.btn) i.fab,
 .navbar .navbar-nav .nav-link:not(.btn) i.now-ui-icons {
-  font-size: 18px;
+  font-size: 30px;
   position: relative;
   top: 3px;
   text-align: center;
@@ -106,7 +107,7 @@
 
 .navbar .navbar-nav .nav-link:not(.btn) i.now-ui-icons {
   top: 4px;
-  font-size: 16px;
+  font-size: 30px;
 }
 
 .navbar .navbar-nav .nav-item .nav-link:not(.btn):focus,
@@ -118,7 +119,7 @@
 
 .navbar .navbar-brand {
   text-transform: uppercase;
-  font-size: 0.8571em;
+  font-size: 2em;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   line-height: 1.625rem;
@@ -190,11 +191,7 @@
   display: inline-block;
   font: normal normal normal 14px/1 'Nucleo Outline';
   font-size: inherit;
-  speak: none;
   text-transform: none;
-  /* Better Font Rendering */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 
