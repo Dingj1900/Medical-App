@@ -90,7 +90,7 @@ const routes = [
     name: "providerView",
     component: ProviderView,
     meta: {
-      requiresAuth: true
+      requiresAuth: false
     }
   }
 ];
