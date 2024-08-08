@@ -21,8 +21,8 @@ public class RegisterUserDto {
     @NotEmpty(message = "Please select a role for this user.")
     private String role;
 
-    private  String firstName;
-    private  String lastName;
+    private String firstName;
+    private String lastName;
     private String middleInitials;
     private String gender;
     private String phoneNumber;
