@@ -95,7 +95,7 @@ const routes = [
     }
   },
   {
-    path: 'provider/office/:officeId',
+    path: '/provider/office/:officeId',
     name: 'providerOfficeView',
     component: OfficeView,
     meta: {
@@ -105,7 +105,7 @@ const routes = [
 ];
 
 // Create the router
-const router = createRouter({
+const router = createRouter({g
   history: createWebHistory(),
   routes: routes
 });
