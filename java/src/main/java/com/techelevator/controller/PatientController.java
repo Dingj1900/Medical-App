@@ -34,9 +34,8 @@ public class PatientController {
 
         try{
 
-            //get patient by id
+            //get patient user by id
 
-            //loop through appointments where patientId are the same;
 
         }catch(DaoException error){
 

@@ -76,7 +76,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public User createUser(RegisterUserDto user) {
         User newUser = null;
-        String insertUserSql = "INSERT INTO users (username, password_hash, role, first_name) values (LOWER(TRIM(?)), ?, ?, ?) RETURNING user_id";
+
         String password_hash = new BCryptPasswordEncoder().encode(user.getPassword());
         String ssRole = user.getRole().toUpperCase().startsWith("ROLE_") ? user.getRole().toUpperCase() : "ROLE_" + user.getRole().toUpperCase();
 
@@ -88,30 +88,99 @@ public class JdbcUserDao implements UserDao {
         String email = user.getEmail();
         Date dateOfBirth = user.getDateOfBirth();
 
+        //properties of doctor
+        LocalTime hoursFrom = null;
+        LocalTime hoursTo = null;
+        boolean isMonday = false;
+        boolean isTuesday = false;
+        boolean isWednesday = false;
+        boolean isThursday = false;
+        boolean isFriday = false;
+        boolean isSaturday = false;
+        boolean isSunday = false;
+
+        //properties of patient
+        String address = "";
+        String city = "";
+        String stateAbbreviation = "";
+        String zipcode = "";
+
         if(user.getRole().equals("provider")) {
             //only doctor
-            LocalTime hoursFrom = user.getHoursFrom();
-            LocalTime hoursTo = user.getHoursTo();
-            boolean isMonday = user.isMonday();
-            boolean isTuesday = user.isTuesday();
-            boolean isWednesday = user.isWednesday();
-            boolean isThursday = user.isThursday();
-            boolean isFriday = user.isFriday();
-            boolean isSaturday = user.isSaturday();
-            boolean isSunday = user.isSunday();
+            hoursFrom = user.getHoursFrom();
+            hoursTo = user.getHoursTo();
+            isMonday = user.isMonday();
+            isTuesday = user.isTuesday();
+            isWednesday = user.isWednesday();
+            isThursday = user.isThursday();
+            isFriday = user.isFriday();
+            isSaturday = user.isSaturday();
+            isSunday = user.isSunday();
         }
-
         else {
             //everyone else is a patient
-            String address = user.getAddress();
-            String city = user.getCity();
-            String stateAbbreviation = user.getStateAbbreviation();
-            String zipcode = user.getZipcode();
+            address = user.getAddress();
+            city = user.getCity();
+            stateAbbreviation = user.getStateAbbreviation();
+            zipcode = user.getZipcode();
 
         }
 
+        String insertUserSql = "INSERT INTO users " +
+                "(" +
+                "username, " +
+                "password_hash, " +
+                "role, " +
+                "first_name, " +
+                "last_name, " +
+                "middle_initials, " +
+                "gender, " +
+                "phone_number, " +
+                "email, " +
+                "date_of_birth," +
+                "address, " +
+                "city, " +
+                "state_abbreviation, " +
+                "zip_code, " +
+                "hours_from, " +
+                "hours_to, " +
+                "is_monday, " +
+                "is_tuesday, " +
+                "is_wednesday, " +
+                "is_thursday, " +
+                "is_friday, " +
+                "is_saturday, " +
+                "is_sunday, " +
+                ") values (LOWER(TRIM(?)), ?, ?, ?) RETURNING user_id";
+
+
+
         try {
-            int newUserId = jdbcTemplate.queryForObject(insertUserSql, int.class, user.getUsername(), password_hash, ssRole, firstName);
+            int newUserId = jdbcTemplate.queryForObject(insertUserSql, int.class,
+                    user.getUsername(),
+                    password_hash,
+                    ssRole,
+                    firstName,
+                    lastName,
+                    middleInitials,
+                    gender,
+                    phoneNumber,
+                    email,
+                    dateOfBirth,
+                    address,
+                    city,
+                    stateAbbreviation,
+                    zipcode,
+                    hoursFrom,
+                    hoursTo,
+                    isMonday,
+                    isTuesday,
+                    isWednesday,
+                    isThursday,
+                    isFriday,
+                    isSaturday,
+                    isSunday
+                    );
             newUser = getUserById(newUserId);
 
         } catch (CannotGetJdbcConnectionException e) {
