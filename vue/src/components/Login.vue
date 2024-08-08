@@ -63,6 +63,7 @@
 <script>
 import $ from 'jquery';
 import authService from "../services/AuthService";
+import PatientService from "../services/PatientService.js";
 
 export default {
   props: {
