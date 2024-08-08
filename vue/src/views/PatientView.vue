@@ -217,7 +217,7 @@ import AppointmentService from '../services/AppointmentService.js';
 export default {
   
   components: {
-  //  PatientSettings,
+   // PatientSettings,
    // BookAppointment,
     AppointmentsListVue
     

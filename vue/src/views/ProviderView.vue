@@ -71,8 +71,10 @@
           <div id="Demo2" class="w3-hide w3-container">
             <p>Some other text..</p>
           </div>
-          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Settings</button>
-          <div id="Demo3" class="w3-hide w3-container">
+          
+          <button class="w3-button w3-block w3-theme-l1 w3-left-align"> 
+          <router-link :to="{ name: 'providerOfficeView', params: {officeId: 2}}">Settings</router-link>  </button>        
+           <div id="Demo3" class="w3-hide w3-container">
          <div class="w3-row-padding">
          <br>
            <div class="w3-half">
@@ -226,9 +228,13 @@
 </template>
 
 <script>
-export default {
 
-}
+import OfficeView from '../views/OfficeView.vue';
+
+export default {
+  
+
+};
 </script>
 
 <style scoped>
