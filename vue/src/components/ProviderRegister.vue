@@ -69,27 +69,54 @@
       <div class="availability">
         <h1>Select Availability</h1>
         <p>Please select the days of the week and hours of availability.</p>
+        <div>
           <label for="sunday">
           <input type="checkbox" id="sunday" @click="toggleYes" :checked="isYes"/>
           Sunday</label>
+          <label for="hoursFrom">Hours From</label>
+          <b-dropdown id="officeName" v-model="user.officeName" required autofocus />
+          <select name="hoursFrom" id="hoursFrom" >
+          <option disabled selected>Please select one</option>
+    <option value="office1">Office Name</option>
+    <option value="office2">Office Name</option>
+    <option value="office3">Office Name</option>
+    <option value="office4">Office Name</option>
+    <option value="office5">Office Name</option>
+    <option value="office6">Office Name</option>
+    <option value="office7">Office Name</option>
+    <option value="office8">Office Name</option>
+          </select>
+          </div>
+          <div>
           <label for="monday">
           <input type="checkbox" id="monday" @click="toggleNo" :checked="isNo" />
           Monday</label>
+          </div>
+          <div>
           <label for="tuesday">
           <input type="checkbox" id="tuesday" @click="toggleYes" :checked="isYes"/>
           Tuesday</label>
+          </div>
+          <div>
           <label for="wednesday">
           <input type="checkbox" id="wednesday" @click="toggleNo" :checked="isNo" />
           Wednesday</label>
+          </div>
+          <div>
           <label for="thursday">
           <input type="checkbox" id="thursday" @click="toggleYes" :checked="isYes"/>
           Thursday</label>
+          </div>
+          <div>
           <label for="friday">
           <input type="checkbox" id="friday" @click="toggleNo" :checked="isNo" />
           Friday</label>
+          </div>
+          <div>
           <label for="saturday">
           <input type="checkbox" id="saturday" @click="toggleYes" :checked="isYes"/>
           Saturday</label>
+          </div>
       </div>
       <div class="submitBttn">
         <button id="createAccount" type="submit" @click.prevent="handleSubmit">Create Account</button>
