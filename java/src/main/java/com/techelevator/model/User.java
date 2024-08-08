@@ -19,9 +19,9 @@ public class User {
    private boolean activated;
    private Set<Authority> authorities = new HashSet<>();
 
-   // CHANGES FROM OUR DATA BASE AFTER MODIFYING USERS
-   private  String firstName;
-   private  String lastName;
+   // CHANGES FROM OUR DATABASE AFTER MODIFYING USERS
+   private String firstName;
+   private String lastName;
    private String middleInitials;
    private String gender;
    private String phoneNumber;
