@@ -44,15 +44,16 @@
         <div>
           <p>Would you be a patient?</p>
           <label for="yes">
-          <input type="checkbox" id="yes" v-validate= "required" :checked="isYes" @change="updateSelection('yes')" required/>
+          <input type="checkbox" id="yes" @click="toggleYes" :checked="isYes"/>
           Yes</label>
           <label for="no">
-          <input type="checkbox" id="no" v-validate= "required" :checked="isNo" @change="updateSelection('no')" required/>
+          <input type="checkbox" id="no" @click="toggleNo" :checked="isNo" />
           No</label>
         </div>
-        <router-link :to="{ name: 'register' }">
-          <button @click="signup">SIGN UP</button>
-        </router-link>
+        <div role="alert" v-if="formErrors">
+      {{ formErrorMsg }}
+       </div>
+          <button @click="handleSubmit">SIGN UP</button>
       </div>
     </div>
   </div>
@@ -70,9 +71,11 @@ export default {
   },
   data() {
     return {
+      isSignup: true, 
+      formErrors: false,
+      formErrorMsg: 'You need to select an option before signing up.',
       isYes: false,
       isNo: false,
-      isSignup: false,
       isMoving: false,
       loginForm: {
         username: "",
@@ -86,14 +89,28 @@ export default {
     };
   },
   methods: {
-    updateSelection(selected) {
-      if (selected === 'yes') {
+    toggleYes() {
+        if (this.isYes === true) {
+        this.isYes = false;
+        this.isNo = false;
+      } else  {
+        this.formErrors = false;
         this.isYes = true;
         this.isNo = false;
-      } else if (selected === 'no') {
+      }
+    },
+    toggleNo() {
+        if (this.isNo === true) {
+        this.isYes = false;
+        this.isNo = false;
+      } else  {
+        this.formErrors = false;
         this.isYes = false;
         this.isNo = true;
       }
+    },
+    updateSelection(selected) {
+     
     },
     login() {
       authService.login(this.user)
@@ -116,18 +133,16 @@ export default {
           }
         });
     },
-    signUp() {
-      this.$validator.validateAll().then((result) => {
-        if (result === 'yes') {
-          alert('You selected you are a patient.');
-          return;
-        } else if (result === 'no') {
-          alert('You selected you are a provider.');
-          return;
+    handleSubmit() {
+
+        if(this.isYes){
+            this.$router.push("/register");
         }
-        
-        alert('You need to select an option before sign up.');
-      });
+        if(this.isNo){
+            this.$router.push("/register/provider");
+        }
+
+        this.formErrors = true;
     }
   },
   mounted() {
