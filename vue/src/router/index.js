@@ -105,7 +105,7 @@ const routes = [
 ];
 
 // Create the router
-const router = createRouter({g
+const router = createRouter({
   history: createWebHistory(),
   routes: routes
 });
