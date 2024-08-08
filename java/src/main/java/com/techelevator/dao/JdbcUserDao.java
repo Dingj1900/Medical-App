@@ -1,6 +1,8 @@
 package com.techelevator.dao;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -77,6 +79,28 @@ public class JdbcUserDao implements UserDao {
         String insertUserSql = "INSERT INTO users (username, password_hash, role) values (LOWER(TRIM(?)), ?, ?) RETURNING user_id";
         String password_hash = new BCryptPasswordEncoder().encode(user.getPassword());
         String ssRole = user.getRole().toUpperCase().startsWith("ROLE_") ? user.getRole().toUpperCase() : "ROLE_" + user.getRole().toUpperCase();
+
+        String firstName;
+        String lastName;
+        String middleInitials;
+        String gender;
+        String phoneNumber;
+        String email;
+        Date dateOfBirth;
+        String address;
+       String city;
+        String stateAbbreviation;
+         String zipcode;
+         LocalTime hoursFrom;
+         LocalTime hoursTo;
+        boolean isMonday;
+        boolean isTuesday;
+        boolean isWednesday;
+        boolean isThursday;
+        boolean isFriday;
+        boolean isSaturday;
+        boolean isSunday;
+
         try {
             int newUserId = jdbcTemplate.queryForObject(insertUserSql, int.class, user.getUsername(), password_hash, ssRole);
             newUser = getUserById(newUserId);
