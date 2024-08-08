@@ -95,11 +95,11 @@ const routes = [
     }
   },
   {
-    path: '/provider/office/:officeId',
+    path: '/provider/office',
     name: 'providerOfficeView',
     component: OfficeView,
     meta: {
-      requiresAuth: true
+      requiresAuth: false
     }
   },
 ];
