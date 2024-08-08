@@ -44,19 +44,16 @@
         <div>
           <p>Would you be a patient?</p>
           <label for="yes">
-          <input type="checkbox" id="yes" v-model="selectedOption" :checked="isYes" @change="updateSelection('yes')" required/>
+          <input type="checkbox" id="yes" @click="toggleYes" :checked="isYes"/>
           Yes</label>
           <label for="no">
-          <input type="checkbox" id="no" v-model="selectedOption" :checked="isNo" @change="updateSelection('no')" required/>
+          <input type="checkbox" id="no" @click="toggleNo" :checked="isNo" />
           No</label>
         </div>
         <div role="alert" v-if="formErrors">
       {{ formErrorMsg }}
        </div>
-       <router-link :to="{ name: 'register' }">-
           <button @click="handleSubmit">SIGN UP</button>
-       
-        </router-link>
       </div>
     </div>
   </div>
@@ -73,13 +70,11 @@ export default {
   },
   data() {
     return {
-      selectedOption: [], 
       isSignup: true, 
       formErrors: false,
       formErrorMsg: 'You need to select an option before signing up.',
       isYes: false,
       isNo: false,
-      //isSignup: false,
       isMoving: false,
       loginForm: {
         username: "",
@@ -93,14 +88,28 @@ export default {
     };
   },
   methods: {
-    updateSelection(selected) {
-      if (selected === 'yes') {
+    toggleYes() {
+        if (this.isYes === true) {
+        this.isYes = false;
+        this.isNo = false;
+      } else  {
+        this.formErrors = false;
         this.isYes = true;
         this.isNo = false;
-      } else if (selected === 'no') {
+      }
+    },
+    toggleNo() {
+        if (this.isNo === true) {
+        this.isYes = false;
+        this.isNo = false;
+      } else  {
+        this.formErrors = false;
         this.isYes = false;
         this.isNo = true;
       }
+    },
+    updateSelection(selected) {
+     
     },
     login() {
       authService.login(this.user)
@@ -124,19 +133,15 @@ export default {
         });
     },
     handleSubmit() {
-      if (this.selectedOption.length === 0) {
-        this.formErrors = true;
-        return; 
-      }
-      
-      this.formErrors = false;
 
-      
-      if (this.selectedOption.includes('yes')) {
-        this.$router.push("/register");
-      } else if (this.selectedOption.includes('no')) {
-        this.$router.push("/register/provider");
-      }
+        if(this.isYes){
+            this.$router.push("/register");
+        }
+        if(this.isNo){
+            this.$router.push("/register/provider");
+        }
+
+        this.formErrors = true;
     }
   },
   mounted() {
