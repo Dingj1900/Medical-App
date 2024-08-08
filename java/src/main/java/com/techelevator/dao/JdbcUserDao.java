@@ -1,6 +1,8 @@
 package com.techelevator.dao;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -74,14 +76,43 @@ public class JdbcUserDao implements UserDao {
     @Override
     public User createUser(RegisterUserDto user) {
         User newUser = null;
-        String insertUserSql = "INSERT INTO users (username, password_hash, role) values (LOWER(TRIM(?)), ?, ?) RETURNING user_id";
+        String insertUserSql = "INSERT INTO users (username, password_hash, role, first_name) values (LOWER(TRIM(?)), ?, ?, ?) RETURNING user_id";
         String password_hash = new BCryptPasswordEncoder().encode(user.getPassword());
         String ssRole = user.getRole().toUpperCase().startsWith("ROLE_") ? user.getRole().toUpperCase() : "ROLE_" + user.getRole().toUpperCase();
+
+        String firstName = user.getFirstName();
+        String lastName = user.getLastName();
+        String middleInitials = user.getMiddleInitials(); //optional
+        String gender = user.getGender();
+        String phoneNumber = user.getPhoneNumber();
+        String email = user.getEmail();
+        Date dateOfBirth = user.getDateOfBirth();
+
+        if(user.getRole().equals("provider")) {
+            //only doctor
+            LocalTime hoursFrom = user.getHoursFrom();
+            LocalTime hoursTo = user.getHoursTo();
+            boolean isMonday = user.isMonday();
+            boolean isTuesday = user.isTuesday();
+            boolean isWednesday = user.isWednesday();
+            boolean isThursday = user.isThursday();
+            boolean isFriday = user.isFriday();
+            boolean isSaturday = user.isSaturday();
+            boolean isSunday = user.isSunday();
+        }
+
+        else {
+            //everyone else is a patient
+            String address = user.getAddress();
+            String city = user.getCity();
+            String stateAbbreviation = user.getStateAbbreviation();
+            String zipcode = user.getZipcode();
+
+        }
+
         try {
-            int newUserId = jdbcTemplate.queryForObject(insertUserSql, int.class, user.getUsername(), password_hash, ssRole);
+            int newUserId = jdbcTemplate.queryForObject(insertUserSql, int.class, user.getUsername(), password_hash, ssRole, firstName);
             newUser = getUserById(newUserId);
-
-
 
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);

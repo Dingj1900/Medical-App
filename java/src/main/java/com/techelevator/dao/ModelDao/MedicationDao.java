@@ -13,6 +13,7 @@ public interface MedicationDao {
     List<Medication>getAllMedication();
 
 
+
 //    Appointment getAppointmentById (int appointmentId);
 //    Appointment createAppointment(Appointment appointment);
 //    boolean updateAppointment(Appointment appointment);
