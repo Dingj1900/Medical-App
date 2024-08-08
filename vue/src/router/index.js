@@ -11,6 +11,7 @@ import PatientSettings from '../components/PatientSettings.vue';
 import BookAppointment from '../components/BookAppointment.vue';
 import ProviderView from '../views/ProviderView.vue';
 import ProviderRegisterView from '../views/ProviderRegisterView.vue';
+import OfficeView from '../views/OfficeView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -92,11 +93,19 @@ const routes = [
     meta: {
       requiresAuth: true
     }
-  }
+  },
+  {
+    path: '/provider/office/:officeId',
+    name: 'providerOfficeView',
+    component: OfficeView,
+    meta: {
+      requiresAuth: true
+    }
+  },
 ];
 
 // Create the router
-const router = createRouter({
+const router = createRouter({g
   history: createWebHistory(),
   routes: routes
 });
