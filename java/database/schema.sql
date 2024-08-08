@@ -37,7 +37,7 @@ CREATE TABLE user (
     is_saturday boolean,
     is_sunday boolean,
 
-    CONSTRAINT  pk_user PRIMARY KEY (user_id),
+    CONSTRAINT pk_user PRIMARY KEY (user_id),
 	CONSTRAINT gender_check CHECK (gender IN ('Male', 'Female', 'Other')),
 	CONSTRAINT state_abbreviation_check CHECK (state_abbreviation IN ('AL',  'AK ',  'AZ', 'AR', 'CA',  'CO',  'CT',  'DE',  'FL', 'GA', 'HI', 'ID', 'IL',  'IN', 'IA',  'KS',  'KY',
 																	  'LA',  'ME', 'MD', 'MA', 'MI', 'MN', 'MS',  'MO', 'MT', 'NE', 'NV', 'NH' , 'NJ', 'NM' , 'NY', 'NC', 'ND', 'OH',
