@@ -186,7 +186,7 @@
                 phoneNumber: this.phoneNumber,
                 email: this.email,
                 dateOfBirth: this.dateOfBirth,
-                patientAddress: this.patientAddress,
+                address: this.address,
                 city: this.city,
                 stateAbbreviation: this.stateAbbreviation,
                 zipcode: this.zipcode
