@@ -95,17 +95,17 @@ const routes = [
     }
   },
   {
-    path: '/provider/office/:officeId',
+    path: '/provider/office',
     name: 'providerOfficeView',
     component: OfficeView,
     meta: {
-      requiresAuth: true
+      requiresAuth: false
     }
   },
 ];
 
 // Create the router
-const router = createRouter({g
+const router = createRouter({
   history: createWebHistory(),
   routes: routes
 });
