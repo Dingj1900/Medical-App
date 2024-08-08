@@ -76,11 +76,11 @@ public class JdbcUserDao implements UserDao {
     @Override
     public User createUser(RegisterUserDto user) {
         User newUser = null;
-        String insertUserSql = "INSERT INTO users (username, password_hash, role) values (LOWER(TRIM(?)), ?, ?) RETURNING user_id";
+        String insertUserSql = "INSERT INTO users (username, password_hash, role, firstName) values (LOWER(TRIM(?)), ?, ?, ?) RETURNING user_id";
         String password_hash = new BCryptPasswordEncoder().encode(user.getPassword());
         String ssRole = user.getRole().toUpperCase().startsWith("ROLE_") ? user.getRole().toUpperCase() : "ROLE_" + user.getRole().toUpperCase();
 
-        String firstName;
+        String firstName = user.getFirstName().trim();
         String lastName;
         String middleInitials;
         String gender;
@@ -88,11 +88,11 @@ public class JdbcUserDao implements UserDao {
         String email;
         Date dateOfBirth;
         String address;
-       String city;
+        String city;
         String stateAbbreviation;
-         String zipcode;
-         LocalTime hoursFrom;
-         LocalTime hoursTo;
+        String zipcode;
+        LocalTime hoursFrom;
+        LocalTime hoursTo;
         boolean isMonday;
         boolean isTuesday;
         boolean isWednesday;
@@ -102,7 +102,7 @@ public class JdbcUserDao implements UserDao {
         boolean isSunday;
 
         try {
-            int newUserId = jdbcTemplate.queryForObject(insertUserSql, int.class, user.getUsername(), password_hash, ssRole);
+            int newUserId = jdbcTemplate.queryForObject(insertUserSql, int.class, user.getUsername(), password_hash, ssRole, firstName);
             newUser = getUserById(newUserId);
 
 
