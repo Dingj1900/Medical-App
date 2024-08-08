@@ -8,7 +8,6 @@ public interface AppointmentDao {
     Appointment createAppointment(Appointment appointment);
     boolean updateAppointment(Appointment appointment);
     boolean deleteAppointment(int id);
-
     List<Appointment> getAllAppointments();  // list of  all appointments
 
 }
