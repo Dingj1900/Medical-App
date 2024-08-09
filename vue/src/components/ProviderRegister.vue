@@ -18,12 +18,12 @@
         </div>
         <div class="form-input-group">
     <label for="gender">Gender</label>
-          <b-dropdown id="dropdown-1" text="Dropdown Button" v-model="user.gender" required autofocus /> 
-          <select name="gender" id="gender" >
-    <option disabled selected>Please select one</option>
-    <option value="male">Male</option>
-    <option value="female">Female</option>
-    <option value="other">Other</option>
+          <b-dropdown id="dropdown-1" text="Dropdown Button" required autofocus /> 
+          <select name="gender" id="gender" v-model="user.gender">
+            <option disabled selected>Please select one</option>
+            <option value="Male" >Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
           </select>
         </div>
        <!-- <div class="form-input-group">
@@ -444,59 +444,59 @@
 
           <div><label for="hoursFrom">Hours From</label>
           <select name="hoursFrom" id="hoursFrom" v-model="user.hoursFrom" required autofocus>
-          <option disabled selected>Hours From</option>
-    <option value="12am">12:00am</option>
-    <option value="1am">1:00am</option>
-    <option value="2am">2:00am</option>
-    <option value="3am">3:00am</option>
-    <option value="4am">4:00am</option>
-    <option value="5am">5:00am</option>
-    <option value="6am">6:00am</option>
-    <option value="7am">7:00am</option>
-    <option value="8am">8:00am</option>
-    <option value="9am">9:00am</option>
-    <option value="10am">10:00am</option>
-    <option value="11am">11:00am</option>
-    <option value="12pm">12:00pm</option>
-    <option value="1pm">1:00pm</option>
-    <option value="2pm">2:00pm</option>
-    <option value="3pm">3:00pm</option>
-    <option value="4pm">4:00pm</option>
-    <option value="5pm">5:00pm</option>
-    <option value="6pm">6:00pm</option>
-    <option value="7pm">7:00pm</option>
-    <option value="8pm">8:00pm</option>
-    <option value="9pm">9:00pm</option>
-    <option value="10pm">10:00pm</option>
-    <option value="11pm">11:00pm</option>
+            <option disabled selected>Hours From</option>
+            <option value="12am">12:00am</option>
+            <option value="1am">1:00am</option>
+            <option value="2am">2:00am</option>
+            <option value="3am">3:00am</option>
+            <option value="4am">4:00am</option>
+            <option value="5am">5:00am</option>
+            <option value="6am">6:00am</option>
+            <option value="7am">7:00am</option>
+            <option value="8am">8:00am</option>
+            <option value="9am">9:00am</option>
+            <option value="10am">10:00am</option>
+            <option value="11am">11:00am</option>
+            <option value="12pm">12:00pm</option>
+            <option value="1pm">1:00pm</option>
+            <option value="2pm">2:00pm</option>
+            <option value="3pm">3:00pm</option>
+            <option value="4pm">4:00pm</option>
+            <option value="5pm">5:00pm</option>
+            <option value="6pm">6:00pm</option>
+            <option value="7pm">7:00pm</option>
+            <option value="8pm">8:00pm</option>
+            <option value="9pm">9:00pm</option>
+            <option value="10pm">10:00pm</option>
+            <option value="11pm">11:00pm</option>
           </select>
           <label for="hoursTo">Hours To</label>
           <select name="hoursTo" id="hoursTo" v-model="user.hoursTo" required autofocus>
-          <option disabled selected>Hours From</option>
-    <option value="12am">12:00am</option>
-    <option value="1am">1:00am</option>
-    <option value="2am">2:00am</option>
-    <option value="3am">3:00am</option>
-    <option value="4am">4:00am</option>
-    <option value="5am">5:00am</option>
-    <option value="6am">6:00am</option>
-    <option value="7am">7:00am</option>
-    <option value="8am">8:00am</option>
-    <option value="9am">9:00am</option>
-    <option value="10am">10:00am</option>
-    <option value="11am">11:00am</option>
-    <option value="12pm">12:00pm</option>
-    <option value="1pm">1:00pm</option>
-    <option value="2pm">2:00pm</option>
-    <option value="3pm">3:00pm</option>
-    <option value="4pm">4:00pm</option>
-    <option value="5pm">5:00pm</option>
-    <option value="6pm">6:00pm</option>
-    <option value="7pm">7:00pm</option>
-    <option value="8pm">8:00pm</option>
-    <option value="9pm">9:00pm</option>
-    <option value="10pm">10:00pm</option>
-    <option value="11pm">11:00pm</option>
+            <option disabled selected>Hours From</option>
+            <option value="12am">12:00am</option>
+            <option value="1am">1:00am</option>
+            <option value="2am">2:00am</option>
+            <option value="3am">3:00am</option>
+            <option value="4am">4:00am</option>
+            <option value="5am">5:00am</option>
+            <option value="6am">6:00am</option>
+            <option value="7am">7:00am</option>
+            <option value="8am">8:00am</option>
+            <option value="9am">9:00am</option>
+            <option value="10am">10:00am</option>
+            <option value="11am">11:00am</option>
+            <option value="12pm">12:00pm</option>
+            <option value="1pm">1:00pm</option>
+            <option value="2pm">2:00pm</option>
+            <option value="3pm">3:00pm</option>
+            <option value="4pm">4:00pm</option>
+            <option value="5pm">5:00pm</option>
+            <option value="6pm">6:00pm</option>
+            <option value="7pm">7:00pm</option>
+            <option value="8pm">8:00pm</option>
+            <option value="9pm">9:00pm</option>
+            <option value="10pm">10:00pm</option>
+            <option value="11pm">11:00pm</option>
           </select>
           </div>
           <div class="officeInformation">
@@ -625,6 +625,28 @@
       clearErrors() {
         this.registrationErrors = false;
         this.registrationErrorMsg = 'There were problems registering this user.';
+      },
+
+      toggleSunday(){
+        this.user.isSunday = !this.user.isSunday;
+      },
+      toggleMonday(){
+        this.user.isMonday = !this.user.isMonday;
+      },
+      toggleTuesday(){
+        this.user.isTuesday = !this.user.isTuesday;
+      },
+      toggleWednesday(){
+        this.user.isWednesday = !this.user.isWednesday;
+      },
+      toggleThursday(){
+        this.user.isThursday = !this.user.isThursday;
+      },
+      toggleFriday(){
+        this.user.isFriday = !this.user.isFriday;
+      },
+      toggleSaturday(){
+        this.user.isSaturday = !this.user.isSaturday;
       },
     },
   };
