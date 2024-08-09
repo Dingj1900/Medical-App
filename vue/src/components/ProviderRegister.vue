@@ -71,7 +71,7 @@
         <p>Please select the days of the week and hours of availability.</p>
         <div>
           <label for="sunday">
-          <input type="checkbox" v-bind:checked= "user.isSunday"/>
+          <input type="checkbox" v-bind:checked= "user.isSunday" @click="toggleSunday"/>
           Sunday</label>
           <!--<label for="hoursFrom">Hours From</label>
           <select name="hoursFrom" id="hoursFrom" v-model="user.hoursFrom" required autofocus>
@@ -132,7 +132,7 @@
           </div>
           <div>-->
           <label for="monday">
-          <input type="checkbox" id="monday" v-model="user.isMonday" @click="toggleNo" :checked="isNo" />
+          <input type="checkbox" v-bind:checked="user.isMonday" @click="toggleMonday"/>
           Monday</label>
           <!--<label for="hoursFrom">Hours From</label>
           <select name="hoursFrom" id="hoursFrom" v-model="user.hoursFrom" required autofocus>
@@ -193,7 +193,7 @@
           </div>
           <div>-->
           <label for="tuesday">
-          <input type="checkbox" id="tuesday" v-model="user.isTuesday" @click="toggleYes" :checked="isYes"/>
+          <input type="checkbox" v-bind:checked="user.isTuesday" @click="toggleTuesday"/>
           Tuesday</label>
           <!--<label for="hoursFrom">Hours From</label>
           <select name="hoursFrom" id="hoursFrom" v-model="user.hoursFrom" required autofocus>
@@ -254,7 +254,7 @@
           </div>
           <div>-->
           <label for="wednesday">
-          <input type="checkbox" id="wednesday" v-model="user.isWednesday" @click="toggleNo" :checked="isNo" />
+          <input type="checkbox"  v-bind:checked="user.isWednesday" @click="toggleWednesday" />
           Wednesday</label>
           <!--<label for="hoursFrom">Hours From</label>
           <select name="hoursFrom" id="hoursFrom" v-model="user.hoursFrom" required autofocus>
@@ -315,7 +315,7 @@
           </div>
           <div>-->
           <label for="thursday">
-          <input type="checkbox" id="thursday" v-model="user.isThursday" @click="toggleYes" :checked="isYes"/>
+          <input type="checkbox" v-bind:checked="user.isThursday" @click="toggleThursday" />
           Thursday</label>
           <!--<label for="hoursFrom">Hours From</label>
           <select name="hoursFrom" id="hoursFrom" v-model="user.hoursFrom" required autofocus>
@@ -376,7 +376,7 @@
           </div>
           <div>-->
           <label for="friday">
-          <input type="checkbox" id="friday" v-model="user.isFriday" @click="toggleNo" :checked="isNo" />
+          <input type="checkbox" v-bind:checked="user.isFriday" @click="toggleFriday" />
           Friday</label>
           <!--<label for="hoursFrom">Hours From</label>
           <select name="hoursFrom" id="hoursFrom" v-model="user.hoursFrom" required autofocus>
@@ -437,9 +437,11 @@
           </div>
           <div>-->
           <label for="saturday">
-          <input type="checkbox" id="saturday" v-model="user.isSaturday" @click="toggleYes" :checked="isYes"/>
+          <input type="checkbox"  v-bind:checked="user.isSaturday" @click="toggleSaturday" />
           Saturday</label>
           </div>
+
+
           <div><label for="hoursFrom">Hours From</label>
           <select name="hoursFrom" id="hoursFrom" v-model="user.hoursFrom" required autofocus>
           <option disabled selected>Hours From</option>
