@@ -50,7 +50,7 @@ public class DoctorController {
 //        return newDoctor;
 //    }
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(path = "/doctor/office")
+    @GetMapping(path = "/provider/office")
     public Office getOfficeForDoctor(Principal principal){
         Office office = null;
         int doctorId = userDao.getUserByUsername(principal.getName()).getId(); // get the ID for this specific user (who is a Dr)
@@ -64,7 +64,7 @@ public class DoctorController {
         return office;
     }
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(path= "/doctor/appointments")
+    @GetMapping(path= "/provider/appointments")
     public List<Appointment> getAllAppointments(Principal principal) {
 
         List<Appointment> appointmentList = new ArrayList<>();
@@ -82,7 +82,7 @@ public class DoctorController {
 
     }
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(path= "/doctor/office")
+    @PostMapping(path= "/provider/office")
     public Office createDoctorOffice(@Valid @RequestBody Office office, Principal principal){
         Office newOffice = null;
 
@@ -99,7 +99,7 @@ public class DoctorController {
 
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/doctor/office", method = RequestMethod.PUT)
+    @RequestMapping(path = "/provider/office", method = RequestMethod.PUT)
     public Office updateOffice(@RequestBody Office office, Principal principal) {
         Office updatedOffice = null;
 

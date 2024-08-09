@@ -75,9 +75,23 @@
             <p>Some other text..</p>
           </div>
 
+          <div id="Demo1" class="w3-hide w3-container">
+            <p>Some text..</p>
+          </div>
+          <router-link :to="{name: 'servicesView'}"><button class="w3-button w3-block w3-theme-l1 w3-left-align">
+            <i class="fa fa-user-md fa-fw w3-margin-right"></i>My Services</button></router-link>
+          <div id="Demo2" class="w3-hide w3-container">
+            <p>Some other text..</p>
+          </div>
+
+          <div id="Demo1" class="w3-hide w3-container">
+          </div>
+          <router-link :to="{ name: 'providerOfficeView', params: {officeId: 2}}"> <button class="w3-button w3-block w3-theme-l1 w3-left-align">
+            <i class="fa fa-hospital-o fa-fw w3-margin-right"></i>My Office</button></router-link>
+
           
-          <button class="w3-button w3-block w3-theme-l1 w3-left-align"> 
-          <router-link :to="{ name: 'providerOfficeView', params: {officeId: 2}}">Settings</router-link>  </button>        
+          <!-- <button class="w3-button w3-block w3-theme-l1 w3-left-align"> 
+          <router-link :to="{ name: 'providerOfficeView', params: {officeId: 2}}">My Office</router-link>  </button>         -->
            <div id="Demo3" class="w3-hide w3-container">
          <div class="w3-row-padding">
          <br>
