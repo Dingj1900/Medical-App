@@ -1,38 +1,28 @@
 package com.techelevator.model;
 
 public class Prescription {
-    private Doctor doctor;
-    private Patient patient;
+    private User doctor;
+    private User patient;
     private Medication medication;
     private TimePeriod timePeriod;
 
-    public Prescription (){
-        this.doctor = new Doctor();
-        this.patient = new Patient();
-        this.medication= new Medication();
-        this.timePeriod= new TimePeriod();
+    public Prescription() {
+
     }
 
-    public Prescription(Doctor doctor, Patient patient, Medication medication, TimePeriod timePeriod) {
-        this.doctor = doctor;
-        this.patient = patient;
-        this.medication = medication;
-        this.timePeriod = timePeriod;
-    }
-
-    public Doctor getDoctor() {
+    public User getDoctor() {
         return doctor;
     }
 
-    public void setDoctor(Doctor doctor) {
+    public void setDoctor(User doctor) {
         this.doctor = doctor;
     }
 
-    public Patient getPatient() {
+    public User getPatient() {
         return patient;
     }
 
-    public void setPatient(Patient patient) {
+    public void setPatient(User patient) {
         this.patient = patient;
     }
 
