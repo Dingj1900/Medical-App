@@ -91,15 +91,15 @@ const routes = [
     name: "providerView",
     component: ProviderView,
     meta: {
-      requiresAuth: true
+      requiresAuth: false
     }
   },
   {
-    path: '/provider/office/:officeId',
+    path: '/provider/office',
     name: 'providerOfficeView',
     component: OfficeView,
     meta: {
-      requiresAuth: true
+      requiresAuth: false
     }
   },
 ];
