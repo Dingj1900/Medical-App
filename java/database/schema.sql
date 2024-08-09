@@ -22,7 +22,7 @@ CREATE TABLE users (
 	gender varchar(10),
 	phone_number varchar(20),
 	email varchar (50),
-	date_of_birth date ,
+	date_of_birth DATE ,
 	address varchar(100) ,
 	city varchar(50),
 	state_abbreviation varchar(2) ,

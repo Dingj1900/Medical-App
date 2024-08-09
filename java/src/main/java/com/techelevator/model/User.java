@@ -3,6 +3,7 @@ package com.techelevator.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.HashSet;
@@ -26,7 +27,7 @@ public class User {
    private String gender;
    private String phoneNumber;
    private String email;
-   private Date dateOfBirth;
+   private LocalDate dateOfBirth;
    private String address;
    private String city;
    private String stateAbbreviation;
@@ -94,11 +95,11 @@ public class User {
       this.email = email;
    }
 
-   public Date getDateOfBirth() {
+   public LocalDate getDateOfBirth() {
       return dateOfBirth;
    }
 
-   public void setDateOfBirth(Date dateOfBirth) {
+   public void setDateOfBirth(LocalDate dateOfBirth) {
       this.dateOfBirth = dateOfBirth;
    }
 
