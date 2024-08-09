@@ -51,19 +51,12 @@ CREATE TABLE office(
 	office_name varchar (50),
 	office_address varchar (100),
 	phone_number varchar (20) NOT NULL,
-	hours_from time NOT NULL,
-	hours_to time NOT NULL,
-	day_from varchar(10) NOT NULL,
-	day_to varchar(10) NOT NULL,
-
+	hours_from time,
+	hours_to time,
 
 
 	CONSTRAINT pk_office PRIMARY KEY (office_id),
 
-	CONSTRAINT day_from_check CHECK (day_from IN ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
-												  'Saturday', 'Sunday')),
-	CONSTRAINT day_to_check CHECK (day_to IN ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
-												  'Saturday', 'Sunday'))
 
 );
 
@@ -84,8 +77,15 @@ CREATE TABLE appointment(
 	office_id int NOT NULL,
 	patient_id int NOT NULL,
 	doctor_id int NOT NULL,
-	appt_from timestamp NOT NULL,
-	appt_to timestamp NOT NULL,
+	appt_from time NOT NULL,
+	appt_to time NOT NULL,
+	is_monday boolean,
+    is_tuesday boolean,
+    is_wednesday boolean,
+    is_thursday boolean,
+    is_friday boolean,
+    is_saturday boolean,
+    is_sunday boolean,
 	is_notified boolean,
 	is_approved boolean,
 
