@@ -580,40 +580,10 @@
         registrationErrorMsg: 'There were problems registering this user.',
       };
     },
+
     methods: {
         handleSubmit() {
-            const newProvider = {
-                firstName: this.firstName,
-                lastName: this.lastName,
-                gender: this.gender,
-                phoneNumber: this.phoneNumber,
-                email: this.email,
-                dateOfBirth: this.dateOfBirth,
-                isSunday: this.isSunday,
-                isMonday: this.isMonday,
-                isTuesday: this.isTuesday,
-                isWednesday: this.isWednesday,
-                isThursday: this.isThursday,
-                isFriday: this.isFriday,
-                isSaturday: this.isSaturday,
-                hoursTo: this.hoursTo,
-                hoursFrom: this.hoursFrom,
-            };
-            const newOffice = {
-                officeAddress: this.officeAddress,
-                officeName: this.officeName,
-                phoneNumber: this.phoneNumber,
-                hoursFrom: this.hoursFrom,
-                hoursTo: this.hoursTo,
-                isSunday: this.isSunday,
-                isMonday: this.isMonday,
-                isTuesday: this.isTuesday,
-                isWednesday: this.isWednesday,
-                isThursday: this.isThursday,
-                isFriday: this.isFriday,
-                isSaturday: this.isSaturday,
-                doctorId: this.doctorId,
-            };
+            
             if (this.checkDays()) {
             this.register();
             } else {
@@ -621,7 +591,7 @@
             }
         },
           
-        },
+        
       register() {
         if (this.user.password != this.user.confirmPassword) {
           this.registrationErrors = true;
@@ -650,12 +620,13 @@
       return (this.user.isSaturday || this.user.isSunday || this.user.isMonday ||
               this.user.isTuesday || this.user.isWednesday || this.user.isThursday || this.user.isFriday) &&
              this.user.hoursFrom && this.user.hoursTo;
-    },
+      },
       clearErrors() {
         this.registrationErrors = false;
         this.registrationErrorMsg = 'There were problems registering this user.';
       },
-    };
+    },
+  };
   </script>
   
   <style scoped>

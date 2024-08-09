@@ -133,7 +133,7 @@
           </div>
           </div>
         <div class="submitBttn">
-        <button id="createAccount" type="submit" @click.prevent="handleSubmit">Create Account</button>
+        <button id="createAccount" type="submit" @click.prevent="register">Create Account</button>
         </div>
         <div class="loginLnk">
         <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
@@ -178,24 +178,7 @@
       };
     },
     methods: {
-        handleSubmit() {
-          const newPatient = {
-                firstName: this.firstName,
-                lastName: this.lastName,
-                middleInitials: this.middleInitials,
-                gender: this.gender,
-                phoneNumber: this.phoneNumber,
-                email: this.email,
-                dateOfBirth: this.dateOfBirth,
-                address: this.address,
-                city: this.city,
-                stateAbbreviation: this.stateAbbreviation,
-                zipcode: this.zipcode
-        };
-            
-            this.register();
-          
-        },
+      
       register() {
         if (this.user.password != this.user.confirmPassword) {
           this.registrationErrors = true;
