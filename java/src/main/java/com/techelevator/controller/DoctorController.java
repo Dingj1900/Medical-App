@@ -10,6 +10,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +63,7 @@ public class DoctorController {
 
         return office;
     }
-
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping(path= "/doctor/appointments")
     public List<Appointment> getAllAppointments(Principal principal) {
 
@@ -79,6 +80,21 @@ public class DoctorController {
         }
         return appointmentList;
 
+    }
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping(path= "/doctor/office")
+    public Office createDoctorOffice(@Valid @RequestBody Office office, Principal principal){
+        Office newOffice = null;
+
+        int doctorId = userDao.getUserByUsername(principal.getName()).getId();
+
+        try{
+            //return office object, takes in doctor id and office
+        }catch(DaoException error) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
+        return  newOffice;
     }
 
 
