@@ -13,5 +13,4 @@ public interface DoctorDao {
     Office getOfficeByDoctor(int doctorId);
 
 
-
 }
