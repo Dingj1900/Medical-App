@@ -124,10 +124,10 @@ import AuthService from '../services/AuthService';
 export default {
   data() {
     return {
-      cssProps: {
-        backgroundImage: `url(${require('@/assets/officebase1img.jpg')})`
-      },
-      office: {
+      // cssProps: {
+      //   backgroundImage: `url(${require('@/assets/officebase1img.jpg')})`
+      // },
+       office: {
         officeName: '',
         address: '',
         phoneNumber: '',
@@ -186,7 +186,7 @@ export default {
     try {
       const [officeResponse, userResponse, servicesResponse] = await Promise.all([
         OfficeService.get(),
-        AuthService.getUserInfo(), 
+        // AuthService.getUserInfo(), 
         // ServicesService.getServiceInfo() 
       ]);
 
