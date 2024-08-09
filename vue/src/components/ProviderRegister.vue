@@ -54,10 +54,6 @@
           <input type="text" id="emailAddress" v-model="user.emailAddress" required autofocus />
         </div>
         <div class="form-input-group">
-          <label for="office Name">Office Name</label>
-          <input type="text" id="officeName" v-model="office.officeName" required autofocus />
-        </div>
-        <div class="form-input-group">
           <label for="username">Username</label>
           <input type="text" id="username" v-model="user.username" required autofocus />
         </div>
@@ -500,6 +496,24 @@
     <option value="11pm">11:00pm</option>
           </select>
           </div>
+          <div class="officeInformation">
+        <h1>Office Information</h1>
+        <p>Please register office information.</p>
+        <div class="form-input-group">
+          <label for="officeName">Office Name</label>
+          <input type="text" id="officeName" v-model="office.officeName" required autofocus />
+        </div>
+        <div class="form-input-group">
+          <label for="officeAddress">Office Address</label>
+          <input type="text" id="officeAddress" v-model="office.officeAddress" required autofocus />
+        </div>
+        <div class="form-input-group">
+          <label for="officePhone">Phone Number</label>
+          <input type="text" id="officePhone" v-model="office.phoneNumber" required autofocus />
+        </div>
+        <div>
+        </div>
+        </div>
       </div>
       <div class="submitBttn">
         <button id="createAccount" type="submit" @click.prevent="handleSubmit">Create Account</button>
@@ -549,8 +563,13 @@
             phoneNumber: '',
             hoursFrom: '',
             hoursTo: '',
-            dayFrom: '',
-            dayTo: ''
+            isSunday: '',
+            isMonday: '',
+            isTuesday: '',
+            isWednesday: '',
+            isThursday: '',
+            isFriday: '',
+            isSaturday: '',
         },
         registrationErrors: false,
         registrationErrorMsg: 'There were problems registering this user.',
@@ -581,8 +600,13 @@
                 phoneNumber: this.phoneNumber,
                 hoursFrom: this.hoursFrom,
                 hoursTo: this.hoursTo,
-                dayFrom: this.dayFrom,
-                dayTo: this.dayTo,
+                isSunday: this.isSunday,
+                isMonday: this.isMonday,
+                isTuesday: this.isTuesday,
+                isWednesday: this.isWednesday,
+                isThursday: this.isThursday,
+                isFriday: this.isFriday,
+                isSaturday: this.isSaturday,
                 doctorId: this.doctorId,
             };
             this.register();
@@ -798,5 +822,6 @@ select {
     background-position: right 10px center;
     background-size: 10px;
 }
+
   </style>
   
