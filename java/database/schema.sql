@@ -16,13 +16,13 @@ CREATE TABLE users (
 --MEDICAL APP TABLES FROM PG-ADMIN >>>>
 --CREATE TABLE users(
 
-	first_name varchar (20),
+	first_name varchar(20),
 	last_name varchar(20),
 	middle_initials varchar(2),
 	gender varchar(10),
 	phone_number varchar(20),
 	email varchar (50),
-	date_of_birth date ,
+	date_of_birth date,
 	address varchar(100) ,
 	city varchar(50),
 	state_abbreviation varchar(2) ,
@@ -108,9 +108,9 @@ CREATE TABLE time_period(
 
 CREATE TABLE medication(
 	medication_id serial,
-	medication_name varchar (50) NOT NULL,
-	description varchar (200) NOT NULL,
-	dosage varchar (100) NOT NULL,
+	medication_name varchar(50) NOT NULL,
+	description varchar(200) NOT NULL,
+	dosage varchar(100) NOT NULL,
 
 	CONSTRAINT pk_medication PRIMARY KEY (medication_id)
 );
@@ -133,7 +133,7 @@ CREATE TABLE prescription(
 
 CREATE TABLE services(
 	service_id Serial,
-	service_name varchar (50) NOT NULL,
+	service_name varchar(50) NOT NULL,
 	service_details varchar(200)NOT NULL,
 	hourly_rate numeric(9,2) NOT NULL,
 
