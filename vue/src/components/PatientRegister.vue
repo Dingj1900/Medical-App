@@ -171,19 +171,7 @@
             phoneNumber: '',
             emailAddress: '',
         },
-        // newPatient : {
-        //         firstName: this.firstName,
-        //         lastName: this.lastName,
-        //         middleInitials: this.middleInitials,
-        //         gender: this.gender,
-        //         phoneNumber: this.phoneNumber,
-        //         email: this.email,
-        //         dateOfBirth: this.dateOfBirth,
-        //         address: this.address,
-        //         city: this.city,
-        //         stateAbbreviation: this.stateAbbreviation,
-        //         zipcode: this.zipcode
-        // },
+        
   
         registrationErrors: false,
         registrationErrorMsg: 'There were problems registering this user.',
@@ -191,6 +179,19 @@
     },
     methods: {
         handleSubmit() {
+          const newPatient = {
+                firstName: this.firstName,
+                lastName: this.lastName,
+                middleInitials: this.middleInitials,
+                gender: this.gender,
+                phoneNumber: this.phoneNumber,
+                email: this.email,
+                dateOfBirth: this.dateOfBirth,
+                address: this.address,
+                city: this.city,
+                stateAbbreviation: this.stateAbbreviation,
+                zipcode: this.zipcode
+        };
             
             this.register();
           

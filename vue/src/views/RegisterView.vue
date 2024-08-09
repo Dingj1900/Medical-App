@@ -39,7 +39,7 @@ export default {
       user: {
         username: '',
         password: '',
-        confirmPassword: '',1
+        confirmPassword: '',
         role: 'user',
       },
       registrationErrors: false,

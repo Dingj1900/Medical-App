@@ -83,7 +83,12 @@ public class JdbcUserDao implements UserDao {
         String firstName = user.getFirstName();
         String lastName = user.getLastName();
         String middleInitials = user.getMiddleInitials();
-        String gender = user.getGender();
+        String gender;
+        if(user.getGender().isEmpty()){
+            gender = "Other";
+        }else {
+            gender = user.getGender();
+        }
         String phoneNumber = user.getPhoneNumber();
         String email = user.getEmail();
         LocalDate dateOfBirth = user.getDateOfBirth();
