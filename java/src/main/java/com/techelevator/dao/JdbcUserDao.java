@@ -105,10 +105,11 @@ public class JdbcUserDao implements UserDao {
         boolean isSunday = false;
 
         //properties of patient
-        String address = "";
-        String city = "";
-        String stateAbbreviation = "";
-        String zipcode = "";
+
+        String address = user.getAddress();
+        String city = user.getCity();
+        String stateAbbreviation = user.getStateAbbreviation();
+        String zipcode = user.getZipcode();
 
         if(user.getRole().equals("provider")) {
             //only doctor
@@ -121,14 +122,6 @@ public class JdbcUserDao implements UserDao {
             isFriday = user.isFriday();
             isSaturday = user.isSaturday();
             isSunday = user.isSunday();
-        }
-        else {
-            //everyone else is a patient
-            address = user.getAddress();
-            city = user.getCity();
-            stateAbbreviation = user.getStateAbbreviation();
-            zipcode = user.getZipcode();
-
         }
 
         String insertUserSql = "INSERT INTO users " +
@@ -218,15 +211,16 @@ public class JdbcUserDao implements UserDao {
         user.setZipcode(rs.getString("zip_code"));
         try {
             //will produce null pointers if date or time is null
-            if(rs.getDate("date_of_birth") != null){
+            if(rs.getString("date_of_birth") != null){
                 user.setDateOfBirth(rs.getDate("date_of_birth").toLocalDate());
             }
-            if(rs.getDate("hours_from") != null){
-                user.setHoursFrom(rs.getTime("hours_from").toLocalTime());
+            if(rs.getString("hours_from") != null){
+                user.setHoursFrom(LocalTime.parse( rs.getString("hours_from")));
             }
-            if(rs.getDate("hours_to") != null){
-                user.setHoursTo(rs.getTime("hours_to").toLocalTime());
+            if(rs.getString("hours_to") != null){
+                user.setHoursTo(LocalTime.parse( rs.getString("hours_to")) );
             }
+
 
 
 
