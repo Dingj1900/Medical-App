@@ -171,6 +171,7 @@
             phoneNumber: '',
             emailAddress: '',
         },
+        
   
         registrationErrors: false,
         registrationErrorMsg: 'There were problems registering this user.',
@@ -178,7 +179,7 @@
     },
     methods: {
         handleSubmit() {
-            const newPatient = {
+          const newPatient = {
                 firstName: this.firstName,
                 lastName: this.lastName,
                 middleInitials: this.middleInitials,
@@ -190,7 +191,8 @@
                 city: this.city,
                 stateAbbreviation: this.stateAbbreviation,
                 zipcode: this.zipcode
-            };
+        };
+            
             this.register();
           
         },
