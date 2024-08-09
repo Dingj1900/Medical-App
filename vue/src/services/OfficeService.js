@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
 
     get(id) {
-        return axios.get(`/provider/office/${id}`);
+        return axios.get(`/provider/office`);
       },
 
     add(officeObject) {
@@ -11,7 +11,7 @@ export default {
       },
 
     edit(officeObject) {
-        return axios.put(`/provider/office/${officeObject.id}`, officeObject);
+        return axios.put(`/provider/office`, officeObject);
       },
     
     
