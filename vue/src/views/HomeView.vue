@@ -14,7 +14,7 @@
       </div>
       <div class="content-center">
         <div class="container">
-          <h1 class="title">HealMeNOW!</h1>
+          <img src="../healmenowlogo.png" class="title">
             <h2 class="subtitle">Connecting Patients with the Finest Doctors</h2>
           <div class="text-center">
           </div>
