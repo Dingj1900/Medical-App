@@ -3,15 +3,11 @@ package com.techelevator.controller;
 import com.techelevator.dao.UserDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Appointment;
-import com.techelevator.model.Patient;
 import com.techelevator.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.net.DatagramPacket;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;

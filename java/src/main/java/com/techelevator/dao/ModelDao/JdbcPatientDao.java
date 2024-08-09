@@ -1,9 +1,7 @@
 package com.techelevator.dao.ModelDao;
 
 import com.techelevator.exception.DaoException;
-import com.techelevator.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
