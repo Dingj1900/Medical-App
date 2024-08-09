@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.UserDao;
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.Appointment;
 import com.techelevator.model.Doctor;
 import com.techelevator.model.Office;
 import com.techelevator.model.Patient;
@@ -14,6 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.print.Doc;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -50,7 +52,7 @@ public class DoctorController {
 //
 //        return newDoctor;
 //    }
-
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping(path = "/doctor/office")
     public Office getOfficeForDoctor(Principal principal){
         Office office = null;
@@ -66,7 +68,23 @@ public class DoctorController {
     }
 
     @GetMapping(path= "/doctor/appointments")
-    public Doctor getAllAppointments(@RequestBody Doctor doctor, Principal principal) {
+    public List<Appointment> getAllAppointments(Principal principal) {
+
+        List<Appointment> appointmentList = new ArrayList<>();
+
+        Appointment appointment = null;
+        int doctorId = userDao.getUserByUsername(principal.getName()).getId();
+
+
+        try{
+            //return list of appoint , takes in id
+        } catch(DaoException error) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        return appointmentList;
+
+    }
+
 
     }
 
@@ -75,4 +93,3 @@ public class DoctorController {
 
 
 
-}
