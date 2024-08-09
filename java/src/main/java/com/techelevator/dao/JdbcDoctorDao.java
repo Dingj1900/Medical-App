@@ -32,7 +32,18 @@ public class JdbcDoctorDao implements DoctorDao {
 
     private Office mapRowToOffice(SqlRowSet rs) {
         Office office = new Office();
-
+        office.setOfficeId(rs.getInt("office_id"));
+        office.setOfficeName(rs.getString("office_name"));
+        office.setOfficeAddress(rs.getString("office_address"));
+        office.setPhoneNumber(rs.getString("phone_number"));
+        try {
+            if(rs.getDate("hours_from") != null) {
+                office.setHoursFrom(rs.getTime("hours_from").toLocalTime());
+            }
+            if(rs.getDate("hours_to") != null) {
+                office.setHoursTo(rs.getTime("hours_to").toLocalTime());
+            }
+        }
     }
 
 
