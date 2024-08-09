@@ -10,6 +10,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +63,7 @@ public class DoctorController {
 
         return office;
     }
-
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping(path= "/doctor/appointments")
     public List<Appointment> getAllAppointments(Principal principal) {
 
@@ -73,16 +74,47 @@ public class DoctorController {
 
 
         try{
-            //return list of appoint , takes in id
+            //return list of appointments, takes in id
         } catch(DaoException error) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         return appointmentList;
 
     }
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(path= "/doctor/office")
+    public Office createDoctorOffice(@Valid @RequestBody Office office, Principal principal){
+        Office newOffice = null;
 
+        int doctorId = userDao.getUserByUsername(principal.getName()).getId();
 
+        try{
+            //return office object, takes in doctor id and office
+        }catch(DaoException error) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        return  newOffice;
     }
+
+
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/doctor/office", method = RequestMethod.PUT)
+    public Office updateOffice(@RequestBody Office office, Principal principal) {
+        Office updatedOffice = null;
+
+        int doctorId = userDao.getUserByUsername(principal.getName()).getId(); // needed to validate that you are the Dr of this office
+
+        try {
+            // updateOffice method needs to be created in the JDBC
+            // return Office object, takes in Office AND Doctor ID
+        } catch (DaoException error) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Office ID not found.");
+        }
+        return updatedOffice;
+    }
+}
+
 
 
 
