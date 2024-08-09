@@ -53,17 +53,10 @@ CREATE TABLE office(
 	phone_number varchar (20) NOT NULL,
 	hours_from time NOT NULL,
 	hours_to time NOT NULL,
-	day_from varchar(10) NOT NULL,
-	day_to varchar(10) NOT NULL,
-
 
 
 	CONSTRAINT pk_office PRIMARY KEY (office_id),
 
-	CONSTRAINT day_from_check CHECK (day_from IN ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
-												  'Saturday', 'Sunday')),
-	CONSTRAINT day_to_check CHECK (day_to IN ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
-												  'Saturday', 'Sunday'))
 
 );
 

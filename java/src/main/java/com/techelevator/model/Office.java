@@ -4,8 +4,9 @@ import java.time.LocalTime;
 
 public class Office {
     private int officeId;
+    private String officeName;
     private String officeAddress;
-    private String phoneNumber ;
+    private String phoneNumber;
     private LocalTime hoursFrom;
     private LocalTime hoursTo;
     private String dayFrom;
@@ -16,16 +17,12 @@ public class Office {
 
     }
 
-    public Office(int officeId, String officeAddress, String phoneNumber,
-                  LocalTime hoursFrom, LocalTime hoursTo, String dayFrom, String dayTo, int doctorId) {
-        this.officeId = officeId;
-        this.officeAddress = officeAddress;
-        this.phoneNumber = phoneNumber;
-        this.hoursFrom = hoursFrom;
-        this.hoursTo = hoursTo;
-        this.dayFrom = dayFrom;
-        this.dayTo = dayTo;
-        this.doctorId = doctorId;
+    public String getOfficeName() {
+        return officeName;
+    }
+
+    public void setOfficeName(String officeName) {
+        this.officeName = officeName;
     }
 
     public int getOfficeId() {
