@@ -211,7 +211,7 @@ public class JdbcUserDao implements UserDao {
         user.setZipcode(rs.getString("zip_code"));
         try {
             //will produce null pointers if date or time is null
-            if(rs.getString("date_of_birth") != null){
+            if(rs.getDate("date_of_birth") != null){
                 user.setDateOfBirth(rs.getDate("date_of_birth").toLocalDate());
             }
             if(rs.getString("hours_from") != null){
