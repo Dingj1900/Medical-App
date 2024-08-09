@@ -71,7 +71,7 @@
         <p>Please select the days of the week and hours of availability.</p>
         <div>
           <label for="sunday">
-          <input type="checkbox" id="sunday" v-model="user.isSunday" />
+          <input type="checkbox" v-bind:checked= "user.isSunday"/>
           Sunday</label>
           <!--<label for="hoursFrom">Hours From</label>
           <select name="hoursFrom" id="hoursFrom" v-model="user.hoursFrom" required autofocus>
@@ -545,21 +545,20 @@
           password: '',
           confirmPassword: '',
           role: 'provider',
-            lastName: '',
-            firstName: '',
-            gender: '',
-           //officeName: '',
-            phoneNumber: '',
-            emailAddress: '',
-            isSunday: false,
-            isMonday: false,
-            isTuesday: false,
-            isWednesday: false,
-            isThursday: false,
-            isFriday: false,
-            isSaturday: false,
-            hoursTo: '',
-            hoursFrom: '',
+          lastName: '',
+          firstName: '',
+          gender: '',
+          phoneNumber: '',
+          emailAddress: '',
+          isSunday: false,
+          isMonday: false,
+          isTuesday: false,
+          isWednesday: false,
+          isThursday: false,
+          isFriday: false,
+          isSaturday: false,
+          hoursTo: '',
+          hoursFrom: '',
         },
         showValidationMessage: false,
         office: {
