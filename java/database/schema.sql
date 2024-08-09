@@ -51,8 +51,8 @@ CREATE TABLE office(
 	office_name varchar (50),
 	office_address varchar (100),
 	phone_number varchar (20) NOT NULL,
-	hours_from time NOT NULL,
-	hours_to time NOT NULL,
+	hours_from time,
+	hours_to time,
 
 
 	CONSTRAINT pk_office PRIMARY KEY (office_id),

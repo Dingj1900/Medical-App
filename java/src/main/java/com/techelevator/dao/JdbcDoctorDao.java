@@ -4,11 +4,13 @@ import com.techelevator.exception.DaoException;
 import com.techelevator.model.Appointment;
 import com.techelevator.model.Office;
 import com.techelevator.model.User;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 @Component
@@ -53,6 +55,66 @@ public class JdbcDoctorDao implements DoctorDao {
         return office;
     }
 
+    public int createOffice(Office office, int doctorId){
+        int newOfficeId = 0;
+
+        String officeName = office.getOfficeName();
+        String officeAddress = office.getOfficeAddress();
+        String phoneNumber = office.getPhoneNumber();
+        LocalTime hoursFrom = office.getHoursFrom();
+        LocalTime hoursTo = office.getHoursTo();
+
+
+        String sql = "INSERT INTO office " +
+                "(office_name, office_address, phone_number, hours_from, hours_to) " +
+                "values (LOWER(TRIM(?)), ?, ?, ?, ?, ?) RETURNING office_id";
+
+        String sql2 = "INSERT INTO doctor_office " +
+                "(doctor_id, office_id) " +
+                "values ( ?, ?) RETURNING office_id";
+
+        try {
+            newOfficeId = jdbcTemplate.queryForObject
+                    (sql, int.class, officeName, officeAddress, phoneNumber, hoursFrom, hoursTo);
+
+            getOfficeByDoctor(newOfficeId);
+
+            int newDocOfficeId = jdbcTemplate.queryForObject(sql2, int.class, doctorId , newOfficeId);
+
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }catch(NullPointerException error){
+            throw new DaoException("Unable to process user data, Null pointer exception", error);
+        }
+        return newOfficeId;
+    }
+
+    public Office updateOfficeById(Office office){
+
+        Office updatedOffice = null;
+        String sql = "UPDATE office SET office_name = ?, office_address = ?, phone_number = ?, " +
+                "hours_from = ?, hours_to = ? " +
+                "WHERE office_id = ?";
+
+        try {
+            int numberOfRows = jdbcTemplate.update(sql, office.getOfficeName(), office.getOfficeAddress(),
+                    office.getPhoneNumber(), office.getHoursFrom(), office.getHoursTo(), office.getOfficeId());
+
+            if (numberOfRows == 0) {
+                throw new DaoException("Zero rows affected, expected at least one");
+            } else {
+                updatedOffice = getOfficeByDoctor(office.getOfficeId());
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return updatedOffice;
+    }
+
     private Office mapRowToOffice(SqlRowSet rs) {
         Office office = new Office();
         office.setOfficeId(rs.getInt("office_id"));
@@ -60,10 +122,10 @@ public class JdbcDoctorDao implements DoctorDao {
         office.setOfficeAddress(rs.getString("office_address"));
         office.setPhoneNumber(rs.getString("phone_number"));
         try {
-            if(rs.getDate("hours_from") != null) {
+            if(rs.getTime("hours_from") != null) {
                 office.setHoursFrom(rs.getTime("hours_from").toLocalTime());
             }
-            if(rs.getDate("hours_to") != null) {
+            if(rs.getTime("hours_to") != null) {
                 office.setHoursTo(rs.getTime("hours_to").toLocalTime());
             }
         }catch (NullPointerException error){
@@ -85,7 +147,7 @@ public class JdbcDoctorDao implements DoctorDao {
             if(rs.getDate("appt_from") != null) {
                 appointment.setApptFrom(rs.getTime("appt_from").toLocalTime());;
             }
-            if(rs.getDate("hours_to") != null){
+            if(rs.getTime("appt_to") != null){
                 appointment.setApptTo(rs.getTime("hours_to").toLocalTime());
             }
 
