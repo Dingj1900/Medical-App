@@ -73,7 +73,7 @@ public class DoctorController {
 
 
         try{
-            //return list of appoint , takes in id
+            //return list of appointments, takes in id
         } catch(DaoException error) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
