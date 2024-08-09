@@ -3,6 +3,7 @@ import CapstoneApp from './App.vue'
 import { createStore } from './store'
 import router from './router'
 import axios from 'axios'
+import { setupCalendar } from 'v-calendar';
 // Import Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
 // Import Bootstrap JavaScript
@@ -31,4 +32,5 @@ const store = createStore(currentToken, currentUser);
 const app = createApp(CapstoneApp);
 app.use(store);
 app.use(router);
+app.use(setupCalendar, {})
 app.mount('#app');

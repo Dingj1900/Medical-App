@@ -12,6 +12,7 @@ import BookAppointment from '../components/BookAppointment.vue';
 import ProviderView from '../views/ProviderView.vue';
 import ProviderRegisterView from '../views/ProviderRegisterView.vue';
 import OfficeView from '../views/OfficeView.vue';
+import CalendarView from '../views/CalendarView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -102,6 +103,14 @@ const routes = [
       requiresAuth: false
     }
   },
+  {
+    path: '/provider/calendar',
+    name: 'calendarView',
+    component: CalendarView,
+    meta: {
+        requiresAuth: false
+    }
+  }
 ];
 
 // Create the router

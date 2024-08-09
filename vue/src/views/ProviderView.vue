@@ -64,13 +64,17 @@
       <!-- Accordion -->
       <div class="w3-card w3-round">
         <div class="w3-white">
+
+
           <div id="Demo1" class="w3-hide w3-container">
             <p>Some text..</p>
           </div>
-          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Calendar</button>
+          <router-link :to="{name: 'calendarView'}"><button class="w3-button w3-block w3-theme-l1 w3-left-align">
+            <i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Calendar</button></router-link>
           <div id="Demo2" class="w3-hide w3-container">
             <p>Some other text..</p>
           </div>
+
           
           <button class="w3-button w3-block w3-theme-l1 w3-left-align"> 
           <router-link :to="{ name: 'providerOfficeView', params: {officeId: 2}}">Settings</router-link>  </button>        
@@ -229,7 +233,7 @@
 
 <script>
 
-import OfficeView from '../views/OfficeView.vue';
+// import OfficeView from '../views/OfficeView.vue';
 
 export default {
   
