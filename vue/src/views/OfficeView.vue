@@ -1,15 +1,19 @@
 <template>
     <div>
         <!--<office />-->
-        <h2>Insert Officevue</h2>
+        <office />
     </div>
 </template>
 
 <script>
    // import office from '../components/Office.vue'; 
-    import officeService from '../services/OfficeService';
+    import OfficeService from '../services/OfficeService.js';
+    // import Office from '../components/Office.vue';
 
     export default {
+        components: {
+            // Office
+        },
 
     };
 </script>

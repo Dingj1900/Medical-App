@@ -13,6 +13,8 @@ import ProviderView from '../views/ProviderView.vue';
 import ProviderRegisterView from '../views/ProviderRegisterView.vue';
 import OfficeView from '../views/OfficeView.vue';
 import CalendarView from '../views/CalendarView.vue';
+import ServicesView from '../views/ServicesView.vue';
+// import Office from '../components/Office.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -107,6 +109,14 @@ const routes = [
     path: '/provider/calendar',
     name: 'calendarView',
     component: CalendarView,
+    meta: {
+        requiresAuth: false
+    }
+  },
+  {
+    path: '/provider/services',
+    name: 'servicesView',
+    component: ServicesView,
     meta: {
         requiresAuth: false
     }
