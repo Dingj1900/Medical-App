@@ -1,6 +1,7 @@
 package com.techelevator.model;
 
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 
@@ -27,7 +28,7 @@ public class RegisterUserDto {
     private String gender;
     private String phoneNumber;
     private String email;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String address;
     private String city;
     private String stateAbbreviation;
@@ -41,6 +42,14 @@ public class RegisterUserDto {
     private boolean isFriday;
     private boolean isSaturday;
     private boolean isSunday;
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -90,13 +99,6 @@ public class RegisterUserDto {
         this.email = email;
     }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
 
     public String getAddress() {
         return address;
