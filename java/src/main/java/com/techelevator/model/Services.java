@@ -7,14 +7,17 @@ public class Services {
 
     private double hourlyRate;
 
+    private int doctorId;
+
     public Services() {
     }
 
-    public Services(int serviceId, String serviceName, String serviceDetails,double hourlyRate) {
+    public Services(int serviceId, String serviceName, String serviceDetails, double hourlyRate, int doctorId) {
         this.serviceId = serviceId;
         this.serviceName = serviceName;
         this.serviceDetails = serviceDetails;
-        this.hourlyRate=hourlyRate;
+        this.hourlyRate = hourlyRate;
+        this.doctorId = doctorId;
     }
 
     public double getHourlyRate() {
@@ -47,5 +50,13 @@ public class Services {
 
     public void setServiceDetails(String serviceDetails) {
         this.serviceDetails = serviceDetails;
+    }
+
+    public int getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(int doctorId) {
+        this.doctorId = doctorId;
     }
 }
