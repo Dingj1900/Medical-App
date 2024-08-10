@@ -4,6 +4,7 @@ import com.techelevator.exception.DaoException;
 import com.techelevator.model.Appointment;
 import com.techelevator.model.Office;
 import com.techelevator.model.Services;
+import com.techelevator.model.User;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -22,23 +23,23 @@ public class JdbcPatientDao implements PatientDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public Office getDoctorByOfficeId(int officeId){
-       Office office = null;
+    public User getDoctorByOfficeId(int doctorId){
+       User doctor = null;
 
        String sql = "SELECT * " +
-               "FROM office " +
+               "FROM users " +
                "JOIN doctor_office USING(office_id) " +
                "WHERE doctor_id = ?";
 
         try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
             if (results.next()) {
-                office = mapRowToOffice(results);
+                doctor = mapRowToDoctor(results);
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         }
-        return office;
+        return doctor;
 
     }
 
@@ -202,4 +203,41 @@ public class JdbcPatientDao implements PatientDao {
 
         return appointment;
     }
+
+    public User mapRowToDoctor(SqlRowSet rs) {
+        User user = new User();
+        user.setFirstName(rs.getString("first_name"));
+        user.setLastName(rs.getString("last_name"));
+        user.setMiddleInitials(rs.getString("middle_initials"));
+        user.setGender(rs.getString("gender"));
+        user.setPhoneNumber(rs.getString("phone_number"));
+        user.setEmail(rs.getString("email"));
+
+        try {
+            //will produce null pointers if date or time is null
+            if (rs.getDate("date_of_birth") != null) {
+                user.setDateOfBirth(rs.getDate("date_of_birth").toLocalDate());
+            }
+            if (rs.getString("hours_from") != null) {
+                user.setHoursFrom(LocalTime.parse(rs.getString("hours_from")));
+            }
+            if (rs.getString("hours_to") != null) {
+                user.setHoursTo(LocalTime.parse(rs.getString("hours_to")));
+            }
+
+            user.setMonday((boolean) rs.getObject("is_monday"));
+            user.setTuesday((boolean) rs.getObject("is_tuesday"));
+            user.setWednesday((boolean) rs.getObject("is_wednesday"));
+            user.setThursday((boolean) rs.getObject("is_thursday"));
+            user.setFriday((boolean) rs.getObject("is_friday"));
+            user.setSaturday((boolean) rs.getObject("is_saturday"));
+            user.setSunday((boolean) rs.getObject("is_sunday"));
+        } catch (NullPointerException error) {
+            throw new DaoException("Null pointer exception for a user value", error);
+        } catch (Exception error) {
+            throw new DaoException("general mapper error", error);
+        }
+        return user;
+    }
+
 }

@@ -55,7 +55,8 @@ public class PatientController {
     // Create a new appointment for a patient
     @PostMapping("/appointment")
     @ResponseStatus(HttpStatus.CREATED)
-    public Appointment createPatientAppointment(@RequestBody Appointment appointment, Principal principal) {
+    public int createPatientAppointment(@RequestBody Appointment appointment, Principal principal) {
+        int newAppointment =0;
         try {
             // Retrieve the patient ID from the logged-in user
             User user = userDao.getUserByUsername(principal.getName());
@@ -65,15 +66,17 @@ public class PatientController {
             appointment.setPatientId(patientId);
 
             // Add appointment to the database
-            Appointment newAppointment = patientDao.createAppointment(appointment);
+            newAppointment = patientDao.createAppointment(appointment, patientId);
 
             // Return the newly created appointment
-            return newAppointment;
+
 
         } catch (DaoException e) {
             // Log the error and return an appropriate HTTP status
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to create appointment", e);
         }
+        return newAppointment;
+
     }
 
 
@@ -136,12 +139,19 @@ public class PatientController {
     //get doctor by office id
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(path = "/provider/office")
-    public Office getDoctorByOffice(Principal principal) {
-        Office office = null;
-        int doctorId = patientDao.
+    @GetMapping(path = "/provider/office/{id}")
+    public User getDoctorByOffice(@PathVariable ("id") int officeId ) {
+
+        User doctor = null;
 
 
+        try {
+            doctor = patientDao.getDoctorByOfficeId(officeId);
+
+        }catch (DaoException error){
+
+        }
+        return doctor;
     }
 
 
