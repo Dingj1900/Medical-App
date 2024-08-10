@@ -117,7 +117,7 @@ export default {
           if (response.status === 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-           if (this.$store.state.user.role === 'provider') {
+           if (this.$store.state.user.authorities[0].name === 'ROLE_PROVIDER') {
             this.$router.push("/provider");
            }
            else {

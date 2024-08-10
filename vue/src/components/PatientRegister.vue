@@ -159,17 +159,17 @@
           password: '',
           confirmPassword: '',
           role: 'patient',
-            lastName: '',
-            firstName: '',
-            middleInitial: '',
-            dateOfBirth: '',
-            gender: '',
-            address: '',
-            city: '',
-            state: '',
-            zipcode: '',
-            phoneNumber: '',
-            emailAddress: '',
+          lastName: '',
+          firstName: '',
+          middleInitials: '',
+          dateOfBirth: '',
+          gender: '',
+          address: '',
+          city: '',
+          state: '',
+          zipcode: '',
+          phoneNumber: '',
+          email: '',
         },
         
   
@@ -178,7 +178,7 @@
       };
     },
     methods: {
-      
+
       register() {
         if (this.user.password != this.user.confirmPassword) {
           this.registrationErrors = true;
