@@ -23,16 +23,16 @@ public class JdbcPatientDao implements PatientDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public User getDoctorByOfficeId(int doctorId){
+    public User getDoctorByOfficeId(int officeId){
        User doctor = null;
 
        String sql = "SELECT * " +
                "FROM users " +
-               "JOIN doctor_office USING(office_id) " +
-               "WHERE doctor_id = ?";
+               "JOIN doctor_office ON user_id = doctor_office.doctor_id " +
+               "WHERE office_id = ?";
 
         try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
             if (results.next()) {
                 doctor = mapRowToDoctor(results);
             }
@@ -83,7 +83,7 @@ public class JdbcPatientDao implements PatientDao {
                 "(service_id, office_id, patient_id, doctor_id, appt_from, appt_to, is_Monday, " +
                 "is_Tuesday, is_Wednesday, is_Thursday, is_Friday, is_Saturday, is_Sunday, " +
                 "is_notified, is_approved) " +
-                "values ((TRIM(?)), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) " +
+                "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) " +
                 "RETURNING appointment_id";
 
         try {
