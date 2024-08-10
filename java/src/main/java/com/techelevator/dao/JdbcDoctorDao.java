@@ -85,7 +85,7 @@ public class JdbcDoctorDao implements DoctorDao {
 
         String sql = "INSERT INTO office " +
                 "(office_name, office_address, phone_number, hours_from, hours_to) " +
-                "values (LOWER(TRIM(?)), ?, ?, ?, ?, ?) RETURNING office_id";
+                "values ((TRIM(?), ?, ?, ?, ?) RETURNING office_id";
 
         String sql2 = "INSERT INTO doctor_office " +
                 "(doctor_id, office_id) " +
@@ -133,14 +133,14 @@ public class JdbcDoctorDao implements DoctorDao {
         return updatedOffice;
     }
 
-    public Services getServiceByDoctor(int doctorId) {
+    private Services getServiceByService(int serviceId) {
         Services service = null;
 
         String sql = "SELECT * " +
                 "FROM services " +
-                "WHERE doctor_id = ? ";
+                "WHERE service_id = ? ";
         try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, serviceId);
             if (results.next()) {
                 service = mapRowToServices(results);
             }
@@ -182,7 +182,7 @@ public class JdbcDoctorDao implements DoctorDao {
             if (numberOfRows == 0) {
                 throw new DaoException("Zero rows affected, expected at least one");
             } else {
-                updatedServices = getServiceByDoctor(services.getServiceId());
+                updatedServices = getServiceByService(services.getServiceId());
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -203,13 +203,13 @@ public class JdbcDoctorDao implements DoctorDao {
 
         String sql = "INSERT INTO services " +
                 "(service_name, service_details, hourly_rate, doctor_id) " +
-                "values (LOWER(TRIM(?)), ?, ?, ?, ?) RETURNING service_id";
+                "values ((TRIM(?)), ?, ?, ?) RETURNING service_id";
 
         try {
             newServiceId = jdbcTemplate.queryForObject
                     (sql, int.class, serviceName, serviceDetails, hourlyRate, doctorId);
 
-            getServiceByDoctor(newServiceId);
+            getServiceByService(newServiceId);
 
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -229,10 +229,10 @@ public class JdbcDoctorDao implements DoctorDao {
         office.setOfficeAddress(rs.getString("office_address"));
         office.setPhoneNumber(rs.getString("phone_number"));
         try {
-            if(rs.getTime("hours_from") != null) {
+            if(rs.getString("hours_from") != null) {
                 office.setHoursFrom(rs.getTime("hours_from").toLocalTime());
             }
-            if(rs.getTime("hours_to") != null) {
+            if(rs.getString("hours_to") != null) {
                 office.setHoursTo(rs.getTime("hours_to").toLocalTime());
             }
         }catch (NullPointerException error){
@@ -247,14 +247,15 @@ public class JdbcDoctorDao implements DoctorDao {
     private Appointment mapRowToAppointment(SqlRowSet rs){
         Appointment appointment = new Appointment();
         appointment.setAppointmentId(rs.getInt("appointment_id"));
+        appointment.setServiceId(rs.getInt("service_id"));
         appointment.setOfficeId(rs.getInt("office_id"));
         appointment.setPatientId(rs.getInt("patient_id"));
         appointment.setDoctorId(rs.getInt("doctor_id"));
         try {
-            if(rs.getDate("appt_from") != null) {
+            if(rs.getString("appt_from") != null) {
                 appointment.setApptFrom(rs.getTime("appt_from").toLocalTime());;
             }
-            if(rs.getTime("appt_to") != null){
+            if(rs.getString("appt_to") != null){
                 appointment.setApptTo(rs.getTime("hours_to").toLocalTime());
             }
 
@@ -268,13 +269,13 @@ public class JdbcDoctorDao implements DoctorDao {
             appointment.setNotified((boolean)rs.getObject("is_notified"));
             appointment.setApproved((boolean)rs.getObject("is_approved"));
         } catch (NullPointerException error){
-        throw new DaoException("Null pointer exception for a user value", error);
+            throw new DaoException("Null pointer exception for a user value", error);
         }catch(Exception error){
-        throw new DaoException("general mapper error", error);
-         }
+            throw new DaoException("general mapper error", error);
+        }
 
         return appointment;
-}
+    }
 
     private Services mapRowToServices(SqlRowSet rs){
         Services services = new Services();
