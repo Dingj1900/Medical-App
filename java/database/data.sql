@@ -11,7 +11,7 @@ VALUES (1, 'user', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC
 
 SELECT * FROM office;
 INSERT INTO office(office_id,office_name,office_address,phone_number,hours_from,hours_to)
-VALUES('111','keelys office','111 kinnear road','614','10:00:00','18:00:00');
+VALUES(111 ,'keelys office','111 kinnear road','614','10:00:00','18:00:00');
 
 
 
@@ -22,6 +22,13 @@ email, date_of_birth, address, city, state_abbreviation, zip_code, hours_from, h
 VALUES(12, 'admin', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'ROLE_ADMIN', 'Doctor', 'Glover',
 	   'k', 'Female', '419222', 'doc@gmail.com', '1990-02-02', '123 sunny st', 'Lima', 'OH', '45801', '10:00:00','18:00:00',
 	   'false','true','false','true', 'false', 'true', 'false');
+
+
+SELECT * FROM appointment;
+INSERT INTO appointments(appointment_id, office_id, patient_id, doctor_id, appt_from, appt_to, is_monday, is_tuesday, is_wednesday,
+        is_thursday, is_friday, is_saturday, is_sunday, is_notified, is_approved)
+VALUES(121, 111, 1, 12, '13:00:00', '14:00:00', 'true', 'false', 'false', 'false', 'false', 'false', 'false', 'true', 'true');
+
 
 
 

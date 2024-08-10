@@ -74,6 +74,7 @@ CONSTRAINT pk_doctor_offices PRIMARY KEY(doctor_id,office_id)
 
 CREATE TABLE appointment(
 	appointment_id SERIAL,
+	service_id int NOT NULL,
 	office_id int NOT NULL,
 	patient_id int NOT NULL,
 	doctor_id int NOT NULL,
@@ -90,6 +91,7 @@ CREATE TABLE appointment(
 	is_approved boolean,
 
 	CONSTRAINT pk_appointment PRIMARY KEY(appointment_id),
+	CONSTRAINT fk_service_id FOREIGN KEY(service_id)REFERENCES services(service_id),
 	CONSTRAINT fk_office FOREIGN KEY(office_id)REFERENCES office(office_id),
 	CONSTRAINT fk_patient_id FOREIGN KEY(patient_id)REFERENCES users(user_id),
 	CONSTRAINT fk_doctor_id FOREIGN KEY(doctor_id)REFERENCES users(user_id)
