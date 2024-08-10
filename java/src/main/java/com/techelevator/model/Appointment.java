@@ -5,6 +5,8 @@ import java.time.LocalTime;
 public class Appointment {
 
     private int appointmentId;
+
+    private int serviceId;
     private int officeId;
     private int patientId;
     private  int doctorId;
@@ -24,6 +26,7 @@ public class Appointment {
 
     public Appointment(int appointmentId, int officeId, int patientId, int doctorId, boolean isNotified, boolean isApproved) {
         this.appointmentId = appointmentId;
+        this.serviceId = serviceId;
         this.officeId = officeId;
         this.patientId = patientId;
         this.doctorId = doctorId;
@@ -43,11 +46,6 @@ public class Appointment {
     public int getAppointmentId() {
         return appointmentId;
     }
-
-//    public boolean createAppointment(Appointment appointment){
-//
-//        return false;
-//    }
 
     public void setAppointmentId(int appointmentId) {
         this.appointmentId = appointmentId;
@@ -163,6 +161,14 @@ public class Appointment {
 
     public void setSunday(boolean sunday) {
         isSunday = sunday;
+    }
+
+    public int getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(int serviceId) {
+        this.serviceId = serviceId;
     }
 }
 
