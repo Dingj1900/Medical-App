@@ -1,15 +1,16 @@
 <template>
-  <div id="app" v-bind:style="{ backgroundColor: color}">
-  <div class="container">
+  <div id="app" >
+   <div class="container">
     <div class="backbox">
-      <div class="loginMsg" :class="{ visibility: isSignup }">
-        <div class="textcontent">
+      <div class="loginMsg" >
+        <!--:class="{ visibility: isSignup } -->
+        <div class="textcontent" :class="{ visibility: isSignup }" >
           <p class="title">Don't have an account?</p>
           <p>Sign up to register an account.</p>
           <button id="switch1">SIGN UP</button>
         </div>
       </div>
-      <div class="signupMsg" :class="{ visibility: !isSignup }">
+      <div class="signupMsg" :class="{ visibility: !isSignup }" >
         <div class="textcontent">
           <p class="title">Have an account?</p>
           <p>Log in to view your account.</p>
@@ -109,9 +110,7 @@ export default {
         this.isNo = true;
       }
     },
-    updateSelection(selected) {
-     
-    },
+    
     login() {
       authService.login(this.user)
         .then(response => {
@@ -156,6 +155,8 @@ export default {
         this.isSignup = false;
         this.isMoving = false; 
       });
+
+      //for moving the boxes at the start
 
       setTimeout(() => {
         $('#switch1').click();
