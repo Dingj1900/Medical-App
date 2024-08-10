@@ -55,7 +55,7 @@ CREATE TABLE office(
 	hours_to time,
 
 
-	CONSTRAINT pk_office PRIMARY KEY (office_id),
+	CONSTRAINT pk_office PRIMARY KEY (office_id)
 
 
 );
@@ -98,7 +98,7 @@ CREATE TABLE appointment(
 
 
 CREATE TABLE time_period(
-	period_id SERIAL,
+	period_id serial,
 	start_date date NOT NULL,
 	end_date date NOT NULL,
 
@@ -136,20 +136,13 @@ CREATE TABLE services(
 	service_name varchar(50) NOT NULL,
 	service_details varchar(200)NOT NULL,
 	hourly_rate numeric(9,2) NOT NULL,
+	doctor_id int,
 
-	CONSTRAINT pk_services PRIMARY KEY (service_id)
+	CONSTRAINT pk_services_id PRIMARY KEY (service_id),
+	CONSTRAINT fk_doctor_id FOREIGN KEY (doctor_id)REFERENCES users(user_id)
 
 );
 
- CREATE TABLE doctor_services(
-  doctor_id int NOT NULL,
-  service_id int NOT NULL,
-
-	CONSTRAINT fk_services FOREIGN KEY(service_id)REFERENCES services(service_id),
-	CONSTRAINT fk_doctor_id FOREIGN KEY (doctor_id)REFERENCES users(user_id),
-	CONSTRAINT pk_doctor_services PRIMARY KEY(doctor_id, service_id)
-
- );
 
  CREATE TABLE review(
 	 patient_id int ,
