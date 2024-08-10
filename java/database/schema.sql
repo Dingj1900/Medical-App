@@ -71,6 +71,18 @@ CONSTRAINT pk_doctor_offices PRIMARY KEY(doctor_id,office_id)
 
 );
 
+CREATE TABLE services(
+	service_id Serial,
+	service_name varchar(50) NOT NULL,
+	service_details varchar(200)NOT NULL,
+	hourly_rate numeric(9,2) NOT NULL,
+	doctor_id int,
+
+	CONSTRAINT pk_services_id PRIMARY KEY (service_id),
+	CONSTRAINT fk_doctor_id FOREIGN KEY (doctor_id)REFERENCES users(user_id)
+
+);
+
 
 CREATE TABLE appointment(
 	appointment_id SERIAL,
@@ -130,19 +142,6 @@ CREATE TABLE prescription(
 	CONSTRAINT fk_doctor_id FOREIGN KEY (doctor_id) REFERENCES users(user_id),
 	CONSTRAINT fk_patient_id FOREIGN KEY (patient_id) REFERENCES users(user_id),
 	CONSTRAINT fk_medication FOREIGN KEY (medication_id)REFERENCES medication(medication_id)
-);
-
-
-CREATE TABLE services(
-	service_id Serial,
-	service_name varchar(50) NOT NULL,
-	service_details varchar(200)NOT NULL,
-	hourly_rate numeric(9,2) NOT NULL,
-	doctor_id int,
-
-	CONSTRAINT pk_services_id PRIMARY KEY (service_id),
-	CONSTRAINT fk_doctor_id FOREIGN KEY (doctor_id)REFERENCES users(user_id)
-
 );
 
 

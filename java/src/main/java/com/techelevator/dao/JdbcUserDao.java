@@ -30,7 +30,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public User getUserById(int userId) {
         User user = null;
-        String sql = "SELECT * FROM users WHERE user_id = ?";
+        String sql = "SELECT * FROM users WHERE user_id = ?"; //this works
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
             if (results.next()) {
@@ -45,7 +45,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public List<User> getUsers() {
         List<User> users = new ArrayList<>();
-        String sql = "SELECT user_id, username, password_hash, role FROM users";
+        String sql = "SELECT user_id, username, password_hash, role FROM users"; //this works
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
@@ -62,7 +62,7 @@ public class JdbcUserDao implements UserDao {
     public User getUserByUsername(String username) {
         if (username == null) throw new IllegalArgumentException("Username cannot be null");
         User user = null;
-        String sql = "SELECT * FROM users WHERE username = LOWER(TRIM(?));";
+        String sql = "SELECT * FROM users WHERE username = LOWER(TRIM(?));"; //this works
         try {
             SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, username);
             if (rowSet.next()) {
@@ -124,7 +124,7 @@ public class JdbcUserDao implements UserDao {
             isSunday = user.isSunday();
         }
 
-        String insertUserSql = "INSERT INTO users " +
+        String insertUserSql = "INSERT INTO users " + //this works
                 "(" +
                 "username, " +
                 "password_hash, " +
