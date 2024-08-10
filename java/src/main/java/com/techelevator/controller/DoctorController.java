@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.DoctorDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Appointment;
@@ -22,6 +23,9 @@ public class DoctorController {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private DoctorDao doctorDao;
 
 
 //    @RequestMapping(path = "/doctor/register", method = RequestMethod.POST)
@@ -56,6 +60,7 @@ public class DoctorController {
         int doctorId = userDao.getUserByUsername(principal.getName()).getId(); // get the ID for this specific user (who is a Dr)
 
         try{
+            office = doctorDao.getOfficeByDoctor(doctorId);
             // returns office for doctor, takes in Doctor ID - this is where the JDBC will cover
         } catch(DaoException error) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
@@ -74,7 +79,8 @@ public class DoctorController {
 
 
         try{
-            //return list of appointments, takes in id
+            appointmentList = doctorDao.getAppointmentsByDoctor(doctorId);
+
         } catch(DaoException error) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
@@ -83,17 +89,17 @@ public class DoctorController {
     }
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path= "/provider/office")
-    public Office createDoctorOffice(@Valid @RequestBody Office office, Principal principal){
-        Office newOffice = null;
+    public int createDoctorOffice(@Valid @RequestBody Office office, Principal principal){
+        int newOffice = 0; // it is always 1 or more in SQL, 0 means something went wrong
 
         int doctorId = userDao.getUserByUsername(principal.getName()).getId();
 
         try{
-            //return office object, takes in doctor id and office
+            newOffice = doctorDao.createOffice(office, doctorId);
         }catch(DaoException error) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        return  newOffice;
+        return newOffice;
     }
 
 
@@ -106,6 +112,8 @@ public class DoctorController {
         int doctorId = userDao.getUserByUsername(principal.getName()).getId(); // needed to validate that you are the Dr of this office
 
         try {
+            updatedOffice = doctorDao.updateOfficeById(office);
+
             // updateOffice method needs to be created in the JDBC
             // return Office object, takes in Office AND Doctor ID
         } catch (DaoException error) {
