@@ -1,7 +1,7 @@
 <template>
     <section>
         <h2>
-            INSERT CALENDAR (V CALENDAR)
+            View My Schedule
         </h2>
         <Calendar />
         <DatePicker v-model="date" />
@@ -28,5 +28,10 @@ export default {
 </script>
 
 <style scoped>
+/* .section {
+    margin-left: center;
+    margin-right: center;
+    width: 50%;
+} */
 
 </style>
