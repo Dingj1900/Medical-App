@@ -18,6 +18,7 @@ VALUES('111','HealMeNow','111 kinnear road','614','10:00:00','18:00:00','Monday'
 
 
 
-INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
+INSERT INTO users (username,password_hash,role)
+VALUES             ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
 COMMIT TRANSACTION;
