@@ -101,7 +101,6 @@ public class PatientController {
 
     //view list of all offices
 
-
     //view list of all doctors
 
     //return doctor office - combining a class/array to return two objects

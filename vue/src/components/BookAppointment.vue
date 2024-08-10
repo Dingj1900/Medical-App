@@ -17,7 +17,7 @@
   <select v-model="reason">
     <option value="checkUp">Check Up</option>
     <option value="physical">Physical</option>
-    <option value="urgent">Urgent</option>
+    <option value="urgent">Urgent Care</option>
     <option value="coldFlu">Cold/Flu</option>
     <option value="other">Other</option>
   </select>
@@ -31,7 +31,7 @@
 
 <!-- add actual doctor times instead of this -->
 <div class="inputForm">
-  <label>What time would work best for you? </label>
+  <label>What time works best for you?</label>
   <select v-model="appointmentTime">
     <option value="am">Morning</option>
     <option value="pm">Evening</option>

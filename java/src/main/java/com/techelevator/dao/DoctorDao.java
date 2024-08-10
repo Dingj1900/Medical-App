@@ -10,7 +10,6 @@ import java.util.List;
 
 public interface DoctorDao {
 
-
     Office getOfficeByDoctor(int doctorId);
 
     Appointment getAppointmentByDoctor(int doctorId);
