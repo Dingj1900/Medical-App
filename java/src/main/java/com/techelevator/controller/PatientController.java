@@ -19,28 +19,6 @@ public class PatientController {
     @Autowired
     private UserDao userDao;
 
-    //get a single patient based off user
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/patient", method = RequestMethod.GET)
-    public User getPatientById(Principal principal) {
-
-        User patient = null;
-
-        int patientId = userDao.getUserByUsername(principal.getName()).getId();
-
-        try{
-
-            //get patient user by id
-
-
-        }catch(DaoException error){
-
-        }
-
-        return patient;
-    }
-
-
 
     //Get all appointments for a patient
     @ResponseStatus(HttpStatus.OK)
@@ -117,6 +95,13 @@ public class PatientController {
         }
 
     }
+
+    //view list of all offices
+
+
+    //view list of all doctors
+
+    //return doctor office - combining a class/array to return two objects
 
 }
 
