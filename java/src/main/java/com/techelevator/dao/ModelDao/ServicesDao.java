@@ -1,4 +1,4 @@
 package com.techelevator.dao.ModelDao;
 
-public class ServicesDao {
+public interface ServicesDao {
 }
