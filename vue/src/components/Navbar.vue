@@ -16,11 +16,9 @@
     <li class="nav-item">
         <router-link v-bind:to="{ name: 'login' }" class="nav-link">Sign-up / Login</router-link>
     </li>
-<li class="nav-item">
+    <li class="nav-item">
         <router-link v-bind:to="{ name: 'logout' }" class="nav-link" v-if="$store.state.token != ''">Logout</router-link>
     </li>
-   
-    
 
     <!-- Dropdown -->
     <!-- <li class="nav-item dropdown">
