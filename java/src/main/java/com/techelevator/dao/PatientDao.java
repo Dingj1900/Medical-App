@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface PatientDao {
 
+
     User getDoctorByOfficeId(int doctorId);
 
     List<Appointment> getAppointments(int patientId);
@@ -18,9 +19,6 @@ public interface PatientDao {
     List<Office> getOffices();
 
     List<Services> getServicesByDoctor(int doctorId);
-
-
-
 
 
 

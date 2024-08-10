@@ -155,6 +155,8 @@ public class PatientController {
     }
 
 
+    //view list of all doctors
+
 
     //get offices by office id
 
