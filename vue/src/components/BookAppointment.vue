@@ -1,5 +1,5 @@
 <template>
-  <div>this is where you would book an appointment</div>
+  <div>Book an appointment with the provider of your choice!</div>
   <form>
 
 <div class="inputForm">
