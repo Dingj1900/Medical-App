@@ -22,6 +22,24 @@ public class JdbcDoctorDao implements DoctorDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    public Appointment getAppointmentByDoctor(int doctorId) {
+        Appointment appointment = null;
+
+        String sql = "SELECT * " +
+                "FROM appointment " +
+                "WHERE doctor_id = ? ";
+
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+            if (results.next()) {
+                appointment = mapRowToAppointment(results);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return appointment;
+    }
+
     public List<Appointment> getAppointmentsByDoctor(int doctorId) {
         List<Appointment> appointments = new ArrayList<>();
         String sql = "SELECT * " +
