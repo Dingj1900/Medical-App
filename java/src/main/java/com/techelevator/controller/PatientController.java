@@ -6,6 +6,7 @@ import com.techelevator.model.Appointment;
 import com.techelevator.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -14,16 +15,18 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
+
+@PreAuthorize("hasRole('Patient')") // rash
+
 public class PatientController {
 
     @Autowired
     private UserDao userDao;
 
-
     //Get all appointments for a patient
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/patient/appointments", method = RequestMethod.GET)
-    public List<User> getPatientAppointments(Principal principal){
+    public List<Appointment> getPatientAppointments(Principal principal){
         List<User> patientList = new ArrayList<>();
 
         int patientId = userDao.getUserByUsername(principal.getName()).getId();
