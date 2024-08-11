@@ -71,7 +71,7 @@
         <p>Please select the days of the week and hours of availability.</p>
         <div>
           <label for="sunday">
-          <input type="checkbox" v-bind:checked= "user.isSunday" @click="toggleSunday"/>
+          <input type="checkbox" v-bind:checked= "user.openSunday" @click="toggleSunday"/>
           Sunday</label>
           <!--<label for="hoursFrom">Hours From</label>
           <select name="hoursFrom" id="hoursFrom" v-model="user.hoursFrom" required autofocus>
@@ -132,7 +132,7 @@
           </div>
           <div>-->
           <label for="monday">
-          <input type="checkbox" v-bind:checked="user.isMonday" @click="toggleMonday"/>
+          <input type="checkbox" v-bind:checked="user.openMonday" @click="toggleMonday"/>
           Monday</label>
           <!--<label for="hoursFrom">Hours From</label>
           <select name="hoursFrom" id="hoursFrom" v-model="user.hoursFrom" required autofocus>
@@ -193,7 +193,7 @@
           </div>
           <div>-->
           <label for="tuesday">
-          <input type="checkbox" v-bind:checked="user.isTuesday" @click="toggleTuesday"/>
+          <input type="checkbox" v-bind:checked="user.openTuesday" @click="toggleTuesday"/>
           Tuesday</label>
           <!--<label for="hoursFrom">Hours From</label>
           <select name="hoursFrom" id="hoursFrom" v-model="user.hoursFrom" required autofocus>
@@ -254,7 +254,7 @@
           </div>
           <div>-->
           <label for="wednesday">
-          <input type="checkbox"  v-bind:checked="user.isWednesday" @click="toggleWednesday" />
+          <input type="checkbox"  v-bind:checked="user.openWednesday" @click="toggleWednesday" />
           Wednesday</label>
           <!--<label for="hoursFrom">Hours From</label>
           <select name="hoursFrom" id="hoursFrom" v-model="user.hoursFrom" required autofocus>
@@ -315,7 +315,7 @@
           </div>
           <div>-->
           <label for="thursday">
-          <input type="checkbox" v-bind:checked="user.isThursday" @click="toggleThursday" />
+          <input type="checkbox" v-bind:checked="user.openThursday" @click="toggleThursday" />
           Thursday</label>
           <!--<label for="hoursFrom">Hours From</label>
           <select name="hoursFrom" id="hoursFrom" v-model="user.hoursFrom" required autofocus>
@@ -376,7 +376,7 @@
           </div>
           <div>-->
           <label for="friday">
-          <input type="checkbox" v-bind:checked="user.isFriday" @click="toggleFriday" />
+          <input type="checkbox" v-bind:checked="user.openFriday" @click="toggleFriday" />
           Friday</label>
           <!--<label for="hoursFrom">Hours From</label>
           <select name="hoursFrom" id="hoursFrom" v-model="user.hoursFrom" required autofocus>
@@ -437,7 +437,7 @@
           </div>
           <div>-->
           <label for="saturday">
-          <input type="checkbox"  v-bind:checked="user.isSaturday" @click="toggleSaturday" />
+          <input type="checkbox"  v-bind:checked="user.openSaturday" @click="toggleSaturday" />
           Saturday</label>
           </div>
 
@@ -473,16 +473,16 @@
           <label for="hoursTo">Hours To</label>
           <select name="hoursTo" id="hoursTo" v-model="user.hoursTo" required autofocus>
             <option disabled selected>Hours From</option>
-            <option value="24:00:00">12:00am</option>
-            <option value="1:00:00">1:00am</option>
-            <option value="2:00:00">2:00am</option>
-            <option value="3:00:00">3:00am</option>
-            <option value="4:00:00">4:00am</option>
-            <option value="5:00:00">5:00am</option>
-            <option value="6:00:00">6:00am</option>
-            <option value="7:00:00">7:00am</option>
-            <option value="8:00:00">8:00am</option>
-            <option value="9:00:00">9:00am</option>
+            <option value="00:00:00">12:00am</option>
+            <option value="01:00:00">1:00am</option>
+            <option value="02:00:00">2:00am</option>
+            <option value="03:00:00">3:00am</option>
+            <option value="04:00:00">4:00am</option>
+            <option value="05:00:00">5:00am</option>
+            <option value="06:00:00">6:00am</option>
+            <option value="07:00:00">7:00am</option>
+            <option value="08:00:00">8:00am</option>
+            <option value="09:00:00">9:00am</option>
             <option value="10:00:00">10:00am</option>
             <option value="11:00:00">11:00am</option>
             <option value="12:00:00">12:00pm</option>
@@ -552,13 +552,13 @@
           gender: '',
           phoneNumber: '',
           email: '',
-          isSunday: false,
-          isMonday: false,
-          isTuesday: false,
-          isWednesday: false,
-          isThursday: false,
-          isFriday: false,
-          isSaturday: false,
+          openSunday: false,
+          openMonday: false,
+          openTuesday: false,
+          openWednesday: false,
+          openThursday: false,
+          openFriday: false,
+          openSaturday: false,
           hoursTo: '',
           hoursFrom: '',
         },
@@ -612,8 +612,8 @@
         }
       },
       checkDays() {
-      return (this.user.isSaturday || this.user.isSunday || this.user.isMonday ||
-              this.user.isTuesday || this.user.isWednesday || this.user.isThursday || this.user.isFriday) &&
+      return (this.user.openSaturday || this.user.openSunday || this.user.openMonday ||
+              this.user.openTuesday || this.user.openWednesday || this.user.openThursday || this.user.openFriday) &&
              this.user.hoursFrom && this.user.hoursTo;
       },
       clearErrors() {
@@ -622,25 +622,25 @@
       },
 
       toggleSunday(){
-        this.user.isSunday = !this.user.isSunday;
+        this.user.openSunday = !this.user.openSunday;
       },
       toggleMonday(){
-        this.user.isMonday = !this.user.isMonday;
+        this.user.openMonday = !this.user.openMonday;
       },
       toggleTuesday(){
-        this.user.isTuesday = !this.user.isTuesday;
+        this.user.openTuesday = !this.user.openTuesday;
       },
       toggleWednesday(){
-        this.user.isWednesday = !this.user.isWednesday;
+        this.user.openWednesday = !this.user.openWednesday;
       },
       toggleThursday(){
-        this.user.isThursday = !this.user.isThursday;
+        this.user.openThursday = !this.user.openThursday;
       },
       toggleFriday(){
-        this.user.isFriday = !this.user.isFriday;
+        this.user.openFriday = !this.user.openFriday;
       },
       toggleSaturday(){
-        this.user.isSaturday = !this.user.isSaturday;
+        this.user.openSaturday = !this.user.openSaturday;
       },
     },
   };
