@@ -21,7 +21,7 @@ public class JdbcDoctorDao implements DoctorDao {
     public JdbcDoctorDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
+@Override
     public Appointment getAppointmentByDoctor(int doctorId) {
         Appointment appointment = null;
 
@@ -39,7 +39,7 @@ public class JdbcDoctorDao implements DoctorDao {
         }
         return appointment;
     }
-
+    @Override
     public List<Appointment> getAppointmentsByDoctor(int doctorId) {
         List<Appointment> appointments = new ArrayList<>();
         String sql = "SELECT * " +
@@ -55,7 +55,7 @@ public class JdbcDoctorDao implements DoctorDao {
             }
             return appointments;
         }
-
+    @Override
     public Office getOfficeByDoctor(int doctorId) {
         Office office = null;
         String sql = "SELECT * " +
@@ -72,7 +72,7 @@ public class JdbcDoctorDao implements DoctorDao {
         }
         return office;
     }
-
+    @Override
     public int createOffice(Office office, int doctorId){
         int newOfficeId = 0;
 
@@ -108,7 +108,7 @@ public class JdbcDoctorDao implements DoctorDao {
         }
         return newOfficeId;
     }
-
+    @Override
     public Office updateOfficeById(Office office){
 
         Office updatedOffice = null;
@@ -149,7 +149,7 @@ public class JdbcDoctorDao implements DoctorDao {
         }
         return service;
     }
-
+    @Override
     public List<Services> getServicesByDoctor(int doctorId){
         List<Services> services = new ArrayList<>();
 
@@ -167,7 +167,7 @@ public class JdbcDoctorDao implements DoctorDao {
         }
         return services;
     }
-
+    @Override
     public Services updateServiceById(Services services){
 
         Services updatedServices = null;
@@ -191,7 +191,7 @@ public class JdbcDoctorDao implements DoctorDao {
         }
         return updatedServices;
     }
-
+    @Override
     public int createService(Services services, int doctorId){
         int newServiceId = 0;
 

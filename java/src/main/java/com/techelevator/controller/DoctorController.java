@@ -55,7 +55,7 @@ public class DoctorController {
 //    }
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(path = "/provider/office")
-    public Office getOfficeForDoctor(Principal principal){
+    public Office getOfficeByDoctor(Principal principal){
         Office office = null;
         int doctorId = userDao.getUserByUsername(principal.getName()).getId(); // get the ID for this specific user (who is a Dr)
 
@@ -70,7 +70,7 @@ public class DoctorController {
     }
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(path= "/provider/appointments")
-    public List<Appointment> getAllAppointments(Principal principal) {
+    public List<Appointment> getAppointmentsByDoctor(Principal principal) {
 
         List<Appointment> appointmentList = new ArrayList<>();
 
