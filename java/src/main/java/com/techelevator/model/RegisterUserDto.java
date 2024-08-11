@@ -35,13 +35,13 @@ public class RegisterUserDto {
     private String zipcode;
     private LocalTime hoursFrom;
     private LocalTime hoursTo;
-    private boolean isMonday;
-    private boolean isTuesday;
-    private boolean isWednesday;
-    private boolean isThursday;
-    private boolean isFriday;
-    private boolean isSaturday;
-    private boolean isSunday;
+    private boolean openMonday;
+    private boolean openTuesday;
+    private boolean openWednesday;
+    private boolean openThursday;
+    private boolean openFriday;
+    private boolean openSaturday;
+    private boolean openSunday;
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
@@ -148,60 +148,60 @@ public class RegisterUserDto {
         this.hoursTo = hoursTo;
     }
 
-    public boolean isMonday() {
-        return isMonday;
+    public boolean isOpenMonday() {
+        return openMonday;
     }
 
-    public void setMonday(boolean monday) {
-        isMonday = monday;
+    public void setOpenMonday(boolean openMonday) {
+        this.openMonday = openMonday;
     }
 
-    public boolean isTuesday() {
-        return isTuesday;
+    public boolean isOpenTuesday() {
+        return openTuesday;
     }
 
-    public void setTuesday(boolean tuesday) {
-        isTuesday = tuesday;
+    public void setOpenTuesday(boolean openTuesday) {
+        this.openTuesday = openTuesday;
     }
 
-    public boolean isWednesday() {
-        return isWednesday;
+    public boolean isOpenWednesday() {
+        return openWednesday;
     }
 
-    public void setWednesday(boolean wednesday) {
-        isWednesday = wednesday;
+    public void setOpenWednesday(boolean openWednesday) {
+        this.openWednesday = openWednesday;
     }
 
-    public boolean isThursday() {
-        return isThursday;
+    public boolean isOpenThursday() {
+        return openThursday;
     }
 
-    public void setThursday(boolean thursday) {
-        isThursday = thursday;
+    public void setOpenThursday(boolean openThursday) {
+        this.openThursday = openThursday;
     }
 
-    public boolean isFriday() {
-        return isFriday;
+    public boolean isOpenFriday() {
+        return openFriday;
     }
 
-    public void setFriday(boolean friday) {
-        isFriday = friday;
+    public void setOpenFriday(boolean openFriday) {
+        this.openFriday = openFriday;
     }
 
-    public boolean isSaturday() {
-        return isSaturday;
+    public boolean isOpenSaturday() {
+        return openSaturday;
     }
 
-    public void setSaturday(boolean saturday) {
-        isSaturday = saturday;
+    public void setOpenSaturday(boolean openSaturday) {
+        this.openSaturday = openSaturday;
     }
 
-    public boolean isSunday() {
-        return isSunday;
+    public boolean isOpenSunday() {
+        return openSunday;
     }
 
-    public void setSunday(boolean sunday) {
-        isSunday = sunday;
+    public void setOpenSunday(boolean openSunday) {
+        this.openSunday = openSunday;
     }
 
     public String getUsername() {

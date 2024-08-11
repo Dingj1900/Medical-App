@@ -225,13 +225,21 @@ public class JdbcPatientDao implements PatientDao {
                 user.setHoursTo(LocalTime.parse(rs.getString("hours_to")));
             }
 
-            user.setMonday((boolean) rs.getObject("is_monday"));
-            user.setTuesday((boolean) rs.getObject("is_tuesday"));
-            user.setWednesday((boolean) rs.getObject("is_wednesday"));
-            user.setThursday((boolean) rs.getObject("is_thursday"));
-            user.setFriday((boolean) rs.getObject("is_friday"));
-            user.setSaturday((boolean) rs.getObject("is_saturday"));
-            user.setSunday((boolean) rs.getObject("is_sunday"));
+            user.setOpenMonday(rs.getBoolean("is_monday"));
+            user.setOpenTuesday(rs.getBoolean("is_tuesday"));
+            user.setOpenWednesday(rs.getBoolean("is_wednesday"));
+            user.setOpenThursday(rs.getBoolean("is_thursday"));
+            user.setOpenFriday(rs.getBoolean("is_friday"));
+            user.setOpenSaturday(rs.getBoolean("is_saturday"));
+            user.setOpenSunday(rs.getBoolean("is_sunday"));
+//
+//            user.setOpenMonday((boolean) rs.getObject("is_monday"));
+//            user.setOpenTuesday((boolean) rs.getObject("is_tuesday"));
+//            user.setOpenWednesday((boolean) rs.getObject("is_wednesday"));
+//            user.setOpenThursday((boolean) rs.getObject("is_thursday"));
+//            user.setOpenFriday((boolean) rs.getObject("is_friday"));
+//            user.setOpenSaturday((boolean) rs.getObject("is_saturday"));
+//            user.setOpenSunday((boolean) rs.getObject("is_sunday"));
         } catch (NullPointerException error) {
             throw new DaoException("Null pointer exception for a user value", error);
         } catch (Exception error) {
