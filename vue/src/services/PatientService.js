@@ -3,25 +3,28 @@ import axios from 'axios';
 export default {
 
         getAppointments() {
-                return axios.get("patient/appointments");
+                return axios.get("/patient/appointments");
             },
 
-        createAppointment(bookAppointment) {
-                return axios.post("patient/appointment", bookAppointment); 
+        createAppointment(appointmentObject) {
+                return axios.post("/patient/appointment", appointmentObject); 
             },
-
-        updateAppointment(id) {
-                return axios.put(`patient/appointment/${id}`)
-           },
         
-        getOffice() {
-                return axios.get("patient/office");
+        getOffices() {
+                return axios.get("/patient/offices");
             },
 
-        getServices() {
-                return axios.get("patient/office/services");
+        getDoctorByOfficeId(id) {
+                return axios.get(`/patient/office/${id}/provider`)
             },
 
-        
+        getServicesByDoctor(id) {
+                return axios.get(`/patient/provider/${id}/services`);
+            },
+
+
+       // updateAppointment(id) {
+       //        return axios.put(`patient/appointment/${id}`)
+       //  },
 
 }

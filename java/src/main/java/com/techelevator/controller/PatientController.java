@@ -5,6 +5,7 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Appointment;
 import com.techelevator.model.Office;
+import com.techelevator.model.Services;
 import com.techelevator.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,31 +33,37 @@ public class PatientController {
     //Get all appointments for a patient
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/patient/appointments", method = RequestMethod.GET)
-    public List<Appointment> getPatientAppointments(Principal principal) {
+    public List<Appointment> getAppointments(Principal principal) {
         List<Appointment> patientAppointment = new ArrayList<>();
 
         int patientId = userDao.getUserByUsername(principal.getName()).getId(); // does it matter if it is userDAO or patientDAO?
 
-
         try {
-
             //get patient by id
             patientAppointment= patientDao.getAppointments(patientId);
-
         } catch (DaoException error) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-
         return patientAppointment;
-
-
     }
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping ("/patient/office/{id}/provider")
+    public User getDoctorByOfficeId(@PathVariable int officeId) {
 
+        User user = new User();
+
+         try {
+            user = patientDao.getDoctorByOfficeId(officeId);
+        } catch (DaoException error) {
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        return user;
+    }
 
     // Create a new appointment for a patient
     @PostMapping("/patient/appointment")
     @ResponseStatus(HttpStatus.CREATED)
-    public int createPatientAppointment(@RequestBody Appointment appointment, Principal principal) {
+    public int createAppointment(@RequestBody Appointment appointment, Principal principal) {
         int newAppointment =0;
         try {
             // Retrieve the patient ID from the logged-in user
@@ -67,7 +74,7 @@ public class PatientController {
             appointment.setPatientId(patientId);
 
             // Add appointment to the database
-            newAppointment = patientDao.createAppointment(appointment, patientId);
+            newAppointment = patientDao.createAppointment(appointment);
 
             // Return the newly created appointment
 
@@ -79,76 +86,50 @@ public class PatientController {
         return newAppointment;
 
     }
-
-
-//    // Create a new appointment for a patient
-//    @PostMapping("/appointment")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Appointment createAppointment(@RequestBody Appointment appointment, Principal principal) {
-//        try {
-//            User user = userDao.getUserByUsername(principal.getName());
-//            appointment.setPatientId(user.getId());
-//            return patientDao.createAppointment(appointment, principal);
-//        } catch (DaoException e) {
-//            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to create appointment", e);
-//        }
-//    }
-
-
-    //update an existing patient appointment
-    @RequestMapping(path = "/patient/appointment/{id}", method = RequestMethod.PUT)
-    public Appointment updatePatientAppointment(@PathVariable int id, Principal principal) {
-        Appointment newAppointment = null;
-
-        int patientId = userDao.getUserByUsername(principal.getName()).getId();
-
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/patient/provider/{id}/services", method = RequestMethod.GET)
+    public List<Services> getServicesByDoctor(@PathVariable int id) {
+        List<Services> patientOffices = new ArrayList<>();
         try {
-
-            //find appointment by id, if does not exist
-
-
-
-            //update appointment
-
+            patientOffices = patientDao.getServicesByDoctor(id);
         } catch (DaoException error) {
-
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-
-        return newAppointment;
+        return patientOffices;
+    }
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/patient/offices", method = RequestMethod.GET)
+    public List<Office> getOffices() {
+        List<Office> patientOffices = new ArrayList<>();
+        try {
+             patientOffices = patientDao.getOffices();
+        } catch (DaoException error) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        return patientOffices;
     }
 
-//    //delete a existing patient appointment
-//    @RequestMapping(path = "/patient/appointment/{id}", method = RequestMethod.DELETE)
-//    public void deletePatientAppointment(@PathVariable int id){
+    //update an existing patient appointment
+//    @RequestMapping(path = "/patient/appointment/{id}", method = RequestMethod.PUT)
+//    public Appointment updatePatientAppointment(@PathVariable int id, Principal principal) {
 //        Appointment newAppointment = null;
 //
-//        try{
+//        int patientId = userDao.getUserByUsername(principal.getName()).getId();
+//
+//        try {
+//
 //            //find appointment by id, if does not exist
+//
+//
 //
 //            //update appointment
 //
-//        }catch(DaoException error){
+//        } catch (DaoException error) {
 //
 //        }
-//        return newAppointment;
 //
+//        return newAppointment;
 //    }
-
-    //view list of all offices
-    //view list of all doctors
-    //return doctor office - combining a class/array to return two objects
-
-
-    //get doctor by office id
-
-
-    //view list of all doctors
-
-
-    //get offices by office id
-
-
-    //get services by doctor
 
 
 }

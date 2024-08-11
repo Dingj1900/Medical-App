@@ -22,7 +22,7 @@ public class JdbcPatientDao implements PatientDao {
     public JdbcPatientDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
+@Override
     public User getDoctorByOfficeId(int officeId){
        User doctor = null;
 
@@ -42,7 +42,7 @@ public class JdbcPatientDao implements PatientDao {
         return doctor;
 
     }
-
+@Override
     public List<Appointment> getAppointments(int patientId){
         List<Appointment> appointments = new ArrayList<>();
 
@@ -59,13 +59,13 @@ public class JdbcPatientDao implements PatientDao {
         }
         return appointments;
     }
-
-    public int createAppointment(Appointment appointment, int patientId){
+@Override
+    public int createAppointment(Appointment appointment){
         int newAppointmentId = 0;
 
         int serviceId = appointment.getServiceId();
         int officeId = appointment.getOfficeId();
-        patientId = appointment.getPatientId();
+        int patientId = appointment.getPatientId();
         int doctorId = appointment.getDoctorId();
         LocalTime apptFrom = appointment.getApptFrom();
         LocalTime apptTo = appointment.getApptTo();
@@ -103,7 +103,7 @@ public class JdbcPatientDao implements PatientDao {
         return newAppointmentId;
 
     }
-
+@Override
     public List<Office> getOffices(){
         List<Office> offices = new ArrayList<>();
         String sql = "SELECT * " +
@@ -120,7 +120,7 @@ public class JdbcPatientDao implements PatientDao {
         }
         return offices;
     }
-
+@Override
     public List<Services> getServicesByDoctor(int doctorId){
         List<Services> services = new ArrayList<>();
 
