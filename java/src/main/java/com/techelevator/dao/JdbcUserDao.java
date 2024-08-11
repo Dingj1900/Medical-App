@@ -236,7 +236,6 @@ public class JdbcUserDao implements UserDao {
         }catch(Exception error){
             throw new DaoException("general mapper error", error);
         }
-
         return user;
     }
 
