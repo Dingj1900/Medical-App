@@ -10,11 +10,11 @@ import java.util.List;
 public interface PatientDao {
 
 
-    User getDoctorByOfficeId(int doctorId);
+    User getDoctorByOfficeId(int officeId);
 
     List<Appointment> getAppointments(int patientId);
 
-    int createAppointment(Appointment appointment, int patientId);
+    int createAppointment(Appointment appointment);
 
     List<Office> getOffices();
 

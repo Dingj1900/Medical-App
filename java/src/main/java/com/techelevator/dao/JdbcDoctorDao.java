@@ -21,24 +21,24 @@ public class JdbcDoctorDao implements DoctorDao {
     public JdbcDoctorDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-@Override
-    public Appointment getAppointmentByDoctor(int doctorId) {
-        Appointment appointment = null;
-
-        String sql = "SELECT * " +
-                "FROM appointment " +
-                "WHERE doctor_id = ? ";
-
-        try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
-            if (results.next()) {
-                appointment = mapRowToAppointment(results);
-            }
-        } catch (CannotGetJdbcConnectionException e) {
-            throw new DaoException("Unable to connect to server or database", e);
-        }
-        return appointment;
-    }
+//@Override
+//    public Appointment getAppointmentByDoctor(int doctorId) {
+//        Appointment appointment = null;
+//
+//        String sql = "SELECT * " +
+//                "FROM appointment " +
+//                "WHERE doctor_id = ? ";
+//
+//        try {
+//            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+//            if (results.next()) {
+//                appointment = mapRowToAppointment(results);
+//            }
+//        } catch (CannotGetJdbcConnectionException e) {
+//            throw new DaoException("Unable to connect to server or database", e);
+//        }
+//        return appointment;
+//    }
     @Override
     public List<Appointment> getAppointmentsByDoctor(int doctorId) {
         List<Appointment> appointments = new ArrayList<>();
@@ -73,7 +73,7 @@ public class JdbcDoctorDao implements DoctorDao {
         return office;
     }
     @Override
-    public int createOffice(Office office, int doctorId){
+    public int createDoctorOffice(Office office, int doctorId){
         int newOfficeId = 0;
 
         String officeName = office.getOfficeName();
