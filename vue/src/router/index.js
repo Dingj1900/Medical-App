@@ -83,7 +83,7 @@ const routes = [
     }
   },
   {
-    path: "/patient/bookappointment",
+    path: "/patient/office/appointments",
     name: "bookAppointment",
     component: BookAppointment,
     meta: {

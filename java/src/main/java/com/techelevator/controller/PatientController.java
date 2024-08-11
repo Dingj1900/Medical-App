@@ -41,6 +41,7 @@ public class PatientController {
         try {
 
             //get patient by id
+            patientAppointment= patientDao.getAppointments(patientId);
 
         } catch (DaoException error) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
@@ -53,7 +54,7 @@ public class PatientController {
 
 
     // Create a new appointment for a patient
-    @PostMapping("/appointment")
+    @PostMapping("/patient/appointment")
     @ResponseStatus(HttpStatus.CREATED)
     public int createPatientAppointment(@RequestBody Appointment appointment, Principal principal) {
         int newAppointment =0;
@@ -105,6 +106,8 @@ public class PatientController {
 
             //find appointment by id, if does not exist
 
+
+
             //update appointment
 
         } catch (DaoException error) {
@@ -137,22 +140,6 @@ public class PatientController {
 
 
     //get doctor by office id
-
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping(path = "/provider/office/{id}")
-    public User getDoctorByOffice(@PathVariable ("id") int officeId ) {
-
-        User doctor = null;
-
-
-        try {
-            doctor = patientDao.getDoctorByOfficeId(officeId);
-
-        }catch (DaoException error){
-
-        }
-        return doctor;
-    }
 
 
     //view list of all doctors
