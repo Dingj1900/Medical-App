@@ -80,11 +80,12 @@ public class JdbcUserDao implements UserDao {
 
         String password_hash = new BCryptPasswordEncoder().encode(user.getPassword());
         String ssRole = user.getRole().toUpperCase().startsWith("ROLE_") ? user.getRole().toUpperCase() : "ROLE_" + user.getRole().toUpperCase();
+
         String firstName = user.getFirstName();
         String lastName = user.getLastName();
         String middleInitials = user.getMiddleInitials();
         String gender;
-        if(user.getGender().isEmpty()){
+        if(user.getGender() != null && user.getGender().isEmpty()){
             gender = "Other";
         }else {
             gender = user.getGender();
@@ -105,7 +106,6 @@ public class JdbcUserDao implements UserDao {
         boolean isSunday = false;
 
         //properties of patient
-
         String address = user.getAddress();
         String city = user.getCity();
         String stateAbbreviation = user.getStateAbbreviation();
