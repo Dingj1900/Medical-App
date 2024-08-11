@@ -6,6 +6,7 @@ export default {
   getAppointmentsByDoctor() {
     return axios.get('/provider/appointments');
 },
+
 // previously get
 getOfficeByDoctor(id) {
   return axios.get('/provider/office');
@@ -15,9 +16,21 @@ createDoctorOffice(officeObject) {
   return axios.post('/provider/office', officeObject);
 },
 //previously edit
-updateOffice(officeObject) {
+updateOfficeById(officeObject) {
   return axios.put('/provider/office', officeObject);
-}
+},
+
+ getServicesByDoctor() {
+    return axios.get('/provider/services');
+  },
+  updateServiceById(servicesObject) {
+    return axios.put('/provider/services', servicesObject)
+  },
+  createService(servicesObject){
+    return axios.post('/provider/services', servicesObject)
+  }
+
+
 
 
 }
