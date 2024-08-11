@@ -51,7 +51,7 @@
         </div>
         <div class="form-input-group">
           <label for="emailAddress">Email Address</label>
-          <input type="text" id="emailAddress" v-model="user.emailAddress" required autofocus />
+          <input type="text" id="emailAddress" v-model="user.email" required autofocus />
         </div>
         <div class="form-input-group">
           <label for="username">Username</label>
@@ -551,7 +551,7 @@
           firstName: '',
           gender: '',
           phoneNumber: '',
-          emailAddress: '',
+          email: '',
           isSunday: false,
           isMonday: false,
           isTuesday: false,
