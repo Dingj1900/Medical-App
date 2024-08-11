@@ -9,13 +9,13 @@ public interface DoctorDao {
 
     Office getOfficeByDoctor(int doctorId); //good
 
-    Appointment getAppointmentByDoctor(int doctorId);
+//    Appointment getAppointmentByDoctor(int doctorId);
 
     List<Appointment> getAppointmentsByDoctor(int doctorId); //good
 
-    Office updateOfficeById(Office office);
+    Office updateOfficeById(Office office); //good
 
-    int createOffice(Office office, int doctorId);
+    int createDoctorOffice(Office office, int doctorId); //good
 
     List<Services> getServicesByDoctor(int doctorId);
 
