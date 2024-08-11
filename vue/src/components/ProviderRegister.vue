@@ -596,6 +596,17 @@
             .register(this.user)
             .then((response) => {
               if (response.status == 201) {
+
+                this.$store.commit("SET_AUTH_TOKEN", response.data.token);
+                this.$store.commit("SET_USER", response.data.user );
+                
+
+                //for generating a doctor_office and office
+
+                this.$store.commit("LOGOUT");
+
+
+
                 this.$router.push({
                   path: '/login',
                   query: { registration: 'success' },
