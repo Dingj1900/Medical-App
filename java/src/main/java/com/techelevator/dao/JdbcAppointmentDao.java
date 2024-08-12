@@ -21,10 +21,11 @@ public class JdbcAppointmentDao implements AppointmentDao {
      public List<AppointmentDto>getAppointments(int patientId){
 
         List<AppointmentDto> appointmentsDto = new ArrayList<>();
-        String sql = "SELECT first_name, last_name, service_details, office_name, office_address, office.phone_number FROM appointment" +
-         "JOIN office ON office.office_id = appointment.office_id" +
-         "JOIN services ON services.service_id = appointment.appointment_id" +
-         "JOIN users ON users.user_id = appointment.doctor_id;";
+        String sql = "SELECT first_name, last_name, service_details, office_name, office_address, office.phone_number, appt_from, appt_to, is_notified, is_approved FROM appointment " +
+                "JOIN office ON office.office_id = appointment.office_id " +
+                "JOIN services ON services.service_id = appointment.service_id " +
+                "JOIN users ON users.user_id = appointment.doctor_id " +
+                "WHERE patient_id = ?;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
             while (results.next()) {
