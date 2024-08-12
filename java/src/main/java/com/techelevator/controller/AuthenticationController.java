@@ -85,6 +85,7 @@ public class AuthenticationController {
             }
         }
         catch (DaoException e) {
+            System.out.println(e.getStackTrace());
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "User registration failed.");
         }
 
