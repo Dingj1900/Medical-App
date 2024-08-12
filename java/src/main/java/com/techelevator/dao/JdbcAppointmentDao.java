@@ -21,7 +21,7 @@ public class JdbcAppointmentDao implements AppointmentDao {
      public List<AppointmentDto>getAppointments(int patientId){
 
         List<AppointmentDto> appointmentsDto = new ArrayList<>();
-        String sql = "SELECT first_name, last_name, service_details, office_name, office_address, office.phone_number, appt_from, appt_to, is_notified, is_approved FROM appointment " +
+        String sql = "SELECT first_name, last_name, service_details, office_name, office_address, office.phone_number, appt_date, is_notified, is_approved FROM appointment " +
                 "JOIN office ON office.office_id = appointment.office_id " +
                 "JOIN services ON services.service_id = appointment.service_id " +
                 "JOIN users ON users.user_id = appointment.doctor_id " +
@@ -52,19 +52,12 @@ public class JdbcAppointmentDao implements AppointmentDao {
         appointment.setDoctorId(rs.getInt("doctor_id"));
         try {
             if(rs.getString("appt_from") != null) {
-                appointment.setApptFrom(rs.getTime("appt_from").toLocalTime());;
+                appointment.setApptDate(rs.getString("appt_date"));;
             }
-            if(rs.getString("appt_to") != null){
-                appointment.setApptTo(rs.getTime("hours_to").toLocalTime());
-            }
+//            if(rs.getString("appt_to") != null){
+//                appointment.setApptTo(rs.getTime("hours_to").toLocalTime());
+//            }
 
-            appointment.setOpenMonday((boolean) rs.getObject("is_monday"));
-            appointment.setOpenTuesday((boolean) rs.getObject("is_tuesday"));
-            appointment.setOpenWednesday((boolean) rs.getObject("is_wednesday"));
-            appointment.setOpenThursday((boolean) rs.getObject("is_thursday"));
-            appointment.setOpenFriday((boolean) rs.getObject("is_friday"));
-            appointment.setOpenSaturday((boolean) rs.getObject("is_saturday"));
-            appointment.setOpenSunday((boolean) rs.getObject("is_sunday"));
             appointment.setNotified((boolean)rs.getObject("is_notified"));
             appointment.setApproved((boolean)rs.getObject("is_approved"));
         } catch (NullPointerException error){
