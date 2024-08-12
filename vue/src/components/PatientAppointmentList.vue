@@ -1,8 +1,5 @@
 <template>
     <div class="appointment" v-for="appointment in appointments" v-bind:key="appointment.id">
-      <router-link v-bind:to="{ name: 'TopicDetailsView', params: { topicId: topic.id } }">
-        {{ topic.title }}  
-      </router-link>
     </div>
   </template>
   
