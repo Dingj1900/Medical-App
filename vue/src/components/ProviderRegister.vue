@@ -535,6 +535,7 @@
   
   <script>
   import authService from '../services/AuthService';
+  import DoctorService from '../services/DoctorService.js'
   
   export default {
     props: {
@@ -597,9 +598,21 @@
 
                 this.$store.commit("SET_AUTH_TOKEN", response.data.token);
                 this.$store.commit("SET_USER", response.data.user );
-                
 
                 //for generating a doctor_office and office
+                
+                DoctorService.createDoctorOffice(office).then()
+                  .catch((error)=>{
+                    const response = error.response;
+                    this.registrationErrors = true;
+                    this.registrationErrorMsg = 'Could not create office for doctor';
+                    
+                    if (response.status === 400) {
+                    }
+                  } 
+                );
+
+                
 
                 this.$store.commit("LOGOUT");
 
