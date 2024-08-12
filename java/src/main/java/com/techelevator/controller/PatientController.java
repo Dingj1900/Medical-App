@@ -116,7 +116,7 @@ public class PatientController {
         List<AppointmentDto> patientAppointment= new ArrayList<>();
 
         try {
-            patientAppointment= appointmentDao.getAppointments();
+            patientAppointment= appointmentDao.getAppointments(userDao.getUserByUsername(principal.getName()).getId());
         }catch (DaoException error){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
