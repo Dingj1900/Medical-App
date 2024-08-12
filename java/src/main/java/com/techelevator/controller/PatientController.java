@@ -20,7 +20,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 
-//@PreAuthorize("hasRole('Patient')") // rash
+@PreAuthorize("hasRole('PATIENT')") // rash
 
 public class PatientController {
 

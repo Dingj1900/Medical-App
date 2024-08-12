@@ -148,55 +148,9 @@
           </div>
         </div>
       </div>
-      
-      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">time placeholder</span>
-        <h4>patient name</h4><br>
-        <hr class="w3-clear">
-        <p>appointment information</p>
-          <div class="w3-row-padding" style="margin:0 -16px">
-            <div class="w3-half">
-            </div>
-            <div class="w3-half">
-          </div>
-        </div>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-address-book"></i> Appointment Details</button> 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> Comments</button> 
+
+        <AppointmentsList v-bind:appointmentsList="appts"/>
       </div>
-      
-      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">time placeholder</span>
-        <h4>patient name</h4><br>
-        <hr class="w3-clear">
-        <p>appointment information</p>
-          <div class="w3-row-padding" style="margin:0 -16px">
-            <div class="w3-half">
-            </div>
-            <div class="w3-half">
-          </div>
-        </div>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-address-book"></i> appointment details</button> 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> Comments</button> 
-      </div>
-      
-      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">time placeholder</span>
-        <h4>patient name</h4><br>
-        <hr class="w3-clear">
-        <p>appointment information</p>
-          <div class="w3-row-padding" style="margin:0 -16px">
-            <div class="w3-half">
-            </div>
-            <div class="w3-half">
-          </div>
-        </div>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-address-book"></i> appointment details</button> 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> Comments</button> 
-      </div>
-          </div>
 
     <!-- End Middle Column -->
     
@@ -246,11 +200,26 @@
 </template>
 
 <script>
-
-// import OfficeView from '../views/OfficeView.vue';
+import DoctorService from '../services/DoctorService.js';
+import AppointmentsList from '../components/AppointmentsList.vue';
 
 export default {
-  
+    components: {
+      AppointmentsList
+    },
+    data() {
+      return {
+        appts: []
+      };
+      
+    },
+    created() {
+      DoctorService.getAppointmentsByDoctor().then((response) => {
+      // IN THE FUTURE
+      this.appts = response.data;
+    });
+
+    }
 
 };
 </script>

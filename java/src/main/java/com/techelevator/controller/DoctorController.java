@@ -19,7 +19,9 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-//@PreAuthorize("hasRole('Doctor')")
+//@PreAuthorize("hasRole('PROVIDER')")
+//@PreAuthorize("isAuthenticated()")
+@PreAuthorize("hasRole('PROVIDER')")
 public class DoctorController {
 
     @Autowired
