@@ -52,7 +52,6 @@
 
 <script>
 
-import AppointmentService from '../services/AppointmentService.js';
 
 export default {
   data() {
