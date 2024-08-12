@@ -12,15 +12,15 @@ public class Appointment {
     private  int doctorId;
     private LocalTime apptFrom;
     private LocalTime apptTo;
-    private boolean isMonday;
-    private boolean isTuesday;
-    private boolean isWednesday;
-    private boolean isThursday;
-    private boolean isFriday;
-    private boolean isSaturday;
-    private boolean isSunday;
-    private boolean isNotified;
-    private boolean isApproved;
+    private boolean openMonday;
+    private boolean openTuesday;
+    private boolean openWednesday;
+    private boolean openThursday;
+    private boolean openFriday;
+    private boolean openSaturday;
+    private boolean openSunday;
+    private boolean notified;
+    private boolean approved;
 
     public Appointment () {}
 
@@ -32,15 +32,15 @@ public class Appointment {
         this.doctorId = doctorId;
         this.apptFrom = apptFrom;
         this.apptTo = apptTo;
-        this.isMonday = isMonday;
-        this.isTuesday = isTuesday;
-        this.isWednesday = isWednesday;
-        this.isThursday = isThursday;
-        this.isFriday = isFriday;
-        this.isSaturday = isSaturday;
-        this.isSunday = isSunday;
-        this.isNotified = isNotified;
-        this.isApproved = isApproved;
+        this.openMonday = openMonday;
+        this.openTuesday = openTuesday;
+        this.openWednesday = openWednesday;
+        this.openThursday = openThursday;
+        this.openFriday = openFriday;
+        this.openSaturday = openSaturday;
+        this.openSunday = openSunday;
+        this.notified = notified;
+        this.approved = approved;
     }
 
     public int getAppointmentId() {
@@ -49,6 +49,14 @@ public class Appointment {
 
     public void setAppointmentId(int appointmentId) {
         this.appointmentId = appointmentId;
+    }
+
+    public int getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(int serviceId) {
+        this.serviceId = serviceId;
     }
 
     public int getOfficeId() {
@@ -75,22 +83,6 @@ public class Appointment {
         this.doctorId = doctorId;
     }
 
-    public boolean isNotified() {
-        return isNotified;
-    }
-
-    public void setNotified(boolean notified) {
-        isNotified = notified;
-    }
-
-    public boolean isApproved() {
-        return isApproved;
-    }
-
-    public void setApproved(boolean approved) {
-        isApproved = approved;
-    }
-
     public LocalTime getApptFrom() {
         return apptFrom;
     }
@@ -107,68 +99,76 @@ public class Appointment {
         this.apptTo = apptTo;
     }
 
-    public boolean isMonday() {
-        return isMonday;
+    public boolean isOpenMonday() {
+        return openMonday;
     }
 
-    public void setMonday(boolean monday) {
-        isMonday = monday;
+    public void setOpenMonday(boolean openMonday) {
+        this.openMonday = openMonday;
     }
 
-    public boolean isTuesday() {
-        return isTuesday;
+    public boolean isOpenTuesday() {
+        return openTuesday;
     }
 
-    public void setTuesday(boolean tuesday) {
-        isTuesday = tuesday;
+    public void setOpenTuesday(boolean openTuesday) {
+        this.openTuesday = openTuesday;
     }
 
-    public boolean isWednesday() {
-        return isWednesday;
+    public boolean isOpenWednesday() {
+        return openWednesday;
     }
 
-    public void setWednesday(boolean wednesday) {
-        isWednesday = wednesday;
+    public void setOpenWednesday(boolean openWednesday) {
+        this.openWednesday = openWednesday;
     }
 
-    public boolean isThursday() {
-        return isThursday;
+    public boolean isOpenThursday() {
+        return openThursday;
     }
 
-    public void setThursday(boolean thursday) {
-        isThursday = thursday;
+    public void setOpenThursday(boolean openThursday) {
+        this.openThursday = openThursday;
     }
 
-    public boolean isFriday() {
-        return isFriday;
+    public boolean isOpenFriday() {
+        return openFriday;
     }
 
-    public void setFriday(boolean friday) {
-        isFriday = friday;
+    public void setOpenFriday(boolean openFriday) {
+        this.openFriday = openFriday;
     }
 
-    public boolean isSaturday() {
-        return isSaturday;
+    public boolean isOpenSaturday() {
+        return openSaturday;
     }
 
-    public void setSaturday(boolean saturday) {
-        isSaturday = saturday;
+    public void setOpenSaturday(boolean openSaturday) {
+        this.openSaturday = openSaturday;
     }
 
-    public boolean isSunday() {
-        return isSunday;
+    public boolean isOpenSunday() {
+        return openSunday;
     }
 
-    public void setSunday(boolean sunday) {
-        isSunday = sunday;
+    public void setOpenSunday(boolean openSunday) {
+        this.openSunday = openSunday;
     }
 
-    public int getServiceId() {
-        return serviceId;
+    public boolean isNotified() {
+        return notified;
     }
 
-    public void setServiceId(int serviceId) {
-        this.serviceId = serviceId;
+    public void setNotified(boolean notified) {
+        this.notified = notified;
+    }
+
+    public boolean isApproved() {
+        return approved;
+    }
+
+    public void setApproved(boolean approved) {
+        this.approved = approved;
     }
 }
 

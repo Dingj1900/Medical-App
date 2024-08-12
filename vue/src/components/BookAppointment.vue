@@ -72,25 +72,30 @@ export default {
   },
 
   methods: {
-    appointmentForm() {
+    handleSubmit() {
 
       const newApptObject = 
       {
-        first: this.firstName,
-        last: this.lastName,
-        reason: this.reason,
-        apptDate: this.appointmentDate,
-        apptTime: this.appointmentTime,
-        doctor: this.doctorId,
-        apptId: this.appointmentId
+        serviceId: this.serviceId,
+        officeId: this.officeId,
+        doctorId: this.doctorId,
+        patientId:this.patientId,
+        apptFrom: this.apptFrom,
+        apptTo: this.apptTo,
+        openMonday: this.openMonday,
+        openTuesday: this.openTuesday,
+        openWednesday: this.openWednesday,
+        openThursday: this.openThursday,
+        openFriday: this.openFriday,
+        openSaturday: this.openSaturday,
+        openSunday: this.openSunday,
+        notified: this.notified,
+        approved: this.approved,
+  
       };
 
-      AppointmentService.createAppointment(newApptObject).then((r) => { 
-        console.log(r);
+      AppointmentService.createAppointment(newApptObject).then((response) => {console.log(response)}).catch((error) => {console.log(error)});
         this.$router.push({ name: "patientView" });
-      }).catch((e) => { console.error(e)});
-
-
     }
   }
 
