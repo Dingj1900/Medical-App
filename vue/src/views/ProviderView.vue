@@ -219,22 +219,33 @@ export default {
       };
       
     },
-    created() {
-      DoctorService.getAppointmentsByDoctor().then((response) => {
+    methods:{
+
+      getAppointments(){
+        DoctorService.getAppointmentsByDoctor().then((response) => {
         if(response.status == 200){
           this.appointments = response.data;
       }
       }).catch((error)=>{
         console.log("Cannot find appointments for doctor");
       });
-
-      DoctorService.getOfficeByDoctor().then((response)=>{
+      },
+      getOffice(){
+        DoctorService.getOfficeByDoctor().then((response)=>{
         if(response.status == 200){
-          this.office = response.data.office;
+          this.office = response.data;
         }
       }).catch((error)=>{
         console.log("Cannot find office for doctor");
       });
+      }
+
+    },
+    created() {
+      
+      this.getAppointments();
+      this.getOffice();
+     
 
     }
 
