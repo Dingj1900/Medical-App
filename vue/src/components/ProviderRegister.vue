@@ -563,8 +563,8 @@
           hoursTo: '',
           hoursFrom: '',
           officeAddress: '',
-            officeName: '',
-            officePhone: '',
+          officeName: '',
+          officePhone: '',
         },
         showValidationMessage: false,
         registrationErrors: false,
@@ -594,29 +594,6 @@
             .register(this.user)
             .then((response) => {
               if (response.status == 201) {
-                console.log("success!");
-
-                this.$store.commit("SET_AUTH_TOKEN", response.data.token);
-                this.$store.commit("SET_USER", response.data.user );
-
-                //for generating a doctor_office and office
-                
-                DoctorService.createDoctorOffice(office).then()
-                  .catch((error)=>{
-                    const response = error.response;
-                    this.registrationErrors = true;
-                    this.registrationErrorMsg = 'Could not create office for doctor';
-                    
-                    if (response.status === 400) {
-                    }
-                  } 
-                );
-
-                
-
-                this.$store.commit("LOGOUT");
-
-
 
                 this.$router.push({
                   path: '/login',

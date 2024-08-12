@@ -8,7 +8,7 @@ getAppointmentsByDoctor() {
 },
 
 // previously get
-getOfficeByDoctor(id) {
+getOfficeByDoctor() {
   return axios.get('/provider/office');
 },
 //previously add

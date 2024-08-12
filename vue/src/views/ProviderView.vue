@@ -52,11 +52,15 @@
       <div class="w3-card w3-round w3-white">
         <div class="w3-container">
          <h4 class="w3-center">My Profile</h4>
-         <p class="w3-center"><img src="/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+         <!--img src="/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" -->
+         <p class="w3-center">Dr. {{ this.$store.state.user.firstName }} {{this.$store.state.user.lastName}}</p>
          <hr>
-         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
-         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
-         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> {{ this.$store.state.user.phoneNumber }}</p>
+         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> {{ this.$store.state.user.email }}</p>
+         
+         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> Office: {{ office.officeName }}</p>
+         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{ office.officeAddress }}</p>
+         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{ office.phoneNumber }} </p>
         </div>
       </div>
       <br>
@@ -149,8 +153,9 @@
         </div>
       </div>
 
-        <AppointmentsList v-bind:appointmentsList="appts"/>
-      </div>
+      <ProviderAppointment v-for = "appointment in appointments" :key ="appointment.appointmentId" :appointmentDetails="appointment"/>
+        
+    </div>
 
     <!-- End Middle Column -->
     
@@ -201,23 +206,35 @@
 
 <script>
 import DoctorService from '../services/DoctorService.js';
-import AppointmentsList from '../components/AppointmentsList.vue';
+import ProviderAppointment from '../components/ProviderAppointment.vue';
 
 export default {
     components: {
-      AppointmentsList
+      ProviderAppointment
     },
     data() {
       return {
-        appts: []
+        appointments: [],
+        office: {}
       };
       
     },
     created() {
       DoctorService.getAppointmentsByDoctor().then((response) => {
-      // IN THE FUTURE
-      this.appts = response.data;
-    });
+        if(response.status == 200){
+          this.appointments = response.data;
+      }
+      }).catch((error)=>{
+        console.log("Cannot find appointments for doctor");
+      });
+
+      DoctorService.getOfficeByDoctor().then((response)=>{
+        if(response.status == 200){
+          this.office = response.data.office;
+        }
+      }).catch((error)=>{
+        console.log("Cannot find office for doctor");
+      });
 
     }
 
