@@ -85,7 +85,7 @@ public class JdbcDoctorDao implements DoctorDao {
 
         String sql = "INSERT INTO office " +
                 "(office_name, office_address, phone_number, hours_from, hours_to) " +
-                "values ((TRIM(?), ?, ?, ?, ?) RETURNING office_id";
+                "values (TRIM(?), ?, ?, ?, ?) RETURNING office_id";
 
         String sql2 = "INSERT INTO doctor_office " +
                 "(doctor_id, office_id) " +

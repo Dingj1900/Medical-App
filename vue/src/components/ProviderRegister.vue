@@ -445,16 +445,16 @@
           <div><label for="hoursFrom">Hours From</label>
           <select name="hoursFrom" id="hoursFrom" v-model="user.hoursFrom" required autofocus>
             <option disabled selected>Hours From</option>
-            <option value="24:00:00">12:00am</option>
-            <option value="1:00:00">1:00am</option>
-            <option value="2:00:00">2:00am</option>
-            <option value="3:00:00">3:00am</option>
-            <option value="4:00:00">4:00am</option>
-            <option value="5:00:00">5:00am</option>
-            <option value="6:00:00">6:00am</option>
-            <option value="7:00:00">7:00am</option>
-            <option value="8:00:00">8:00am</option>
-            <option value="9:00:00">9:00am</option>
+            <option value="00:00:00">12:00am</option>
+            <option value="01:00:00">1:00am</option>
+            <option value="02:00:00">2:00am</option>
+            <option value="03:00:00">3:00am</option>
+            <option value="04:00:00">4:00am</option>
+            <option value="05:00:00">5:00am</option>
+            <option value="06:00:00">6:00am</option>
+            <option value="07:00:00">7:00am</option>
+            <option value="08:00:00">8:00am</option>
+            <option value="09:00:00">9:00am</option>
             <option value="10:00:00">10:00am</option>
             <option value="11:00:00">11:00am</option>
             <option value="12:00:00">12:00pm</option>
@@ -504,15 +504,15 @@
         <p>Please register office information.</p>
         <div class="form-input-group">
           <label for="officeName">Office Name</label>
-          <input type="text" id="officeName" v-model="office.officeName" required autofocus />
+          <input type="text" id="officeName" v-model="user.officeName" required autofocus />
         </div>
         <div class="form-input-group">
           <label for="officeAddress">Office Address</label>
-          <input type="text" id="officeAddress" v-model="office.officeAddress" required autofocus />
+          <input type="text" id="officeAddress" v-model="user.officeAddress" required autofocus />
         </div>
         <div class="form-input-group">
           <label for="officePhone">Phone Number</label>
-          <input type="text" id="officePhone" v-model="office.phoneNumber" required autofocus />
+          <input type="text" id="officePhone" v-model="user.officePhone" required autofocus />
         </div>
         <div>
         </div>
@@ -561,16 +561,11 @@
           openSaturday: false,
           hoursTo: '',
           hoursFrom: '',
+          officeAddress: '',
+            officeName: '',
+            officePhone: '',
         },
         showValidationMessage: false,
-        office: {
-            officeAddress: '',
-            officeName: '',
-            phoneNumber: '',
-            hoursFrom: '',
-            hoursTo: '',
-            
-        },
         registrationErrors: false,
         registrationErrorMsg: 'There were problems registering this user.',
       };
@@ -588,14 +583,17 @@
           
         
       register() {
+        console.log("START_REGISTER");
         if (this.user.password != this.user.confirmPassword) {
           this.registrationErrors = true;
           this.registrationErrorMsg = 'Password & Confirm Password do not match.';
         } else {
+          console.log("sending register");
           authService
             .register(this.user)
             .then((response) => {
               if (response.status == 201) {
+                console.log("success!");
 
                 this.$store.commit("SET_AUTH_TOKEN", response.data.token);
                 this.$store.commit("SET_USER", response.data.user );
@@ -614,6 +612,8 @@
               }
             })
             .catch((error) => {
+              console.log(error);
+
               const response = error.response;
               this.registrationErrors = true;
               if (response.status === 400) {
@@ -837,4 +837,3 @@ select {
 }
 
   </style>
-  
