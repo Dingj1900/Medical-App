@@ -42,6 +42,7 @@ public class JdbcPatientDao implements PatientDao {
         return doctor;
 
     }
+
 @Override
     public List<Appointment> getAppointments(int patientId){
         List<Appointment> appointments = new ArrayList<>();

@@ -9,6 +9,7 @@ VALUES (1, 'user', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC
        (12, 'admin', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'ROLE_ADMIN', 'Doctor', 'Glover',
 	    'k', 'Female', '419222', 'doc@gmail.com', '1990-02-02', '123 sunny st', 'Lima', 'OH', '45801', '10:00:00','18:00:00',
 	    'false','true','false','true', 'false', 'true', 'false');
+	    ()
 
 
 INSERT INTO office(office_id,office_name,office_address,phone_number,hours_from,hours_to)
