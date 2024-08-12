@@ -73,8 +73,9 @@
   </div>
 </div>
 
-<div class="w3-third">
-  <div class="w3-card w3-container" style="min-height:460px">
+<div class="w3-third" style="background-color:grey;">
+  <div class="w3-card w3-container" style="min-height:460px" >
+  <div class="officeInfo">
   <h3>Design</h3><br>
   <i class="fa fa-diamond w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
   <p>Paper like design</p>
@@ -84,5 +85,10 @@
   </div>
 </div>
 </div>
+</div>
 </body>
 </template>
+<script>
+</script>
+<style scoped>
+</style>
