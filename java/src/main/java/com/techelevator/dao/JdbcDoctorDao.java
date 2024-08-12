@@ -24,7 +24,7 @@ public class JdbcDoctorDao implements DoctorDao {
 //@Override
 //    public Appointment getAppointmentByDoctor(int doctorId) {
 //        Appointment appointment = null;
-//
+git//
 //        String sql = "SELECT * " +
 //                "FROM appointment " +
 //                "WHERE doctor_id = ? ";
