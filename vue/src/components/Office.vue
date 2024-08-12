@@ -216,14 +216,6 @@
 
 
 
-
-
-
-
-
-
-
-
 <script>
     import DoctorService from '../services/DoctorService';
 import AuthService from '../services/AuthService';

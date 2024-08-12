@@ -42,6 +42,25 @@ public class JdbcPatientDao implements PatientDao {
         return doctor;
 
     }
+
+//@Override
+    public List<Appointment> getAppointments(int patientId){
+        List<Appointment> appointments = new ArrayList<>();
+
+        String sql = "SELECT * " +
+                "FROM appointment " + "WHERE patient_id = ? ";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
+            while (results.next()) {
+                Appointment appointment = mapRowToAppointment(results);
+                appointments.add(appointment);
+            }
+        } catch(CannotGetJdbcConnectionException e){
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return appointments;
+    }
+@Override
 //@Override
 //    public List<Appointment> getAppointments(int patientId){
 //        List<Appointment> appointments = new ArrayList<>();
@@ -59,7 +78,7 @@ public class JdbcPatientDao implements PatientDao {
 //        }
 //        return appointments;
 //    }
-    @Override
+//    @Override
     public int createAppointment(Appointment appointment){
         int newAppointmentId = 0;
 
