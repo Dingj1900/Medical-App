@@ -69,15 +69,15 @@ public class JdbcPatientDao implements PatientDao {
         int doctorId = appointment.getDoctorId();
         LocalTime apptFrom = appointment.getApptFrom();
         LocalTime apptTo = appointment.getApptTo();
-        boolean isMonday = appointment.isMonday();
-        boolean isTuesday = appointment.isTuesday();
-        boolean isWednesday = appointment.isWednesday();
-        boolean isThursday = appointment.isThursday();
-        boolean isFriday = appointment.isFriday();
-        boolean isSaturday = appointment.isSaturday();
-        boolean isSunday = appointment.isSunday();
-        boolean isNotified = appointment.isNotified();
-        boolean isApproved = appointment.isApproved();
+        boolean openMonday = appointment.isOpenMonday();
+        boolean openTuesday = appointment.isOpenTuesday();
+        boolean openWednesday = appointment.isOpenWednesday();
+        boolean openThursday = appointment.isOpenThursday();
+        boolean openFriday = appointment.isOpenFriday();
+        boolean openSaturday = appointment.isOpenSaturday();
+        boolean openSunday = appointment.isOpenSunday();
+        boolean notified = appointment.isNotified();
+        boolean approved = appointment.isApproved();
 
         String sql = "INSERT INTO appointment " +
                 "(service_id, office_id, patient_id, doctor_id, appt_from, appt_to, is_Monday, " +
@@ -88,8 +88,8 @@ public class JdbcPatientDao implements PatientDao {
 
         try {
             newAppointmentId = jdbcTemplate.queryForObject
-                    (sql, int.class, serviceId, officeId, patientId, doctorId, apptFrom, apptTo, isMonday, isTuesday, isWednesday, isThursday,
-                            isFriday, isSaturday, isSunday, isNotified, isApproved);
+                    (sql, int.class, serviceId, officeId, patientId, doctorId, apptFrom, apptTo, openMonday, openTuesday, openWednesday, openThursday,
+                            openFriday, openSaturday, openSunday, notified, approved);
 
             getAppointments(newAppointmentId);
 
@@ -186,13 +186,13 @@ public class JdbcPatientDao implements PatientDao {
                 appointment.setApptTo(rs.getTime("hours_to").toLocalTime());
             }
 
-            appointment.setMonday((boolean) rs.getObject("is_monday"));
-            appointment.setTuesday((boolean) rs.getObject("is_tuesday"));
-            appointment.setWednesday((boolean) rs.getObject("is_wednesday"));
-            appointment.setThursday((boolean) rs.getObject("is_thursday"));
-            appointment.setFriday((boolean) rs.getObject("is_friday"));
-            appointment.setSaturday((boolean) rs.getObject("is_saturday"));
-            appointment.setSunday((boolean) rs.getObject("is_sunday"));
+            appointment.setOpenMonday((boolean) rs.getObject("is_monday"));
+            appointment.setOpenTuesday((boolean) rs.getObject("is_tuesday"));
+            appointment.setOpenWednesday((boolean) rs.getObject("is_wednesday"));
+            appointment.setOpenThursday((boolean) rs.getObject("is_thursday"));
+            appointment.setOpenFriday((boolean) rs.getObject("is_friday"));
+            appointment.setOpenSaturday((boolean) rs.getObject("is_saturday"));
+            appointment.setOpenSunday((boolean) rs.getObject("is_sunday"));
             appointment.setNotified((boolean)rs.getObject("is_notified"));
             appointment.setApproved((boolean)rs.getObject("is_approved"));
         } catch (NullPointerException error){
@@ -232,14 +232,7 @@ public class JdbcPatientDao implements PatientDao {
             user.setOpenFriday(rs.getBoolean("is_friday"));
             user.setOpenSaturday(rs.getBoolean("is_saturday"));
             user.setOpenSunday(rs.getBoolean("is_sunday"));
-//
-//            user.setOpenMonday((boolean) rs.getObject("is_monday"));
-//            user.setOpenTuesday((boolean) rs.getObject("is_tuesday"));
-//            user.setOpenWednesday((boolean) rs.getObject("is_wednesday"));
-//            user.setOpenThursday((boolean) rs.getObject("is_thursday"));
-//            user.setOpenFriday((boolean) rs.getObject("is_friday"));
-//            user.setOpenSaturday((boolean) rs.getObject("is_saturday"));
-//            user.setOpenSunday((boolean) rs.getObject("is_sunday"));
+
         } catch (NullPointerException error) {
             throw new DaoException("Null pointer exception for a user value", error);
         } catch (Exception error) {

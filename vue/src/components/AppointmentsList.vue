@@ -1,30 +1,21 @@
 <template>
-  <table>
-          <thead>
-              <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Reason</th>
-                  <th>Appointment Date</th>
-                  <th>Appointment Time</th>
-                  <th>Doctor Id</th>
-                  <th>Appointment Id</th>
-              </tr>
-          </thead>
-
-        <tbody>
-            <tr v-for="appointments in appointmentsList" v-bind:key="appointments.appointmentId">
-                <td>{{ appointments.first }}</td>
-                <td>{{ appointments.last }}</td>
-                <td>{{ appointments.reason }}</td>
-                <td>{{ appointments.apptDate }}</td>
-                <td>{{ appointments.doctor }}</td>
-                <td>{{ appointments.apptId }}</td>
-
-            </tr>
-        </tbody>
-
-      </table>
+    <!-- <div v-for="appointment in appointmentsList" v-bind:key="appointment.appointmentId">
+    </div> -->
+  <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">time placeholder</span>
+        <h4>patient name</h4><br>
+        <hr class="w3-clear">
+        <p>appointment information</p>
+          <div class="w3-row-padding" style="margin:0 -16px">
+            <div class="w3-half">
+            </div>
+            <div class="w3-half">
+          </div>
+        </div>
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-address-book"></i> Appointment Details</button> 
+        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> Comments</button> 
+      </div>
 </template>
 
 <script>

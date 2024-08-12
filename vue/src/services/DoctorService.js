@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export default {
  
- //previously gwtAppointments
-  getAppointmentsByDoctor() {
+//previously gwtAppointments
+getAppointmentsByDoctor() {
     return axios.get('/provider/appointments');
 },
 
@@ -20,13 +20,13 @@ updateOfficeById(officeObject) {
   return axios.put('/provider/office', officeObject);
 },
 
- getServicesByDoctor() {
+getServicesByDoctor() {
     return axios.get('/provider/services');
   },
-  updateServiceById(servicesObject) {
+updateServiceById(servicesObject) {
     return axios.put('/provider/services', servicesObject)
   },
-  createService(servicesObject){
+createService(servicesObject){
     return axios.post('/provider/services', servicesObject)
   }
 

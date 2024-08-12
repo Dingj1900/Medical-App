@@ -217,7 +217,7 @@
 
 
 <script>
-import OfficeService from '../services/OfficeService';
+    import DoctorService from '../services/DoctorService';
 import AuthService from '../services/AuthService';
 export default {
   data() {
@@ -283,7 +283,7 @@ export default {
   async mounted() {
     try {
       const [officeResponse, userResponse, servicesResponse] = await Promise.all([
-        OfficeService.get(),
+        DoctorService.getOfficeByDoctor(),
         // AuthService.getUserInfo(), 
         // ServicesService.getServiceInfo() 
       ]);
