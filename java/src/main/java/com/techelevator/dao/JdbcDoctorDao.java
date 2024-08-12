@@ -259,13 +259,13 @@ public class JdbcDoctorDao implements DoctorDao {
                 appointment.setApptTo(rs.getTime("hours_to").toLocalTime());
             }
 
-            appointment.setMonday((boolean) rs.getObject("is_monday"));
-            appointment.setTuesday((boolean) rs.getObject("is_tuesday"));
-            appointment.setWednesday((boolean) rs.getObject("is_wednesday"));
-            appointment.setThursday((boolean) rs.getObject("is_thursday"));
-            appointment.setFriday((boolean) rs.getObject("is_friday"));
-            appointment.setSaturday((boolean) rs.getObject("is_saturday"));
-            appointment.setSunday((boolean) rs.getObject("is_sunday"));
+            appointment.setOpenMonday((boolean) rs.getObject("is_monday"));
+            appointment.setOpenTuesday((boolean) rs.getObject("is_tuesday"));
+            appointment.setOpenWednesday((boolean) rs.getObject("is_wednesday"));
+            appointment.setOpenThursday((boolean) rs.getObject("is_thursday"));
+            appointment.setOpenFriday((boolean) rs.getObject("is_friday"));
+            appointment.setOpenSaturday((boolean) rs.getObject("is_saturday"));
+            appointment.setOpenSunday((boolean) rs.getObject("is_sunday"));
             appointment.setNotified((boolean)rs.getObject("is_notified"));
             appointment.setApproved((boolean)rs.getObject("is_approved"));
         } catch (NullPointerException error){
