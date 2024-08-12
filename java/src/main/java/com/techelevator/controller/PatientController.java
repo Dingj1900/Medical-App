@@ -1,12 +1,10 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.AppointmentDao;
 import com.techelevator.dao.PatientDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.exception.DaoException;
-import com.techelevator.model.Appointment;
-import com.techelevator.model.Office;
-import com.techelevator.model.Services;
-import com.techelevator.model.User;
+import com.techelevator.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -29,6 +27,9 @@ public class PatientController {
 
     @Autowired
     private PatientDao patientDao;
+
+    @Autowired
+    private AppointmentDao appointmentDao;
 
     //Get all appointments for a patient
     @ResponseStatus(HttpStatus.OK)
@@ -108,6 +109,21 @@ public class PatientController {
         }
         return patientOffices;
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path ="/patient/appointments", method = RequestMethod.GET)
+    public List<AppointmentDto>getAppointment(Principal principal){
+        List<AppointmentDto> patientAppointment= new ArrayList<>();
+
+        try {
+            patientAppointment= appointmentDao.getAppointments();
+        }catch (DaoException error){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        return patientAppointment;
+    }
+
+
 
     //update an existing patient appointment
 //    @RequestMapping(path = "/patient/appointment/{id}", method = RequestMethod.PUT)
