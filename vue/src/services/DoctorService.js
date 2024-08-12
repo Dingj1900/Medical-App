@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 export default {
  
 //previously gwtAppointments
@@ -8,7 +9,7 @@ getAppointmentsByDoctor() {
 },
 
 // previously get
-getOfficeByDoctor(id) {
+getOfficeByDoctor() {
   return axios.get('/provider/office');
 },
 //previously add

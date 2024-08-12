@@ -33,13 +33,14 @@
       <div class="w3-card w3-round w3-white">
         <div class="w3-container">
          <h4 class="w3-center">Patient Profile</h4>
-         <p class="w3-center"><img src="/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+         <p class="w3-center">{{ this.$store.state.user.firstName }} {{this.$store.state.user.lastName}}</p>
          <hr>
 
          <!-- display info under profile picture, want to make this editable -->
-         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
-         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
-         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> {{ this.$store.state.user.phoneNumber }}</p>
+         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> {{ this.$store.state.user.email }}</p>
+         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{ this.$store.state.user.address }}, {{ this.$store.state.user.city }}, {{ this.$store.state.user.stateAbbreviation }} {{ this.$store.state.user.zipcode }}</p>
+         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> {{ this.$store.state.user.dateOfBirth }}</p>
         </div>
       </div>
       <br>
@@ -195,12 +196,14 @@ export default {
         (response)=>{
           if(response.status == 200){
             //will need the name of the object returned
-            this.appointments = response.data.AppointmentDto;
+            this.appointments = response.data;
           }
         }
       )
       .catch(
-        ()=>{}
+        (error)=>{
+          console.log("Cannot find appointments for patient");
+        }
       );
   }
 
