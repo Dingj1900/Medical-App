@@ -18,9 +18,8 @@ INSERT INTO services(service_name, service_details, hourly_rate, doctor_id)
 VALUES ( 'help', 'my arm literally fell off', 1.2, 12),
        ( 'help', 'my leg literally fell off', 1.4, 12);
 
-INSERT INTO appointment(appointment_id, service_id, office_id, patient_id, doctor_id, appt_from, appt_to, is_monday, is_tuesday, is_wednesday,
-        is_thursday, is_friday, is_saturday, is_sunday, is_notified, is_approved)
-VALUES(121, 2, 111, 1, 12, '13:00:00', '14:00:00', 'true', 'false', 'false', 'false', 'false', 'false', 'false', 'true', 'true');
+INSERT INTO appointment(appointment_id, service_id, office_id, patient_id, doctor_id, appt_date, is_notified, is_approved)
+VALUES(121, 2, 111, 1, 12,'20240922 09:00:00', 'true', 'true');
 
 
 
