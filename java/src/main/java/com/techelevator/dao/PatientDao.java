@@ -12,7 +12,7 @@ public interface PatientDao {
 
     User getDoctorByOfficeId(int officeId);
 
-    List<Appointment> getAppointments(int patientId);
+    //List<Appointment> getAppointments(int patientId);
 
     int createAppointment(Appointment appointment);
 

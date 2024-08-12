@@ -17,7 +17,6 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-
 @PreAuthorize("hasRole('PATIENT')") // rash
 
 public class PatientController {
@@ -32,21 +31,21 @@ public class PatientController {
     private AppointmentDao appointmentDao;
 
     //Get all appointments for a patient
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/patient/appointments", method = RequestMethod.GET)
-    public List<Appointment> getAppointments(Principal principal) {
-        List<Appointment> patientAppointment = new ArrayList<>();
-
-        int patientId = userDao.getUserByUsername(principal.getName()).getId(); // does it matter if it is userDAO or patientDAO?
-
-        try {
-            //get patient by id
-            patientAppointment= patientDao.getAppointments(patientId);
-        } catch (DaoException error) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-        }
-        return patientAppointment;
-    }
+//    @ResponseStatus(HttpStatus.OK)
+//    @RequestMapping(path = "/patient/appointments", method = RequestMethod.GET)
+//    public List<Appointment> getAppointments(Principal principal) {
+//        List<Appointment> patientAppointment = new ArrayList<>();
+//
+//        int patientId = userDao.getUserByUsername(principal.getName()).getId(); // does it matter if it is userDAO or patientDAO?
+//
+//        try {
+//            //get patient by id
+//            patientAppointment= patientDao.getAppointments(patientId);
+//        } catch (DaoException error) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+//        }
+//        return patientAppointment;
+//    }
     @ResponseStatus(HttpStatus.OK)
     @GetMapping ("/patient/office/{id}/provider")
     public User getDoctorByOfficeId(@PathVariable int officeId) {

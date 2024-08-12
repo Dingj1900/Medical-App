@@ -42,7 +42,8 @@ public class JdbcPatientDao implements PatientDao {
         return doctor;
 
     }
-@Override
+
+//@Override
     public List<Appointment> getAppointments(int patientId){
         List<Appointment> appointments = new ArrayList<>();
 
@@ -60,6 +61,24 @@ public class JdbcPatientDao implements PatientDao {
         return appointments;
     }
 @Override
+//@Override
+//    public List<Appointment> getAppointments(int patientId){
+//        List<Appointment> appointments = new ArrayList<>();
+//
+//        String sql = "SELECT * " +
+//                "FROM appointment " + "WHERE patient_id = ? ";
+//        try {
+//            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
+//            while (results.next()) {
+//                Appointment appointment = mapRowToAppointment(results);
+//                appointments.add(appointment);
+//            }
+//        } catch(CannotGetJdbcConnectionException e){
+//            throw new DaoException("Unable to connect to server or database", e);
+//        }
+//        return appointments;
+//    }
+//    @Override
     public int createAppointment(Appointment appointment){
         int newAppointmentId = 0;
 
@@ -91,7 +110,7 @@ public class JdbcPatientDao implements PatientDao {
                     (sql, int.class, serviceId, officeId, patientId, doctorId, apptFrom, apptTo, openMonday, openTuesday, openWednesday, openThursday,
                             openFriday, openSaturday, openSunday, notified, approved);
 
-            getAppointments(newAppointmentId);
+           // getAppointments(newAppointmentId);
 
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
