@@ -209,16 +209,17 @@
 
 import PatientSettings from '../components/PatientSettings.vue';
 import BookAppointment from '../components/BookAppointment.vue';
+
 import AppointmentsListVue from '../components/AppointmentsList.vue';
-import AppointmentService from '../services/AppointmentService.js';
+import PatientService from '../services/PatientService.js';
+
 
 
 
 export default {
   
   components: {
-   // PatientSettings,
-   // BookAppointment,
+
     AppointmentsListVue
     
   },
@@ -228,12 +229,14 @@ export default {
     };
   },
   created() {
-    // call the API to get the data!
-    AppointmentService.getAppointments().then((response) => {
-      // IN THE FUTURE
-      this.appointments = response.data;
-    });
-
+    PatientService.getAppointments().then(
+        (response)=>{
+          this.appointments = response.data.appointment;
+        }
+      )
+      .catch(
+        ()=>{}
+      );
   }
 
 };
