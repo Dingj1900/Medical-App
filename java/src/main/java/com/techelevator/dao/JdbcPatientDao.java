@@ -232,6 +232,7 @@ public class JdbcPatientDao implements PatientDao {
             user.setOpenFriday(rs.getBoolean("is_friday"));
             user.setOpenSaturday(rs.getBoolean("is_saturday"));
             user.setOpenSunday(rs.getBoolean("is_sunday"));
+
 //
 //            user.setOpenMonday((boolean) rs.getObject("is_monday"));
 //            user.setOpenTuesday((boolean) rs.getObject("is_tuesday"));
