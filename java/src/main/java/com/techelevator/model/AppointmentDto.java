@@ -14,17 +14,9 @@ public class AppointmentDto {
         private int officeId;
         private int patientId;
         private  int doctorId;
-        private LocalTime apptFrom;
-        private LocalTime apptTo;
-        private boolean openMonday;
-        private boolean openTuesday;
-        private boolean openWednesday;
-        private boolean openThursday;
-        private boolean openFriday;
-        private boolean openSaturday;
-        private boolean openSunday;
         private boolean notified;
         private boolean approved;
+        private String apptDate;
 
         public AppointmentDto () {}
 
@@ -50,7 +42,15 @@ public class AppointmentDto {
 //        this.openSunday = openSunday;
 //        this.notified = notified;
 //        this.approved = approved;
-//    }
+
+
+    public String getApptDate() {
+        return apptDate;
+    }
+
+    public void setApptDate(String appt_date) {
+        this.apptDate = appt_date;
+    }
 
     public String getDoctorName() {
         return doctorName;
@@ -132,77 +132,6 @@ public class AppointmentDto {
             this.doctorId = doctorId;
         }
 
-        public LocalTime getApptFrom() {
-            return apptFrom;
-        }
-
-        public void setApptFrom(LocalTime apptFrom) {
-            this.apptFrom = apptFrom;
-        }
-
-        public LocalTime getApptTo() {
-            return apptTo;
-        }
-
-        public void setApptTo(LocalTime apptTo) {
-            this.apptTo = apptTo;
-        }
-
-        public boolean isOpenMonday() {
-            return openMonday;
-        }
-
-        public void setOpenMonday(boolean openMonday) {
-            this.openMonday = openMonday;
-        }
-
-        public boolean isOpenTuesday() {
-            return openTuesday;
-        }
-
-        public void setOpenTuesday(boolean openTuesday) {
-            this.openTuesday = openTuesday;
-        }
-
-        public boolean isOpenWednesday() {
-            return openWednesday;
-        }
-
-        public void setOpenWednesday(boolean openWednesday) {
-            this.openWednesday = openWednesday;
-        }
-
-        public boolean isOpenThursday() {
-            return openThursday;
-        }
-
-        public void setOpenThursday(boolean openThursday) {
-            this.openThursday = openThursday;
-        }
-
-        public boolean isOpenFriday() {
-            return openFriday;
-        }
-
-        public void setOpenFriday(boolean openFriday) {
-            this.openFriday = openFriday;
-        }
-
-        public boolean isOpenSaturday() {
-            return openSaturday;
-        }
-
-        public void setOpenSaturday(boolean openSaturday) {
-            this.openSaturday = openSaturday;
-        }
-
-        public boolean isOpenSunday() {
-            return openSunday;
-        }
-
-        public void setOpenSunday(boolean openSunday) {
-            this.openSunday = openSunday;
-        }
 
         public boolean isNotified() {
             return notified;
