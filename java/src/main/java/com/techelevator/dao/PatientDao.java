@@ -1,9 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Appointment;
-import com.techelevator.model.Office;
-import com.techelevator.model.Services;
-import com.techelevator.model.User;
+import com.techelevator.model.*;
 
 import java.util.List;
 
@@ -17,7 +14,9 @@ public interface PatientDao {
 
     List<Office> getOffices();
 
-    List<Services> getServicesByDoctor(int doctorId);
+    List<Services> getServices();
+
+    public List<ServiceDto> getServiceInfoByName(String serviceName);
 
 
 

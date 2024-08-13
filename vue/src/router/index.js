@@ -14,7 +14,7 @@ import ProviderRegisterView from '../views/ProviderRegisterView.vue';
 import OfficeView from '../views/OfficeView.vue';
 import CalendarView from '../views/CalendarView.vue';
 import ServicesView from '../views/ServicesView.vue';
-import PatientServices from '../views/PatientServices.vue';
+import PatientServicesView from '../views/PatientServicesView.vue';
 // import Office from '../components/Office.vue';
 
 /**
@@ -124,8 +124,8 @@ const routes = [
   },
   {
     path: '/patient/services',
-    name: 'PatientServices',
-    component: PatientServices,
+    name: 'PatientServicesView',
+    component: PatientServicesView,
     meta: {
         requiresAuth: false
     }

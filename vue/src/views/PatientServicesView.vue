@@ -12,17 +12,18 @@
 
     <div>
         <div>
-
+            
         </div>
     </div>
 </template>
 
 <script>
 
+import PatientServices from '../components/PatientServices.vue';
 
 export default {
     components: {
-        
+        //PatientServices
     },
     data(){
         return{
@@ -32,12 +33,11 @@ export default {
     methods:{
 
     },
-    created:{
-        
-    }
 }
 
 </script>
 
 <style scoped>
+
+
 </style>

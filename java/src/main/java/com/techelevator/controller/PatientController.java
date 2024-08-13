@@ -121,6 +121,46 @@ public class PatientController {
         return patientAppointment;
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(path = "/patient/services")
+    public List<Services> getServices(){
+
+        List<Services> servicesList = new ArrayList<>();
+
+        try{
+            //return list of services, no param
+            servicesList = patientDao.getServices();
+
+        }catch(DaoException error){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
+        return servicesList;
+
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(path = "/patient/services/{serviceName}")
+    public List<ServiceDto> getServicesInfo(@PathVariable String serviceName){
+
+        List<ServiceDto> services = new ArrayList<>();
+
+
+        try{
+            //return list of services, param, service name
+            services = patientDao.getServiceInfoByName(serviceName);
+
+        }catch(DaoException error){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
+        return services;
+
+    }
+
+
+
+
 
 
     //update an existing patient appointment
