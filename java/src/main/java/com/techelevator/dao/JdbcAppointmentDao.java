@@ -20,10 +20,14 @@ public class JdbcAppointmentDao implements AppointmentDao {
     public JdbcAppointmentDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-     public List<AppointmentDto> getAppointments(int patientId){
+
+     @Override
+     public List<AppointmentDto> getAppointmentsByPatientId(int patientId){
 
         List<AppointmentDto> appointmentsDto = new ArrayList<>();
-        String sql = "SELECT first_name, last_name, service_details, office_name, office_address, office.phone_number, appt_date, is_notified, is_approved FROM appointment " +
+        String sql = "SELECT appointment_id, first_name, last_name, service_details, office_name, office_address, " +
+                "office.phone_number, appt_date, is_notified, is_approved, services.service_id, office.office_id, patient_id, appointment.doctor_id " +
+                "FROM appointment " +
                 "JOIN office ON office.office_id = appointment.office_id " +
                 "JOIN services ON services.service_id = appointment.service_id " +
                 "JOIN users ON users.user_id = appointment.doctor_id " +
@@ -39,7 +43,30 @@ public class JdbcAppointmentDao implements AppointmentDao {
         }
         return appointmentsDto;
     }
-    public int createAppointment(Appointment appointment){
+    @Override
+    public List<AppointmentDto> getAppointmentsByDoctorId(int doctorId){
+
+        List<AppointmentDto> appointmentsDto = new ArrayList<>();
+        String sql = "SELECT appointment_id, first_name, last_name, service_details, office_name, office_address, " +
+                "office.phone_number, appt_date, is_notified, is_approved, services.service_id, office.office_id, patient_id, appointment.doctor_id " +
+                "FROM appointment " +
+                "JOIN office ON office.office_id = appointment.office_id " +
+                "JOIN services ON services.service_id = appointment.service_id " +
+                "JOIN users ON users.user_id = appointment.doctor_id " +
+                "WHERE appointment.doctor_id = ?;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+            while (results.next()) {
+                AppointmentDto appointment = mapRowToAppointmentDto(results);
+                appointmentsDto.add(appointment);
+            }
+        } catch(CannotGetJdbcConnectionException e){
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return appointmentsDto;
+    }
+
+    public Appointment createAppointment(Appointment appointment){
         int newAppointmentId = 0;
         int serviceId = appointment.getServiceId();
         int officeId = appointment.getOfficeId();
@@ -49,26 +76,33 @@ public class JdbcAppointmentDao implements AppointmentDao {
         boolean approved = appointment.getApproved();
         boolean notified = appointment.getNotified();
 
-        String sql = "";
+        String sql = "INSERT INTO appointment " +
+                "(service_id, office_id, patient_id, doctor_id, appt_date, " +
+                "is_notified, is_approved) " +
+                "values (?, ?, ?, ?, to_timestamp(?, 'YYYY-MM-DD hh24:mi:ss'), ?, ?) " +
+                "RETURNING appointment_id;";
 
         try {
             newAppointmentId = jdbcTemplate.queryForObject
-                    (sql, int.class, serviceId, patientId, officeId, doctorId, apptDate, approved, notified);
+                    (sql, int.class, serviceId, officeId, patientId, doctorId, apptDate, notified, approved);
 
 
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {
+            e.printStackTrace();
             throw new DaoException("Data integrity violation", e);
-        }catch(NullPointerException error){
-            throw new DaoException("Unable to process user data, Null pointer exception", error);
         }
-        return newAppointmentId;
+
+        appointment.setAppointmentId(newAppointmentId);
+
+        return appointment;
 
     }
     private AppointmentDto mapRowToAppointmentDto(SqlRowSet rs){
         AppointmentDto appointment = new AppointmentDto();
 
+        appointment.setAppointmentId(rs.getInt("appointment_id"));
         appointment.setDoctorFirstName(rs.getString("first_name"));
         appointment.setDoctorLastName(rs.getString("last_name"));
         appointment.setServiceDescription(rs.getString("service_details"));
@@ -76,15 +110,16 @@ public class JdbcAppointmentDao implements AppointmentDao {
         appointment.setOfficeAddress(rs.getString("office_address"));
         appointment.setOfficePhone(rs.getString("phone_number"));
         appointment.setApptDate(rs.getString("appt_date"));
-        try {
 
-            appointment.setNotified((boolean)rs.getObject("is_notified"));
-            appointment.setApproved((boolean)rs.getObject("is_approved"));
-        } catch (NullPointerException error){
-            throw new DaoException("Null pointer exception for a user value", error);
-        }catch(Exception error){
-            throw new DaoException("general mapper error", error);
-        }
+
+        appointment.setServiceId(rs.getInt("service_id"));
+        appointment.setOfficeId(rs.getInt("office_id"));
+        appointment.setPatientId(rs.getInt("patient_id"));
+        appointment.setDoctorId(rs.getInt("doctor_id"));
+
+
+        appointment.setNotified(rs.getBoolean("is_notified"));
+        appointment.setApproved(rs.getBoolean("is_approved"));
 
         return appointment;
     }

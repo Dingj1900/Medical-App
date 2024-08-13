@@ -6,8 +6,9 @@ import com.techelevator.model.AppointmentDto;
 import java.util.List;
 
 public interface AppointmentDao {
-    List<AppointmentDto>getAppointments(int patientId);
+    List<AppointmentDto> getAppointmentsByPatientId(int patientId);
+    List<AppointmentDto> getAppointmentsByDoctorId(int doctorId);
 
-    int createAppointment(Appointment appointment);
+    Appointment createAppointment(Appointment appointment);
 
 }

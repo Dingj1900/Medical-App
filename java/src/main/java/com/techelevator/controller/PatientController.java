@@ -62,8 +62,8 @@ public class PatientController {
     // Create a new appointment for a patient
     @PostMapping("/patient/appointment")
     @ResponseStatus(HttpStatus.CREATED)
-    public int createAppointment(@RequestBody Appointment appointment) {
-        int newAppointmentId =0;
+    public Appointment createAppointment(@RequestBody Appointment appointment) {
+        Appointment newAppointment = null;
         try {
             // Retrieve the patient ID from the logged-in user
             //User user = userDao.getUserByUsername(principal.getName());
@@ -73,7 +73,7 @@ public class PatientController {
             //appointment.setPatientId(patientId);
 
             // Add appointment to the database
-            newAppointmentId = appointmentDao.createAppointment(appointment);
+            newAppointment = appointmentDao.createAppointment(appointment);
 
             // Return the newly created appointment
 
@@ -82,7 +82,7 @@ public class PatientController {
             // Log the error and return an appropriate HTTP status
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to create appointment", e);
         }
-        return newAppointmentId;
+        return newAppointment;
 
     }
     @ResponseStatus(HttpStatus.OK)
@@ -110,11 +110,11 @@ public class PatientController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path ="/patient/appointments", method = RequestMethod.GET)
-    public List<AppointmentDto>getAppointment(Principal principal){
+    public List<AppointmentDto> getPatientAppointments(Principal principal){
         List<AppointmentDto> patientAppointment= new ArrayList<>();
 
         try {
-            patientAppointment= appointmentDao.getAppointments(userDao.getUserByUsername(principal.getName()).getId());
+            patientAppointment= appointmentDao.getAppointmentsByPatientId(userDao.getUserByUsername(principal.getName()).getId());
         }catch (DaoException error){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
