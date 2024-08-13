@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.AppointmentDao;
 import com.techelevator.dao.DoctorDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.exception.DaoException;
@@ -29,6 +30,9 @@ public class DoctorController {
 
     @Autowired
     private DoctorDao doctorDao;
+
+    @Autowired
+    private AppointmentDao appointmentDao;
 
 
     //    @RequestMapping(path = "/doctor/register", method = RequestMethod.POST)
@@ -83,7 +87,7 @@ public class DoctorController {
 
 
         try {
-            appointmentList = doctorDao.getAppointmentsByDoctor(doctorId);
+            appointmentList = appointmentDao.getAppointmentsByDoctor(doctorId);
 
         } catch (DaoException error) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);

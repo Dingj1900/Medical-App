@@ -18,7 +18,6 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @PreAuthorize("hasRole('PATIENT')") // rash
-
 public class PatientController {
 
     @Autowired
@@ -74,7 +73,7 @@ public class PatientController {
             appointment.setPatientId(patientId);
 
             // Add appointment to the database
-            newAppointment = patientDao.createAppointment(appointment);
+            newAppointment = appointmentDao.createAppointment(appointment);
 
             // Return the newly created appointment
 
