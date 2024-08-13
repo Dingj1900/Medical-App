@@ -1,6 +1,9 @@
 <template>
-    <div v-for ="service in serviceInfo" v-bind:key ="service.id">
-        {{ service.user.firstName }}
+    <div v-for = "serviceInfoObject in serviceInfo" v-bind:key ="serviceInfoObject.id">
+        {{ serviceInfoObject.user.firstName + " " + serviceInfoObject.user.lastName }} : 
+        <a class="serviceLinks" @click.prevent="commitInfo(serviceInfoObject)">
+            Make an appointment for {{ serviceInfoObject.service.serviceName }}
+        </a>
     </div>
 </template>
 
@@ -8,11 +11,19 @@
 
 import PatientService from '../services/PatientService';
 
+
 export default{
+
     data(){
         return{
             serviceName: this.$route.params.name,
             serviceInfo: []
+        }
+    },
+    methods: {
+        commitInfo(service) {
+            this.$store.commit("SET_APPOINTMENT_INFO", service);
+            this.$router.push({name : 'PatientMakeAppointmentView'});
         }
     },
     created(){
@@ -35,4 +46,10 @@ export default{
 </script>
 
 <style scoped>
+    .serviceLinks {
+        text-decoration: underline;
+        color: blue;
+        cursor: pointer;
+        margin: 20px;
+    }
 </style>
