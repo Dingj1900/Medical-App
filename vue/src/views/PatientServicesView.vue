@@ -2,11 +2,11 @@
     <!-- Service bar -->
     <div>
         <div>
-            <h1>services</h1>
+            <h1>Services</h1>
         </div>
 
         <div>
-            <h2> Search <input /></h2>
+            <h2>Search<input /></h2>
         </div>
     </div>
 
