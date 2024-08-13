@@ -10,29 +10,41 @@
         </div>
     </div>
 
-    <div>
-        <div>
-            
-        </div>
+    <div v-for = "service in servicesList" v-bind:key ="service.id">
+        <router-link v-bind:to = "{name :'PatientServiceDetailsView', params:{name : service} }"  > 
+            Service: {{ service }}
+        </router-link>
     </div>
 </template>
 
 <script>
 
-import PatientServices from '../components/PatientServices.vue';
+import PatientService from '../services/PatientService.js';
+
 
 export default {
     components: {
-        //PatientServices
+        PatientService
     },
     data(){
         return{
-            services: []
+            servicesList: []
         }
     },
-    methods:{
-
-    },
+    created(){
+        PatientService.getServices().then(
+            (response)=>{
+                if(response.status == 200){
+                    console.log(response.data);
+                    this.servicesList = response.data;
+                }
+            }
+        ).catch(
+            (error)=>{
+                console.log("Cannot get services");
+            }
+        );
+    }
 }
 
 </script>

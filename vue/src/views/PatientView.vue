@@ -169,8 +169,6 @@
 
 <script>
 
-import PatientSettings from '../components/PatientSettings.vue';
-import BookAppointment from '../components/BookAppointment.vue';
 
 import PatientService from '../services/PatientService.js';
 import PatientAppointment from '../components/PatientAppointment.vue';
