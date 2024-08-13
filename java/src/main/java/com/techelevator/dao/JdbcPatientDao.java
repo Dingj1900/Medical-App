@@ -60,7 +60,7 @@ public class JdbcPatientDao implements PatientDao {
         }
         return appointments;
     }
-@Override
+
 //@Override
 //    public List<Appointment> getAppointments(int patientId){
 //        List<Appointment> appointments = new ArrayList<>();
@@ -79,50 +79,50 @@ public class JdbcPatientDao implements PatientDao {
 //        return appointments;
 //    }
 //    @Override
-    public int createAppointment(Appointment appointment){
-        int newAppointmentId = 0;
-
-        int serviceId = appointment.getServiceId();
-        int officeId = appointment.getOfficeId();
-        int patientId = appointment.getPatientId();
-        int doctorId = appointment.getDoctorId();
-        LocalTime apptFrom = appointment.getApptFrom();
-        LocalTime apptTo = appointment.getApptTo();
-        boolean openMonday = appointment.isOpenMonday();
-        boolean openTuesday = appointment.isOpenTuesday();
-        boolean openWednesday = appointment.isOpenWednesday();
-        boolean openThursday = appointment.isOpenThursday();
-        boolean openFriday = appointment.isOpenFriday();
-        boolean openSaturday = appointment.isOpenSaturday();
-        boolean openSunday = appointment.isOpenSunday();
-        boolean notified = appointment.isNotified();
-        boolean approved = appointment.isApproved();
-
-        String sql = "INSERT INTO appointment " +
-                "(service_id, office_id, patient_id, doctor_id, appt_from, appt_to, is_Monday, " +
-                "is_Tuesday, is_Wednesday, is_Thursday, is_Friday, is_Saturday, is_Sunday, " +
-                "is_notified, is_approved) " +
-                "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) " +
-                "RETURNING appointment_id";
-
-        try {
-            newAppointmentId = jdbcTemplate.queryForObject
-                    (sql, int.class, serviceId, officeId, patientId, doctorId, apptFrom, apptTo, openMonday, openTuesday, openWednesday, openThursday,
-                            openFriday, openSaturday, openSunday, notified, approved);
-
-           // getAppointments(newAppointmentId);
-
-        } catch (CannotGetJdbcConnectionException e) {
-            throw new DaoException("Unable to connect to server or database", e);
-        } catch (DataIntegrityViolationException e) {
-            throw new DaoException("Data integrity violation", e);
-        }catch(NullPointerException error){
-            throw new DaoException("Unable to process user data, Null pointer exception", error);
-        }
-        return newAppointmentId;
-
-    }
-@Override
+//    public int createAppointment(Appointment appointment){
+//        int newAppointmentId = 0;
+//
+//        int serviceId = appointment.getServiceId();
+//        int officeId = appointment.getOfficeId();
+//        int patientId = appointment.getPatientId();
+//        int doctorId = appointment.getDoctorId();
+//        LocalTime apptFrom = appointment.getApptFrom();
+//        LocalTime apptTo = appointment.getApptTo();
+//        boolean openMonday = appointment.isOpenMonday();
+//        boolean openTuesday = appointment.isOpenTuesday();
+//        boolean openWednesday = appointment.isOpenWednesday();
+//        boolean openThursday = appointment.isOpenThursday();
+//        boolean openFriday = appointment.isOpenFriday();
+//        boolean openSaturday = appointment.isOpenSaturday();
+//        boolean openSunday = appointment.isOpenSunday();
+//        boolean notified = appointment.isNotified();
+//        boolean approved = appointment.isApproved();
+//
+//        String sql = "INSERT INTO appointment " +
+//                "(service_id, office_id, patient_id, doctor_id, appt_from, appt_to, is_Monday, " +
+//                "is_Tuesday, is_Wednesday, is_Thursday, is_Friday, is_Saturday, is_Sunday, " +
+//                "is_notified, is_approved) " +
+//                "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) " +
+//                "RETURNING appointment_id";
+//
+//        try {
+//            newAppointmentId = jdbcTemplate.queryForObject
+//                    (sql, int.class, serviceId, officeId, patientId, doctorId, apptFrom, apptTo, openMonday, openTuesday, openWednesday, openThursday,
+//                            openFriday, openSaturday, openSunday, notified, approved);
+//
+//           // getAppointments(newAppointmentId);
+//
+//        } catch (CannotGetJdbcConnectionException e) {
+//            throw new DaoException("Unable to connect to server or database", e);
+//        } catch (DataIntegrityViolationException e) {
+//            throw new DaoException("Data integrity violation", e);
+//        }catch(NullPointerException error){
+//            throw new DaoException("Unable to process user data, Null pointer exception", error);
+//        }
+//        return newAppointmentId;
+//
+//    }
+ @Override
     public List<Office> getOffices(){
         List<Office> offices = new ArrayList<>();
         String sql = "SELECT * " +

@@ -3,11 +3,13 @@ package com.techelevator.dao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Appointment;
 import com.techelevator.model.AppointmentDto;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 @Component
@@ -37,10 +39,38 @@ public class JdbcAppointmentDao implements AppointmentDao {
         }
         return appointmentsDto;
     }
+    public int createAppointment(Appointment appointment){
+        int newAppointmentId = 0;
+        int serviceId = appointment.getServiceId();
+        int officeId = appointment.getOfficeId();
+        int patientId = appointment.getPatientId();
+        int doctorId = appointment.getDoctorId();
+        String apptDate = appointment.getApptDate();
+        boolean approved = appointment.getApproved();
+        boolean notified = appointment.getNotified();
+
+        String sql = "";
+
+        try {
+            newAppointmentId = jdbcTemplate.queryForObject
+                    (sql, int.class, serviceId, patientId, officeId, doctorId, apptDate, approved, notified);
+
+
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }catch(NullPointerException error){
+            throw new DaoException("Unable to process user data, Null pointer exception", error);
+        }
+        return newAppointmentId;
+
+    }
     private AppointmentDto mapRowToAppointmentDto(SqlRowSet rs){
         AppointmentDto appointment = new AppointmentDto();
 
-        appointment.setDoctorName(rs.getString("doctor_name"));
+        appointment.setDoctorFirstName(rs.getString("doctor_first_name"));
+        appointment.setDoctorLastName(rs.getString("doctor_last_name"));
         appointment.setServiceDescription(rs.getString("service_description"));
         appointment.setOfficeName(rs.getString("office_name"));
         appointment.setOfficeAddress(rs.getString("office_address"));
@@ -51,7 +81,7 @@ public class JdbcAppointmentDao implements AppointmentDao {
         appointment.setPatientId(rs.getInt("patient_id"));
         appointment.setDoctorId(rs.getInt("doctor_id"));
         try {
-            if(rs.getString("appt_from") != null) {
+            if(rs.getString("appt_date") != null) {
                 appointment.setApptDate(rs.getString("appt_date"));;
             }
 //            if(rs.getString("appt_to") != null){

@@ -4,7 +4,8 @@ import java.time.LocalTime;
 
 public class AppointmentDto {
 
-        private String doctorName;
+        private String doctorFirstName;
+        private String doctorLastName;
         private String serviceDescription;
         private String officeName;
         private String officeAddress;
@@ -48,16 +49,24 @@ public class AppointmentDto {
         return apptDate;
     }
 
-    public void setApptDate(String appt_date) {
-        this.apptDate = appt_date;
+    public void setApptDate(String apptDate) {
+        this.apptDate = apptDate;
     }
 
-    public String getDoctorName() {
-        return doctorName;
+    public String getDoctorFirstName() {
+        return doctorFirstName;
     }
 
-    public void setDoctorName(String doctorName) {
-        this.doctorName = doctorName;
+    public void setDoctorFirstName(String doctorFirstName) {
+        this.doctorFirstName = doctorFirstName;
+    }
+
+    public String getDoctorLastName() {
+        return doctorLastName;
+    }
+
+    public void setDoctorLastName(String doctorLastName) {
+        this.doctorLastName = doctorLastName;
     }
 
     public String getServiceDescription() {
@@ -133,7 +142,7 @@ public class AppointmentDto {
         }
 
 
-        public boolean isNotified() {
+        public boolean notified() {
             return notified;
         }
 
@@ -141,7 +150,7 @@ public class AppointmentDto {
             this.notified = notified;
         }
 
-        public boolean isApproved() {
+        public boolean approved() {
             return approved;
         }
 
