@@ -49,7 +49,11 @@ public class JdbcAppointmentDao implements AppointmentDao {
         boolean approved = appointment.getApproved();
         boolean notified = appointment.getNotified();
 
-        String sql = "";
+        String sql = "INSERT INTO appointment +" +
+                "(service_id, office_id, patient_id, doctor_id, appt_from, appt_to, is_Monday, +" +
+                "is_Tuesday, is_Wednesday, is_Thursday, is_Friday, is_Saturday, is_Sunday, +" +
+                "is_notified, is_approved) +" +
+                "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) +;";
 
         try {
             newAppointmentId = jdbcTemplate.queryForObject
