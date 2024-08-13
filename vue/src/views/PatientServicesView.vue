@@ -1,20 +1,23 @@
 <template>
     <!-- Service bar -->
-    <div>
+    <section>
         <div>
             <h1>Services</h1>
         </div>
 
         <div>
-            <h2>Search<input /></h2>
+            <h2><input type="text" placeholder="Search..." v-model="searchTerm" /></h2>
         </div>
-    </div>
 
-    <div v-for = "service in servicesList" v-bind:key ="service.id">
-        <router-link v-bind:to = "{name :'PatientServiceDetailsView', params:{name : service} }"  > 
-            Service: {{ service }}
-        </router-link>
-    </div>
+        <ul>
+            <li v-for = "service in filteredServiceList" v-bind:key ="service">
+                <router-link v-bind:to = "{name :'PatientServiceDetailsView', params: { name : service } }"  > 
+                    {{ service }}
+                </router-link>
+            </li>
+        </ul>    
+    </section>
+
 </template>
 
 <script>
@@ -23,12 +26,19 @@ import PatientService from '../services/PatientService.js';
 
 
 export default {
-    components: {
-        PatientService
-    },
-    data(){
+    data() {
         return{
-            servicesList: []
+            searchTerm: '',
+            servicesList: [],
+        };
+    },
+    computed: {
+        filteredServiceList() {
+            if (this.searchTerm.trim() === '') {
+                return this.servicesList;
+            }
+
+            return this.servicesList.filter(service => service.toLowerCase().includes(this.searchTerm.toLowerCase()));
         }
     },
     created(){
@@ -51,5 +61,8 @@ export default {
 
 <style scoped>
 
+    section {
+        margin: 50px;
+    }
 
 </style>
