@@ -17,6 +17,7 @@ VALUES (1, 'user', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC
          'false','true','false','true', 'false', 'true', 'false');
 
 
+
 INSERT INTO office(office_id, office_name, office_address, phone_number, hours_from, hours_to)
 VALUES(111 ,'keelys office','111 Kinnear road','614','10:00:00','18:00:00'),
       (12  ,'COPC','111 Park Ave','614-980-3842','08:00:00','16:00:00'),
@@ -28,11 +29,9 @@ VALUES ( 'help', 'my arm literally fell off', 1.2, 113),
        ( 'Well Visit', 'School physical', 160, 113);
 
 INSERT INTO appointment(appointment_id, service_id, office_id, patient_id, doctor_id, appt_date, is_notified, is_approved)
-VALUES (121, 1, 111, 1, 12,'20240922 09:00:00', 'true', 'true'),
-       (124, 2, 12,  1, 12,'20240922 09:00:00', 'false', 'false'),
-       (131, 3, 112, 1, 12,'20240922 09:00:00', 'true', 'true');
-
-
+VALUES (121, 1, 111, 98, 113,'20240922 09:00:00', 'true', 'true'),
+       (124, 2, 12,  98, 113,'20240922 09:00:00', 'false', 'false'),
+       (131, 3, 112, 98, 113,'20240922 09:00:00', 'true', 'true');
 
 
 COMMIT TRANSACTION;
