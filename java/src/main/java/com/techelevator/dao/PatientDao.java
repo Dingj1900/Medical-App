@@ -14,7 +14,6 @@ public interface PatientDao {
 
     //List<Appointment> getAppointments(int patientId);
 
-
     List<Office> getOffices();
 
     List<Services> getServicesByDoctor(int doctorId);
