@@ -11,7 +11,6 @@ public interface DoctorDao {
 
 //    Appointment getAppointmentByDoctor(int doctorId);
 
-    List<Appointment> getAppointmentsByDoctor(int doctorId); //good
 
     Office updateOfficeById(Office office); //good
 
