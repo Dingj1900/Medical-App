@@ -14,7 +14,8 @@
       <router-link v-bind:to="{ name: 'home' }" class="nav-link">Home</router-link>
     </li>
     <li class="nav-item">
-      <router-link v-bind:to="{ name: 'logout' }" class="nav-link" v-if="isProvider">Profile</router-link>
+      <router-link v-bind:to="{ name: 'providerView' }" class="nav-link" v-if="isLoggedIn && isProvider">Provider Profile</router-link>
+      <router-link v-bind:to="{ name: 'patientView' }" class="nav-link" v-if="isLoggedIn && !isProvider">Patient Profile</router-link>
     </li>
     <li class="nav-item">
         <router-link v-bind:to="{ name: 'login' }" class="nav-link" v-if="!isLoggedIn">Sign-up / Login</router-link>
