@@ -20,7 +20,9 @@ public class JdbcAppointmentDao implements AppointmentDao {
     public JdbcAppointmentDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-     public List<AppointmentDto> getAppointments(int patientId){
+
+     @Override
+     public List<AppointmentDto> getAppointmentsByPatientId(int patientId){
 
         List<AppointmentDto> appointmentsDto = new ArrayList<>();
         String sql = "SELECT first_name, last_name, service_details, office_name, office_address, office.phone_number, appt_date, is_notified, is_approved FROM appointment " +

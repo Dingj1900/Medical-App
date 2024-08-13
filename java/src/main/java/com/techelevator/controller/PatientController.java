@@ -110,11 +110,11 @@ public class PatientController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path ="/patient/appointments", method = RequestMethod.GET)
-    public List<AppointmentDto>getAppointment(Principal principal){
+    public List<AppointmentDto> getPatientAppointments(Principal principal){
         List<AppointmentDto> patientAppointment= new ArrayList<>();
 
         try {
-            patientAppointment= appointmentDao.getAppointments(userDao.getUserByUsername(principal.getName()).getId());
+            patientAppointment= appointmentDao.getAppointmentsByPatientId(userDao.getUserByUsername(principal.getName()).getId());
         }catch (DaoException error){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
