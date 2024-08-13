@@ -87,7 +87,7 @@ public class DoctorController {
 
 
         try {
-            appointmentList = appointmentDao.getAppointmentsByDoctor(doctorId);
+           // appointmentList = appointmentDao.getAppointmentsByDoctor(doctorId);
 
         } catch (DaoException error) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);

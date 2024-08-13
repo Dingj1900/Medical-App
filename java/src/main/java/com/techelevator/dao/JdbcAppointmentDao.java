@@ -89,40 +89,40 @@ public class JdbcAppointmentDao implements AppointmentDao {
         return appointment;
     }
 
-    @Override
-    public List<Appointment> getAppointmentsByDoctor(int doctorId) {
-        List<Appointment> appointments = new ArrayList<>();
-        String sql = "SELECT * " +
-                "FROM appointment " + "WHERE doctor_id = ? ";
-        try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
-            while (results.next()) {
-                Appointment appointment = mapRowToAppointment(results);
-                appointments.add(appointment);
-            }
-        } catch(CannotGetJdbcConnectionException e){
-            throw new DaoException("Unable to connect to server or database", e);
-        }
-        return appointments;
-    }
+//    @Override
+//    public List<Appointment> getAppointmentsByDoctor(int doctorId) {
+//        List<Appointment> appointments = new ArrayList<>();
+//        String sql = "SELECT * " +
+//                "FROM appointment " + "WHERE doctor_id = ? ";
+//        try {
+//            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+//            while (results.next()) {
+//                Appointment appointment = mapRowToAppointment(results);
+//                appointments.add(appointment);
+//            }
+//        } catch(CannotGetJdbcConnectionException e){
+//            throw new DaoException("Unable to connect to server or database", e);
+//        }
+//        return appointments;
+//    }
 
 
-    public List<Appointment> getAppointments2(int patientId){
-        List<Appointment> appointments = new ArrayList<>();
-
-        String sql = "SELECT * " +
-                "FROM appointment " + "WHERE patient_id = ? ";
-        try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
-            while (results.next()) {
-                Appointment appointment = mapRowToAppointment(results);
-                appointments.add(appointment);
-            }
-        } catch(CannotGetJdbcConnectionException e){
-            throw new DaoException("Unable to connect to server or database", e);
-        }
-        return appointments;
-    }
+//    public List<Appointment> getAppointments2(int patientId){
+//        List<Appointment> appointments = new ArrayList<>();
+//
+//        String sql = "SELECT * " +
+//                "FROM appointment " + "WHERE patient_id = ? ";
+//        try {
+//            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
+//            while (results.next()) {
+//                Appointment appointment = mapRowToAppointment(results);
+//                appointments.add(appointment);
+//            }
+//        } catch(CannotGetJdbcConnectionException e){
+//            throw new DaoException("Unable to connect to server or database", e);
+//        }
+//        return appointments;
+//    }
 
     private Appointment mapRowToAppointment(SqlRowSet rs){
         Appointment appointment = new Appointment();
