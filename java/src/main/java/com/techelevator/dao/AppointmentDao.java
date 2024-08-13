@@ -8,6 +8,6 @@ import java.util.List;
 public interface AppointmentDao {
     List<AppointmentDto>getAppointments(int patientId);
 
-    int createAppointment(Appointment appointment);
+    Appointment createAppointment(Appointment appointment);
 
 }
