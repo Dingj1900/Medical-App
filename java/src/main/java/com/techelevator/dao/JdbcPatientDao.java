@@ -140,17 +140,17 @@ public class JdbcPatientDao implements PatientDao {
 //    }
 
     @Override
-    public List<Services> getServices(){
-        List<Services> services = new ArrayList<>();
+    public List<String> getServices(){
+        List<String > services = new ArrayList<>();
 
-        String sql = "SELECT * " +
+        String sql = "SELECT service_name " +
                 "FROM services " +
                 "GROUP BY service_name ";
 
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
-                Services service = mapRowToServices(results);
+                String service = results.getString("service_name");
                 services.add(service);
             }
         } catch(CannotGetJdbcConnectionException e){

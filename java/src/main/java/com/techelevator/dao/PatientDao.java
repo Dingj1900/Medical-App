@@ -14,7 +14,7 @@ public interface PatientDao {
 
     List<Office> getOffices();
 
-    List<Services> getServices();
+    List<String> getServices();
 
     public List<ServiceDto> getServiceInfoByName(String serviceName);
 

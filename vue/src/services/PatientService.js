@@ -3,24 +3,26 @@ import axios from 'axios';
 export default {
 
         getAppointments() {
-                return axios.get("/patient/appointments");
-            },
+            return axios.get("/patient/appointments");
+        },
 
         createAppointment(appointmentObject) {
-                return axios.post("/patient/appointment", appointmentObject); 
-            },
+            return axios.post("/patient/appointment", appointmentObject); 
+        },
         
         getOffices() {
-                return axios.get("/patient/offices");
-            },
+            return axios.get("/patient/offices");
+        },
 
-        getDoctorByOfficeId(id) {
-                return axios.get(`/patient/office/${id}/provider`)
-            },
+        getServices(){
+            return axios.get("/patient/services");
+        },
 
-        getServicesByDoctor(id) {
-                return axios.get(`/patient/provider/${id}/services`);
-            },
+        getServiceInfo(serviceName){
+            return axios.get("/patient/services/" + serviceName);
+        }
+
+        
 
 
        // updateAppointment(id) {

@@ -85,17 +85,17 @@ public class PatientController {
         return newAppointment;
 
     }
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/patient/provider/{id}/services", method = RequestMethod.GET)
-    public List<Services> getServicesByDoctor(@PathVariable int id) {
-        List<Services> patientOffices = new ArrayList<>();
-        try {
-            patientOffices = patientDao.getServicesByDoctor(id);
-        } catch (DaoException error) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-        }
-        return patientOffices;
-    }
+//    @ResponseStatus(HttpStatus.OK)
+//    @RequestMapping(path = "/patient/provider/{id}/services", method = RequestMethod.GET)
+//    public List<Services> getServicesByDoctor(@PathVariable int id) {
+//        List<Services> patientOffices = new ArrayList<>();
+//        try {
+//            patientOffices = patientDao.getServicesByDoctor(id);
+//        } catch (DaoException error) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+//        }
+//        return patientOffices;
+//    }
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/patient/offices", method = RequestMethod.GET)
     public List<Office> getOffices() {
@@ -123,9 +123,9 @@ public class PatientController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(path = "/patient/services")
-    public List<Services> getServices(){
+    public List<String> getServices(){
 
-        List<Services> servicesList = new ArrayList<>();
+        List<String> servicesList = new ArrayList<>();
 
         try{
             //return list of services, no param
