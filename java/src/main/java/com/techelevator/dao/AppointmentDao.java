@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface AppointmentDao {
     List<AppointmentDto> getAppointmentsByPatientId(int patientId);
+    List<AppointmentDto> getAppointmentsByDoctorId(int doctorId);
 
     Appointment createAppointment(Appointment appointment);
 

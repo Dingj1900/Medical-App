@@ -25,7 +25,9 @@ public class JdbcAppointmentDao implements AppointmentDao {
      public List<AppointmentDto> getAppointmentsByPatientId(int patientId){
 
         List<AppointmentDto> appointmentsDto = new ArrayList<>();
-        String sql = "SELECT first_name, last_name, service_details, office_name, office_address, office.phone_number, appt_date, is_notified, is_approved FROM appointment " +
+        String sql = "SELECT appointment_id, first_name, last_name, service_details, office_name, office_address, " +
+                "office.phone_number, appt_date, is_notified, is_approved, services.service_id, office.office_id, patient_id, appointment.doctor_id " +
+                "FROM appointment " +
                 "JOIN office ON office.office_id = appointment.office_id " +
                 "JOIN services ON services.service_id = appointment.service_id " +
                 "JOIN users ON users.user_id = appointment.doctor_id " +
@@ -41,6 +43,29 @@ public class JdbcAppointmentDao implements AppointmentDao {
         }
         return appointmentsDto;
     }
+    @Override
+    public List<AppointmentDto> getAppointmentsByDoctorId(int doctorId){
+
+        List<AppointmentDto> appointmentsDto = new ArrayList<>();
+        String sql = "SELECT appointment_id, first_name, last_name, service_details, office_name, office_address, " +
+                "office.phone_number, appt_date, is_notified, is_approved, services.service_id, office.office_id, patient_id, appointment.doctor_id " +
+                "FROM appointment " +
+                "JOIN office ON office.office_id = appointment.office_id " +
+                "JOIN services ON services.service_id = appointment.service_id " +
+                "JOIN users ON users.user_id = appointment.doctor_id " +
+                "WHERE appointment.doctor_id = ?;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+            while (results.next()) {
+                AppointmentDto appointment = mapRowToAppointmentDto(results);
+                appointmentsDto.add(appointment);
+            }
+        } catch(CannotGetJdbcConnectionException e){
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return appointmentsDto;
+    }
+
     public Appointment createAppointment(Appointment appointment){
         int newAppointmentId = 0;
         int serviceId = appointment.getServiceId();
@@ -77,6 +102,7 @@ public class JdbcAppointmentDao implements AppointmentDao {
     private AppointmentDto mapRowToAppointmentDto(SqlRowSet rs){
         AppointmentDto appointment = new AppointmentDto();
 
+        appointment.setAppointmentId(rs.getInt("appointment_id"));
         appointment.setDoctorFirstName(rs.getString("first_name"));
         appointment.setDoctorLastName(rs.getString("last_name"));
         appointment.setServiceDescription(rs.getString("service_details"));
@@ -84,6 +110,13 @@ public class JdbcAppointmentDao implements AppointmentDao {
         appointment.setOfficeAddress(rs.getString("office_address"));
         appointment.setOfficePhone(rs.getString("phone_number"));
         appointment.setApptDate(rs.getString("appt_date"));
+
+
+        appointment.setServiceId(rs.getInt("service_id"));
+        appointment.setOfficeId(rs.getInt("office_id"));
+        appointment.setPatientId(rs.getInt("patient_id"));
+        appointment.setDoctorId(rs.getInt("doctor_id"));
+
 
         appointment.setNotified(rs.getBoolean("is_notified"));
         appointment.setApproved(rs.getBoolean("is_approved"));

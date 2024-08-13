@@ -5,6 +5,7 @@ import com.techelevator.dao.DoctorDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Appointment;
+import com.techelevator.model.AppointmentDto;
 import com.techelevator.model.Office;
 import com.techelevator.model.Services;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,16 +79,15 @@ public class DoctorController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(path = "/provider/appointments")
-    public List<Appointment> getAppointmentsByDoctor(Principal principal) {
+    public List<AppointmentDto> getAppointmentsByDoctor(Principal principal) {
 
-        List<Appointment> appointmentList = new ArrayList<>();
+        List<AppointmentDto> appointmentList = new ArrayList<>();
 
-        Appointment appointment = null;
         int doctorId = userDao.getUserByUsername(principal.getName()).getId();
 
 
         try {
-           // appointmentList = appointmentDao.getAppointmentsByDoctor(doctorId);
+           appointmentList = appointmentDao.getAppointmentsByDoctorId(doctorId);
 
         } catch (DaoException error) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
