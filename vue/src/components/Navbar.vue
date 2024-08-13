@@ -11,16 +11,16 @@
 
   <ul class="navbar-nav">
     <li class="nav-item">
-        <router-link v-bind:to="{ name: 'home' }" class="nav-link">Home</router-link>
-        </li>
-        <!-- <li class="nav-item">
-        <router-link v-bind:to="{ name: 'logout' }" class="nav-link" v-if="this.$store.state.user.authorities[0].name.this.$store = 'ROLE_PROVIDER'">Profile</router-link>
-    </li> -->
-    <li class="nav-item">
-        <router-link v-bind:to="{ name: 'login' }" class="nav-link" v-if="this.$store.state.token == ''">Sign-up / Login</router-link>
+      <router-link v-bind:to="{ name: 'home' }" class="nav-link">Home</router-link>
     </li>
     <li class="nav-item">
-        <router-link v-bind:to="{ name: 'logout' }" class="nav-link" v-if="this.$store.state.token != ''">Logout</router-link>
+      <router-link v-bind:to="{ name: 'logout' }" class="nav-link" v-if="isProvider">Profile</router-link>
+    </li>
+    <li class="nav-item">
+        <router-link v-bind:to="{ name: 'login' }" class="nav-link" v-if="!isLoggedIn">Sign-up / Login</router-link>
+    </li>
+    <li class="nav-item">
+        <router-link v-bind:to="{ name: 'logout' }" class="nav-link" v-if="isLoggedIn">Logout</router-link>
     </li>
   
 
@@ -47,6 +47,14 @@
 
     <script>
     export default {
+      computed: {
+        isLoggedIn() {
+          return this.$store.state.token != '';
+        },
+        isProvider() {
+          return this.$store.state.user?.authorities?.some(authority => authority.name == 'ROLE_PROVIDER');
+        },
+      }
     
     }
     </script>
