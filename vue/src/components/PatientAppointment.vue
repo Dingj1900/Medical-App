@@ -5,7 +5,7 @@
             <p>Status: {{ appointmentDetails.approved }} </p>
         </span>
 
-        <h4>Dr. {{ appointmentDetails.doctorName }}</h4><br>
+        <h4>Dr. {{ appointmentDetails.doctorLastName }} {{ appointmentDetails.doctorFirstName }}</h4><br>
         <hr class="w3-clear">
 
             <p>{{ appointmentDetails.officeName }}</p>

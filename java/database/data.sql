@@ -26,7 +26,8 @@ VALUES(111 ,'keelys office','111 Kinnear road','614','10:00:00','18:00:00'),
 INSERT INTO services(service_name, service_details, hourly_rate, doctor_id)
 VALUES ( 'help', 'my arm literally fell off', 1.2, 113),
        ( 'Check up', 'Need a COVID shot', 100, 113),
-       ( 'Well Visit', 'School physical', 160, 113);
+       ( 'Well Visit', 'School physical', 160, 113),
+       ( 'help', 'me arm fell off', 1.4, 113);
 
 INSERT INTO appointment(appointment_id, service_id, office_id, patient_id, doctor_id, appt_date, is_notified, is_approved)
 VALUES (121, 1, 111, 98, 113,'20240922 09:00:00', 'true', 'true'),

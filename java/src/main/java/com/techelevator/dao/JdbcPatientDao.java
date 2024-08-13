@@ -1,10 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
-import com.techelevator.model.Appointment;
-import com.techelevator.model.Office;
-import com.techelevator.model.Services;
-import com.techelevator.model.User;
+import com.techelevator.model.*;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -123,23 +120,76 @@ public class JdbcPatientDao implements PatientDao {
         }
         return offices;
     }
-@Override
-    public List<Services> getServicesByDoctor(int doctorId){
-        List<Services> services = new ArrayList<>();
+//    @Override
+//    public List<Services> getServicesByDoctor(int doctorId){
+//        List<Services> services = new ArrayList<>();
+//
+//        String sql = "SELECT * " +
+//                "FROM services " + "WHERE doctor_id = ? ";
+//
+//        try {
+//            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+//            while (results.next()) {
+//                Services service = mapRowToServices(results);
+//                services.add(service);
+//            }
+//        } catch(CannotGetJdbcConnectionException e){
+//            throw new DaoException("Unable to connect to server or database", e);
+//        }
+//        return services;
+//    }
 
-        String sql = "SELECT * " +
-                "FROM services " + "WHERE doctor_id = ? ";
+    @Override
+    public List<String> getServices(){
+        List<String > services = new ArrayList<>();
+
+        String sql = "SELECT service_name " +
+                "FROM services " +
+                "GROUP BY service_name ";
 
         try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
-                Services service = mapRowToServices(results);
+                String service = results.getString("service_name");
                 services.add(service);
             }
         } catch(CannotGetJdbcConnectionException e){
             throw new DaoException("Unable to connect to server or database", e);
         }
         return services;
+    }
+
+    @Override
+    public List<ServiceDto> getServiceInfoByName(String serviceName){
+        List<ServiceDto> serviceDtoList = new ArrayList<>();
+
+        String sql = "Select * from services " +
+                "Join users ON users.user_id = services.doctor_id " +
+                "Join doctor_office ON users.user_id = doctor_office.doctor_id " +
+                "Join office ON doctor_office.office_id = office.office_id " +
+                "where service_name = ? ";
+
+        try{
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, serviceName);
+
+            while(results.next()){
+                Office office = mapRowToOffice(results);
+                User doctor = mapRowToDoctor(results);
+                Services service =mapRowToServices(results);
+
+                ServiceDto serviceDto = new ServiceDto();
+                serviceDto.setOffice(office);
+                serviceDto.setUser(doctor);
+                serviceDto.setService(service);
+
+                serviceDtoList.add(serviceDto);
+            }
+
+        }catch(CannotGetJdbcConnectionException error){
+            throw new DaoException("Unable to connect to server or database", error);
+        }
+
+        return serviceDtoList;
     }
 
     private Office mapRowToOffice(SqlRowSet rs) {

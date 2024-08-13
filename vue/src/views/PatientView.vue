@@ -127,9 +127,9 @@
     <div class="w3-col m2">
       <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
-          <p><strong>View offices to make an appointment:</strong></p>
+          <p><strong>View services to make an appointment:</strong></p>
 
-          <p><button class="w3-button w3-block w3-theme-l4">Make Appointment</button></p>
+          <p><button class="w3-button w3-block w3-theme-l4" @click="makeAppointment">Make Appointment</button></p>
         </div>
       </div>
       <br>
@@ -169,8 +169,6 @@
 
 <script>
 
-import PatientSettings from '../components/PatientSettings.vue';
-import BookAppointment from '../components/BookAppointment.vue';
 
 import PatientService from '../services/PatientService.js';
 import PatientAppointment from '../components/PatientAppointment.vue';
@@ -188,6 +186,12 @@ export default {
     return {
     appointments: []
     };
+  },
+  methods:{
+    makeAppointment(){
+      this.$router.push("/patient/services");
+    }
+
   },
   created() {
     PatientService.getAppointments().then(

@@ -85,17 +85,17 @@ public class PatientController {
         return newAppointment;
 
     }
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/patient/provider/{id}/services", method = RequestMethod.GET)
-    public List<Services> getServicesByDoctor(@PathVariable int id) {
-        List<Services> patientOffices = new ArrayList<>();
-        try {
-            patientOffices = patientDao.getServicesByDoctor(id);
-        } catch (DaoException error) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-        }
-        return patientOffices;
-    }
+//    @ResponseStatus(HttpStatus.OK)
+//    @RequestMapping(path = "/patient/provider/{id}/services", method = RequestMethod.GET)
+//    public List<Services> getServicesByDoctor(@PathVariable int id) {
+//        List<Services> patientOffices = new ArrayList<>();
+//        try {
+//            patientOffices = patientDao.getServicesByDoctor(id);
+//        } catch (DaoException error) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+//        }
+//        return patientOffices;
+//    }
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/patient/offices", method = RequestMethod.GET)
     public List<Office> getOffices() {
@@ -120,6 +120,46 @@ public class PatientController {
         }
         return patientAppointment;
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(path = "/patient/services")
+    public List<String> getServices(){
+
+        List<String> servicesList = new ArrayList<>();
+
+        try{
+            //return list of services, no param
+            servicesList = patientDao.getServices();
+
+        }catch(DaoException error){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
+        return servicesList;
+
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(path = "/patient/services/{serviceName}")
+    public List<ServiceDto> getServicesInfo(@PathVariable String serviceName){
+
+        List<ServiceDto> services = new ArrayList<>();
+
+
+        try{
+            //return list of services, param, service name
+            services = patientDao.getServiceInfoByName(serviceName);
+
+        }catch(DaoException error){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
+        return services;
+
+    }
+
+
+
 
 
 
