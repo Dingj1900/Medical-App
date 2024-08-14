@@ -1,21 +1,22 @@
 <template>
     <!-- Service bar -->
     <section>
-        <div>
-            <h1>Services</h1>
-        </div>
+            <h1> Services </h1>
+        
+    <body>
 
-        <div>
-            <h2><input type="text" placeholder="Search..." v-model="searchTerm" /></h2>
-        </div>
-
-        <ul>
-            <li v-for = "service in filteredServiceList" v-bind:key ="service">
+        
+            <h5><input type="text" placeholder="Search..." v-model="searchTerm" /></h5>
+        
+        
+        
+            <div class="service" v-for = "service in filteredServiceList" v-bind:key ="service">
                 <router-link v-bind:to = "{name :'PatientServiceDetailsView', params: { name : service } }"  > 
                     {{ service }}
                 </router-link>
-            </li>
-        </ul>    
+            </div>
+         
+        </body>
     </section>
 
 </template>
@@ -63,6 +64,30 @@ export default {
 
     section {
         margin: 50px;
+    }
+
+    .service {
+        border-bottom: 1px solid #f2f2f2;
+    }
+    .service a {
+        display: block;
+        padding: 10px 20px;
+    }
+    h1 {
+        display: flex;
+        justify-content: center;
+        font-size: 60px;
+        border-bottom: 15px solid white;
+    }
+    h5 {
+        border-bottom: 15px solid white;
+    }
+   
+
+    body {
+        justify-content: flex-start;
+        align-items: center;
+        
     }
 
 </style>
