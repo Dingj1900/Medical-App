@@ -16,13 +16,13 @@ VALUES (1, 'trumanh', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkX
        (6, 'darrent', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'ROLE_PATIENT', 'Thomas', 'Darren',
          'W', 'Male', '619-535-2836', 't.darren76@gmail.com', '1976-08-14', '2172 Elmwood Ave', 'Lewis Center', 'OH', '43035', '01:00:00', '02:00:00', 'false', 'false', 'false', 'false', 'false', 'false', 'false'),
        (7, 'drsamsond', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'ROLE_PROVIDER', 'Derrick', 'Samson', '',
-         'Male', '614-882-4937', 'drsamsond@hotmail.com', '', '', '', '', '08:00:00','17:00:00', 'true','true','true','true', 'false', 'false', 'false'),
+         'Male', '614-882-4937', 'drsamsond@hotmail.com', '1965-04-04', '', '', 'OH', '', '08:00:00','17:00:00', 'true','true','true','true', 'false', 'false', 'false'),
        (8, 'drzhaoc', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'ROLE_PROVIDER', 'Cindy', 'Zhao', '',
-         'Female', '567-488-2166', 'drzhaocindy@gmail.com', '', '', '', '', '08:00:00','16:00:00', 'true','true','true','true', 'true', 'false', 'false'),
+         'Female', '567-488-2166', 'drzhaocindy@gmail.com', '1982-06-17', '', '', 'OH', '', '08:00:00','16:00:00', 'true','true','true','true', 'true', 'false', 'false'),
        (9, 'drmulliganr', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'ROLE_PROVIDER', 'Rodney', 'Mulligan', '',
-         'Male', '419-671-8326', 'rodney.mulligandr@gmail.com', '', '', '', '', '08:00:00','18:00:00', 'true','true','false','true', 'false', 'false', 'false'),
+         'Male', '419-671-8326', 'rodney.mulligandr@gmail.com', '1977-08-12', '', '', 'OH', '', '08:00:00','18:00:00', 'true','true','false','true', 'false', 'false', 'false'),
        (10, 'drkellogs', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'ROLE_PROVIDER', 'Stacey', 'Kellog', '',
-         'Female', '734-432-6968', 'dr.staceyk@gmail.com', '', '', '', '', '07:00:00','16:00:00', 'false','true','true','true', 'true', 'false', 'false');
+         'Female', '734-432-6968', 'dr.staceyk@gmail.com', '1990-12-21', '', '', 'OH', '', '07:00:00','16:00:00', 'false','true','true','true', 'true', 'false', 'false');
 
 
 INSERT INTO office(office_id, office_name, office_address, phone_number, hours_from, hours_to)
