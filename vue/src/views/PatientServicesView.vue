@@ -1,21 +1,24 @@
 <template>
     <!-- Service bar -->
-    <nav>
-                <router-link active-class="back" v-bind:to = "{ name: 'patientView' }">Back to Profile</router-link>
-            </nav>
+
+
     <section>
-            <h1> Services </h1>
+        <nav>
+                <router-link active-class="back" v-bind:to = "{ name: 'patientView' }">Back to Profile</router-link>
+        </nav>
+            
+        <h1> Services </h1>
         
-    <body>
+        <body>
 
         
             <h5><input type="text" placeholder="Search..." v-model="searchTerm" /></h5>
         
         
         
-            <div class="service" v-for = "service in filteredServiceList" v-bind:key ="service">
-                <router-link v-bind:to = "{name :'PatientServiceDetailsView', params: { name : service } }"  > 
-                    {{ service }}
+            <div class="service" v-for = "serviceName in filteredServiceList" v-bind:key ="serviceName.id">
+                <router-link v-bind:to = "{name :'PatientServiceDetailsView', params: { name : serviceName } }"  > 
+                    {{ serviceName }}
                 </router-link>
             </div>
          
