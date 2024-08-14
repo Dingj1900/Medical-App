@@ -182,8 +182,6 @@ public class JdbcDoctorDao implements DoctorDao {
         String serviceName = services.getServiceName();
         String serviceDetails = services.getServiceDetails();
         Double hourlyRate = services.getHourlyRate();
-        doctorId = services.getDoctorId();
-
 
         String sql = "INSERT INTO services " +
                 "(service_name, service_details, hourly_rate, doctor_id) " +
