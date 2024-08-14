@@ -588,7 +588,12 @@
         if (this.user.password != this.user.confirmPassword) {
           this.registrationErrors = true;
           this.registrationErrorMsg = 'Password & Confirm Password do not match.';
-        } else {
+        } else if(this.hoursFrom > this.hoursTo ){
+          console.log("reached");
+          this.registrationErrors = true;
+          this.registrationErrorMsg = 'Hours from must be lower than hours to.';
+        }
+        else {
           console.log("sending register");
           authService
             .register(this.user)
