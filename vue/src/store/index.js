@@ -6,9 +6,12 @@ export function createStore(currentToken, currentUser) {
     state: {
       token: currentToken || '',
       user: currentUser || {},
-  
+      appointmentInfo: {},
     },
     mutations: {
+      SET_APPOINTMENT_INFO(state, serviceObject) {
+        state.appointmentInfo = serviceObject;
+      },
       SET_AUTH_TOKEN(state, token) {
         state.token = token;
         localStorage.setItem('token', token);

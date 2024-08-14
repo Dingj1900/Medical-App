@@ -16,6 +16,7 @@ import CalendarView from '../views/CalendarView.vue';
 import ServicesView from '../views/ServicesView.vue';
 import PatientServicesView from '../views/PatientServicesView.vue';
 import PatientServiceDetailsView from '../views/PatientServiceDetailsView.vue';
+import PatientMakeAppointmentView from '../views/PatientMakeAppointmentView.vue';
 // import Office from '../components/Office.vue';
 
 /**
@@ -135,6 +136,14 @@ const routes = [
     path: '/patient/services/details/:name',
     name: 'PatientServiceDetailsView',
     component: PatientServiceDetailsView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/patient/services/appointment',
+    name: 'PatientMakeAppointmentView',
+    component: PatientMakeAppointmentView,
     meta: {
       requiresAuth: false
     }

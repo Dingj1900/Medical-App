@@ -41,15 +41,15 @@
       <!-- Signup Form -->
       <div class="signup" v-if="isSignup">
         <h2>SIGN UP</h2>
-        <p>Sign up to start accessing affordable healthcare in your area today!</p>
+        <p>Sign up to access affordable healthcare in your area today!</p>
         <div>
-          <p>Would you be a patient?</p>
+          <p>Registering as a Patient or Medical Provider?</p>
           <label for="yes">
           <input type="checkbox" id="yes" @click="toggleYes" :checked="isYes"/>
-          Yes</label>
+          Patient</label>
           <label for="no">
           <input type="checkbox" id="no" @click="toggleNo" :checked="isNo" />
-          No</label>
+          Provider</label>
         </div>
         <div role="alert" v-if="formErrors">
       {{ formErrorMsg }}

@@ -19,7 +19,6 @@
 
     </footer>
 
-
     </template>
     
 
@@ -40,15 +39,21 @@ body {
   flex-direction: column;
 }
 
+.copyright {
+  height: auto;
+  justify-content: right;
+  color: green;
+  right: 50px;
+}
+
 footer {
   margin-top: auto;
 }
     
 .footer {
-  padding: 24px 0;
-  bottom: 0;
   position: relative;
-  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .footer.footer-default {
@@ -101,5 +106,4 @@ footer {
     text-align: right;
   }
   
-
-    </style>
+  </style>

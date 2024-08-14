@@ -1,7 +1,7 @@
 <template>
     <div id="register" class="text-center">
         <div class="container">
-      <h1>Patient Register Form</h1>
+      <h1>Patient Registration Form</h1>
       <form v-on:submit.prevent="register">
        
         <div role="alert" v-if="registrationErrors" >

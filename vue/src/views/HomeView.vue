@@ -24,7 +24,9 @@
         <div class="row">
           <div class="col-md-8 ml-auto mr-auto text-center">
             <h2 class="title">Who are we?</h2>
-            <h5 class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi, aspernatur totam, fugit quo, sed tempora praesentium dolores recusandae debitis officia veritatis iusto! Nisi tempore ea nostrum, error officiis ducimus architecto.</h5>
+            <h5 class="description">Find the Right Doctor for You — Effortlessly!
+Discover a seamless way to connect with healthcare professionals who meet your needs. Our service makes it simple to find and book appointments with top doctors tailored to your specific requirements. Whether you're seeking a specialist, a general practitioner, or just need advice, we're here to guide you to the right care. Experience personalized healthcare with ease: find your perfect doctor today!
+</h5>
           </div>
         </div>
         <div class="separator separator-primary"></div>
@@ -33,8 +35,7 @@
             <div class="col-md-6">
               <div class="image-container image-left" style="background-image: url('https://thumbs.dreamstime.com/b/doctors-office-cartoon-doctors-office-cartoon-patient-vector-illustration-graphic-design-113897631.jpg')">
                 <!-- First image on the left side -->
-                <p class="blockquote blockquote-primary">"I found a kick ass doctor thanks to HealMeNow!"
-                </p>
+                <p class="blockquote blockquote-primary">"I found a kick ass doctor thanks to HealMeNow!"</p>
               </div>
               <!-- Second image on the left side of the article -->
               <div class="image-container" style="background-image: url('https://www.ghp-news.com/wp-content/uploads/2020/06/doctors-office-1920-x-1080.jpg')"></div>
@@ -43,11 +44,9 @@
               <!-- First image on the right side, above the article -->
               <div class="image-container image-right" style="background-image: url('https://thumbs.dreamstime.com/b/doctor-s-office-4055581.jpg')"></div>
               <h3>Why use our services?</h3>
-              <p>We connect patients with doctors! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi reiciendis molestias asperiores facere illo quisquam! Pariatur atque corporis corrupti est quisquam? Obcaecati quod voluptatibus possimus labore ad neque deserunt voluptates.
+              <p>We connect patients with doctors! Our platform simplifies your healthcare journey by matching you with the right doctor based on your specific needs and preferences. Enjoy the convenience of online appointment booking, access to verified and highly rated professionals, and detailed doctor profiles with patient reviews. We save you time with our efficient scheduling and offer 24/7 support to address any questions or concerns. Experience personalized, reliable, and hassle-free healthcare—start connecting with the perfect doctor today.
               </p>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores sunt perferendis, non odit, aliquam asperiores minus dicta repellat a adipisci aliquid consectetur laudantium veniam possimus debitis necessitatibus voluptas? Cumque, quibusdam?
-              </p>
+             
             </div>
           </div>
         </div>
@@ -87,14 +86,9 @@
         </div>
       </div>
     </div>
-
-    
   </div>
 
 </body>
-
-
-
 
   </div>
     </template>
