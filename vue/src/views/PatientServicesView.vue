@@ -1,5 +1,8 @@
 <template>
     <!-- Service bar -->
+    <nav>
+                <router-link active-class="back" v-bind:to = "{ name: 'patientView' }">Back to Profile</router-link>
+            </nav>
     <section>
             <h1> Services </h1>
         
@@ -17,6 +20,7 @@
             </div>
          
         </body>
+       
     </section>
 
 </template>
@@ -68,10 +72,21 @@ export default {
 
     .service {
         border-bottom: 1px solid #f2f2f2;
+        cursor: pointer;
+        /* margin: 20px; */
     }
     .service a {
+        font-size: 20px;
+        font-style: oblique;
+        color:black;
         display: block;
         padding: 10px 20px;
+        text-decoration: none;
+
+    }
+    .service a:hover {
+        background-color: #f2f2f2;
+        cursor: pointer;
     }
     h1 {
         display: flex;
@@ -88,6 +103,14 @@ export default {
         justify-content: flex-start;
         align-items: center;
         
+    }
+    .back {
+        display: flex;
+        justify-content: flex-start;
+        font-size: 50px;
+        text-decoration: none;
+        color:black;
+
     }
 
 </style>
