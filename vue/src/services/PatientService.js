@@ -24,6 +24,8 @@ export default {
 
         
 
+        
+
 
        // updateAppointment(id) {
        //        return axios.put(`patient/appointment/${id}`)

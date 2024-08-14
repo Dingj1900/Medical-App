@@ -13,7 +13,7 @@
 </div>
 
 <div class="inputForm">
-  <label>What is the reason for your appointment? </label>
+  <label>What is the reason for your appointment?</label>
   <select v-model="reason">
     <option value="checkUp">Check Up</option>
     <option value="physical">Physical</option>

@@ -17,6 +17,7 @@ import ServicesView from '../views/ServicesView.vue';
 import PatientServicesView from '../views/PatientServicesView.vue';
 import PatientServiceDetailsView from '../views/PatientServiceDetailsView.vue';
 import PatientMakeAppointmentView from '../views/PatientMakeAppointmentView.vue';
+import ServiceForm from '../components/ServiceForm.vue';
 // import Office from '../components/Office.vue';
 
 /**
@@ -120,6 +121,14 @@ const routes = [
     path: '/provider/services',
     name: 'servicesView',
     component: ServicesView,
+    meta: {
+        requiresAuth: false
+    }
+  },
+  {
+    path: '/provider/services/update',
+    name: 'servicesViewUpdate',
+    component: ServiceForm,
     meta: {
         requiresAuth: false
     }

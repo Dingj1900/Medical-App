@@ -1,21 +1,29 @@
 <template>
     <!-- Service bar -->
+
+
     <section>
-        <div>
-            <h1>Services</h1>
-        </div>
+        <nav>
+                <router-link active-class="back" v-bind:to = "{ name: 'patientView' }">Back to Profile</router-link>
+        </nav>
+            
+        <h1> Services </h1>
+        
+        <body>
 
-        <div>
-            <h2><input type="text" placeholder="Search..." v-model="searchTerm" /></h2>
-        </div>
-
-        <ul>
-            <li v-for = "service in filteredServiceList" v-bind:key ="service">
-                <router-link v-bind:to = "{name :'PatientServiceDetailsView', params: { name : service } }"  > 
-                    {{ service }}
+        
+            <h5><input type="text" placeholder="Search..." v-model="searchTerm" /></h5>
+        
+        
+        
+            <div class="service" v-for = "serviceName in filteredServiceList" v-bind:key ="serviceName.id">
+                <router-link v-bind:to = "{name :'PatientServiceDetailsView', params: { name : serviceName } }"  > 
+                    {{ serviceName }}
                 </router-link>
-            </li>
-        </ul>    
+            </div>
+         
+        </body>
+       
     </section>
 
 </template>
@@ -63,6 +71,49 @@ export default {
 
     section {
         margin: 50px;
+    }
+
+    .service {
+        border-bottom: 1px solid #f2f2f2;
+        cursor: pointer;
+        /* margin: 20px; */
+    }
+    .service a {
+        font-size: 20px;
+        font-style: oblique;
+        color:black;
+        display: block;
+        padding: 10px 20px;
+        text-decoration: none;
+
+    }
+    .service a:hover {
+        background-color: #f2f2f2;
+        cursor: pointer;
+    }
+    h1 {
+        display: flex;
+        justify-content: center;
+        font-size: 60px;
+        border-bottom: 15px solid white;
+    }
+    h5 {
+        border-bottom: 15px solid white;
+    }
+   
+
+    body {
+        justify-content: flex-start;
+        align-items: center;
+        
+    }
+    .back {
+        display: flex;
+        justify-content: flex-start;
+        font-size: 50px;
+        text-decoration: none;
+        color:black;
+
     }
 
 </style>

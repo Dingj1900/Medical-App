@@ -2,7 +2,7 @@
   <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
 
       <span class="w3-right w3-opacity">
-          <p>Status: {{ appointmentDetails.approved }} </p>
+          <p>Time: {{ appointmentDetails.apptDate }} </p>
       </span>
 
       <h4>Patient: {{ appointmentDetails.patientName }}</h4><br>

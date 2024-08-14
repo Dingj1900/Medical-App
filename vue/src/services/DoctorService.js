@@ -17,7 +17,7 @@ createDoctorOffice(officeObject) {
   return axios.post('/provider/office', officeObject);
 },
 //previously edit
-updateOfficeById(officeObject) {
+updateOffice(officeObject) {
   return axios.put('/provider/office', officeObject);
 },
 
@@ -29,7 +29,10 @@ updateServiceById(servicesObject) {
   },
 createService(servicesObject){
     return axios.post('/provider/services', servicesObject)
-  }
+  },
+updateDoctor(doctor){
+  return axios.put('/user/update', doctor)
+}
 
 
 
