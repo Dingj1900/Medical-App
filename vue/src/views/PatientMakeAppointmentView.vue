@@ -1,29 +1,32 @@
 <template>
     <section>
         <h1>
-            Here are the available appointments for
+            Available appointments for
             {{ appointmentInfo.user?.firstName }} {{ appointmentInfo.user?.middleInitials }} {{  appointmentInfo.user?.lastName  }}
         </h1>
-        <div>
-            <p>{{ appointmentInfo.office?.officeName }}</p>
+
+        <div class="service">
+            <i><p>{{ appointmentInfo.office?.officeName }}</p>
             <p>{{ appointmentInfo.office?.officeAddress }}</p>
-            <p>{{ appointmentInfo.office?.phoneNumber }}</p>
+            <p>{{ appointmentInfo.office?.phoneNumber }}</p></i>
             
-            <p></p>
-            <p v-show="appointmentInfo.user.openMonday">Monday: <template v-for="n in endTime" :key="n"><button @click="handleCreateAppointment('Monday', (n + startTime))" v-if="n + startTime <= endTime">{{ formatDate((n+startTime)) }}</button></template></p>
-            <p v-show="appointmentInfo.user.openTuesday">Tuesday: <template v-for="n in endTime" :key="n"><button @click="handleCreateAppointment('Tuesday', (n + startTime))" v-if="n + startTime <= endTime">{{ formatDate((n+startTime)) }}</button></template></p>
-            <p v-show="appointmentInfo.user.openWednesday">Wednesday: <template v-for="n in endTime" :key="n"><button @click="handleCreateAppointment('Wednesday', (n + startTime))" v-if="n + startTime <= endTime">{{ formatDate((n+startTime)) }}</button></template></p>
-            <p v-show="appointmentInfo.user.openThursday">Thursday: <template v-for="n in endTime" :key="n"><button @click="handleCreateAppointment('Thursday', (n + startTime))" v-if="n + startTime <= endTime">{{ formatDate((n+startTime)) }}</button></template></p>
-            <p v-show="appointmentInfo.user.openFriday">Friday: <template v-for="n in endTime" :key="n"><button @click="handleCreateAppointment('Friday', (n + startTime))" v-if="n + startTime <= endTime">{{ formatDate((n+startTime)) }}</button></template></p>
-            <p v-show="appointmentInfo.user.openSaturday">Saturday: <template v-for="n in endTime" :key="n"><button @click="handleCreateAppointment('Saturday', (n + startTime))" v-if="n + startTime <= endTime">{{ formatDate((n+startTime)) }}</button></template></p>
-            <p v-show="appointmentInfo.user.openSunday">Sunday: <template v-for="n in endTime" :key="n"><button @click="handleCreateAppointment('Sunday', (n + startTime))" v-if="n + startTime <= endTime">{{ formatDate((n+startTime)) }}</button></template></p>
+            <!-- <p></p> does this need v-model? -->
+
+            <p v-show="appointmentInfo.user.openMonday">Monday: <template v-for="n in endTime" :key="n"><button @click="handleCreateAppointment(nearestDays[0], (n + startTime))" v-if="n + startTime <= endTime">{{ formatDate((n+startTime)) }}</button></template></p>
+            <p v-show="appointmentInfo.user.openTuesday">Tuesday: <template v-for="n in endTime" :key="n"><button @click="handleCreateAppointment(nearestDays[1], (n + startTime))" v-if="n + startTime <= endTime">{{ formatDate((n+startTime)) }}</button></template></p>
+            <p v-show="appointmentInfo.user.openWednesday">Wednesday: <template v-for="n in endTime" :key="n"><button @click="handleCreateAppointment(nearestDays[2], (n + startTime))" v-if="n + startTime <= endTime">{{ formatDate((n+startTime)) }}</button></template></p>
+            <p v-show="appointmentInfo.user.openThursday">Thursday: <template v-for="n in endTime" :key="n"><button @click="handleCreateAppointment(nearestDays[3], (n + startTime))" v-if="n + startTime <= endTime">{{ formatDate((n+startTime)) }}</button></template></p>
+            <p v-show="appointmentInfo.user.openFriday">Friday: <template v-for="n in endTime" :key="n"><button @click="handleCreateAppointment(nearestDays[4], (n + startTime))" v-if="n + startTime <= endTime">{{ formatDate((n+startTime)) }}</button></template></p>
+            <p v-show="appointmentInfo.user.openSaturday">Saturday: <template v-for="n in endTime" :key="n"><button @click="handleCreateAppointment(nearestDays[5], (n + startTime))" v-if="n + startTime <= endTime">{{ formatDate((n+startTime)) }}</button></template></p>
+            <p v-show="appointmentInfo.user.openSunday">Sunday: <template v-for="n in endTime" :key="n"><button @click="handleCreateAppointment(nearestDays[6], (n + startTime))" v-if="n + startTime <= endTime">{{ formatDate((n+startTime)) }}</button></template></p>
             
-            <p></p>
+    </div>
+            </section>
+    
 
             <!-- <p>{{ appointmentInfo.user.phoneNumber }}</p> -->
             <!-- <p>{{  }}</p>
             <p>{{  }}</p> -->
-        </div>
 
         <!--For adding time for the appointment-->
         <!-- <div><label for="hours">Appointment Starting Hours</label>
@@ -57,76 +60,66 @@
 
         <!-- </div> -->
 
-        <button> Make the appointment </button>
-
-    </section>
 </template>
 
 
 
 
 <script>
+import PatientService from '../services/PatientService'; 
 
 
 export default {
     data() {
         return {
-
-            apptInfo: {
-                
-            },
             startTime: 0,
             endTime: 0
         };
     },
     computed: {
+        nearestDays() {
+            // TODO: fix this
+            return ['2024-08-19', '2024-08-20', '2024-08-21', '2024-08-22', '2024-08-23', '2024-08-24', '2024-08-25'];
+        },
         appointmentInfo() {
             return this.$store.state.appointmentInfo;
         },
         patient() {
             return this.$store.state.user;
         },
-        formattedHoursFrom() {
-            if (this.appointmentInfo.user?.hoursFrom) {
-                let ampm = 'am';
-                const hrsFromPieces = this.appointmentInfo.user?.hoursFrom.split(":"); // 13:00:00
-                let hour = parseInt(hrsFromPieces[0]);
-                const min = hrsFromPieces[1];
-
-                if (hour > 12) {
-                    hour -= 12;
-                    ampm = 'pm';
-                }
-
-                return `${hour}:${min} ${ampm}`;
-            }
-
-            return '';
-        },
-        formattedHoursTo() {
-            if (this.appointmentInfo.user?.hoursTo) {
-                let ampm = 'am';
-                const hrsFromPieces = this.appointmentInfo.user?.hoursTo.split(":");
-                let hour = parseInt(hrsFromPieces[0]);
-                const min = hrsFromPieces[1];
-
-                if (hour > 12) {
-                    hour -= 12;
-                    ampm = 'pm';
-                }
-
-                return `${hour}:${min} ${ampm}`;
-            }
-            return '';
-        }
     },
     methods: {
         handleCreateAppointment(day, hour) {
             // Make the appointment at ${hour} on ${day}
             alert("Making appointment at " + this.formatDate(hour) + " on " + day);
-        },
-        createAppointment() {
-             this.$store.commit("SET_APPOINTMENT_INFO", this.apptInfo);
+            const appointmentDto = {
+                appointmentId: 0,
+                serviceId: this.appointmentInfo.service.serviceId,
+                officeId: this.appointmentInfo.office.officeId,
+                patientId: this.patient.id,
+                doctorId: this.appointmentInfo.service.doctorId,
+                apptDate: `${day} ${hour}:00:00`,
+                notified: false,
+                approved: false
+            };
+
+            console.log(appointmentDto);
+
+
+            PatientService.createAppointment(appointmentDto).then(response => {  // Postgres (via service file that creates an HTTP)
+                if (response.status === 201) {
+                    // successfully created!
+                    this.$router.push({ name: 'patientView' });
+
+                } else {
+                    alert("Couldn't save appointment. Try again later?");
+                }
+            })
+            .catch(err => {
+                alert("Couldn't save appointment. Try again later?");
+                console.error(err);
+            });
+
         },
         formatDate(hours) {
             if (hours) {
@@ -163,8 +156,38 @@ export default {
 
 
 <style scoped>
-    button {
-        margin: 10px;
+.service {
+    margin-left: 50px;
+    margin-right: 20px;
+}
+button {
+  background-color: blueviolet;
+  margin: 5px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+    .serviceLinks {
+        text-decoration: underline;
+        color: blue;
+        cursor: pointer;
+        margin: 20px;
     }
+
+  .service{
+  background: rgb(245, 245, 245);
+  border: solid 2px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+  word-wrap: break-word;
+  cursor: pointer;
+}
 
 </style>
