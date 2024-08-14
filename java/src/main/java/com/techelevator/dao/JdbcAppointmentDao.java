@@ -48,7 +48,7 @@ public class JdbcAppointmentDao implements AppointmentDao {
 
         List<AppointmentDto> appointmentsDto = new ArrayList<>();
         String sql = "SELECT appointment_id, first_name, last_name, service_details, office_name, office_address, " +
-                "office.phone_number, appt_date, is_notified, is_approved, ZZ " +
+                "office.phone_number, appt_date, is_notified, is_approved, services.service_id, office.office_id, patient_id, appointment.doctor_id " +
                 "FROM appointment " +
                 "JOIN office ON office.office_id = appointment.office_id " +
                 "JOIN services ON services.service_id = appointment.service_id " +

@@ -22,6 +22,8 @@ import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 import org.w3c.dom.ls.LSOutput;
 
+import java.security.Principal;
+
 @RestController
 @CrossOrigin
 public class AuthenticationController {
@@ -92,6 +94,23 @@ public class AuthenticationController {
         return user;
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping(path = "/user/update")
+    public User updateUser(@RequestBody User user, Principal principal){
+        User updatedUser = new User();
+
+        int userId = userDao.getUserByUsername(principal.getName()).getId();
+
+        try{
+            updatedUser = userDao.updateUser(user, userId);
+
+        }catch(DaoException error){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User cannot be updated");
+        }
+
+
+        return updatedUser;
+    }
 
 }
 
