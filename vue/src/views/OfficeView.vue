@@ -1,18 +1,18 @@
 <template>
     <div>
         <!--<office />-->
-        <office />
+        <provider-settings />
     </div>
 </template>
 
 <script>
-   // import office from '../components/Office.vue'; 
-    import Office from '../components/Office.vue';
+
+    import ProviderSettings from '../components/ProviderSettings.vue';
     import DoctorService from '../services/DoctorService';
 
     export default {
         components: {
-            Office
+            ProviderSettings
         },
 
     data(){
