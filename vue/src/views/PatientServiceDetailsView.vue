@@ -15,6 +15,8 @@
     </div>
 </template>
 
+
+
 <script>
 
 import PatientService from '../services/PatientService';
@@ -52,6 +54,8 @@ export default{
 
 }
 </script>
+
+
 
 <style scoped>
     .serviceLinks {

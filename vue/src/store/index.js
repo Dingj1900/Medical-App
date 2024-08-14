@@ -7,8 +7,12 @@ export function createStore(currentToken, currentUser) {
       token: currentToken || '',
       user: currentUser || {},
       appointmentInfo: {},
+      confirmedAppointments: [],
     },
     mutations: {
+      ADD_APPOINTMENT(state, newAppointment) {
+        state.confirmedAppointments.push(newAppointment);
+      },
       SET_APPOINTMENT_INFO(state, serviceObject) {
         state.appointmentInfo = serviceObject;
       },
