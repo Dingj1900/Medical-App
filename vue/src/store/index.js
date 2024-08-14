@@ -7,22 +7,14 @@ export function createStore(currentToken, currentUser) {
       token: currentToken || '',
       user: currentUser || {},
       appointmentInfo: {},
-<<<<<<< HEAD
-      confirmedAppointments: [],
-    },
-    mutations: {
-      ADD_APPOINTMENT(state, newAppointment) {
-        state.confirmedAppointments.push(newAppointment);
-=======
       serviceUpdateObject: {}
     },
     mutations: {
       SET_SERVICE_UPDATE_OBJECT(state, serviceUpdateObject) {
         state.serviceUpdateObject = serviceUpdateObject;
->>>>>>> 174c5ca513e0955f2af12031a1c6b382bd9bb958
       },
-      SET_APPOINTMENT_INFO(state, serviceObject) {
-        state.appointmentInfo = serviceObject;
+      SET_APPOINTMENT_INFO(state, appointmentInfo) {
+        state.appointmentInfo = appointmentInfo;
       },
       SET_AUTH_TOKEN(state, token) {
         state.token = token;
