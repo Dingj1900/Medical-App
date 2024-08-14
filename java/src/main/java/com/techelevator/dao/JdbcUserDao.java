@@ -190,6 +190,78 @@ public class JdbcUserDao implements UserDao {
         return newUser;
     }
 
+    @Override
+    public User updateUser(User user, int userId){
+
+        User updatedUser = getUserById(userId);
+
+
+        String sql = "UPDATE users SET " +
+                "first_name = ?, " +
+                "last_name = ?, " +
+                "middle_initials = ?, " +
+                "gender = ?, " +
+                "phone_number = ?, " +
+                "email = ?, " +
+                "date_of_birth = ?, " +
+                "address = ?, " +
+                "city = ?, " +
+                "state_abbreviation = ?, " +
+                "zip_code = ?, " +
+                "hours_from = ?, " +
+                "hours_to = ?, " +
+                "is_monday = ?, " +
+                "is_tuesday = ?, " +
+                "is_wednesday = ?, " +
+                "is_thursday = ?, " +
+                "is_friday = ?, " +
+                "is_saturday = ?, " +
+                "is_sunday = ? " +
+                "WHERE user_id = ?";
+
+        try{
+            int rowsAffected = jdbcTemplate.update(sql,
+                    user.getFirstName(),
+                    user.getLastName(),
+                    user.getMiddleInitials(),
+                    user.getGender(),
+                    user.getPhoneNumber(),
+                    user.getEmail(),
+                    user.getDateOfBirth(),
+                    user.getAddress(),
+                    user.getCity(),
+                    user.getStateAbbreviation(),
+                    user.getZipcode(),
+                    user.getHoursFrom(),
+                    user.getHoursTo(),
+                    user.isOpenMonday(),
+                    user.isOpenTuesday(),
+                    user.isOpenWednesday(),
+                    user.isOpenThursday(),
+                    user.isOpenFriday(),
+                    user.isOpenSaturday(),
+                    user.isOpenSunday(),
+                    userId
+                    );
+            if(rowsAffected == 0){
+                throw new DaoException("Zero rows affected, expected at least one");
+            }
+            else{
+                updatedUser = getUserById(userId);
+            }
+
+
+        }catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }catch(NullPointerException error){
+            throw new DaoException("Unable to process user data, Null pointer exception", error);
+        }
+
+        return updatedUser;
+    }
+
 
 
     private User mapRowToUser(SqlRowSet rs) {

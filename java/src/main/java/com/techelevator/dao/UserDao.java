@@ -15,4 +15,6 @@ public interface UserDao {
 
     User createUser(RegisterUserDto user);
 
+    User updateUser(User user, int userId);
+
 }

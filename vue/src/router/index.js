@@ -116,14 +116,14 @@ const routes = [
         requiresAuth: false
     }
   },
-  // {
-  //   path: '/provider/services',
-  //   name: 'servicesView',
-  //   component: ServicesView,
-  //   meta: {
-  //       requiresAuth: false
-  //   }
-  // },
+  {
+    path: '/provider/services',
+    name: 'servicesView',
+    component: ServicesView,
+    meta: {
+        requiresAuth: false
+    }
+  },
   {
     path: '/patient/services',
     name: 'PatientServicesView',
