@@ -20,6 +20,10 @@ export default {
 
         getServiceInfo(serviceName){
             return axios.get("/patient/services/" + serviceName);
+        },
+
+        updatePatient(patient){
+            return axios.put('/user/update', patient);
         }
         //delete
 

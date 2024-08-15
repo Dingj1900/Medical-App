@@ -8,10 +8,10 @@
       <h4>Patient: {{ appointmentDetails.doctorFirstName }} {{ appointmentDetails.doctorLastName }}</h4><br>
       <hr class="w3-clear">
 
-          <p>{{ appointmentDetails.patientDOB }}</p>
-          <p>{{ appointmentDetails.patientPhone }}</p>
-          <p>{{ appointmentDetails.patientAddress }}</p>
-          <p>{{ appointmentDetails.patientEmail }}</p>
+          <p>Gender: {{ appointmentDetails.gender }}</p>
+          <p>Email: {{ appointmentDetails.email }}</p>
+          <p>Phone: {{ appointmentDetails.phone_number }}</p>
+          <p>Birth: {{ appointmentDetails.dateOfBirth }}</p>
           
           <p>Service: {{ appointmentDetails.serviceDescription }}</p>
       
@@ -26,20 +26,30 @@
               <p>{{ appointmentDetails.apptTo }}</p>
           </div>
       </div>
-      <!--
-      <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Update</button> 
-      <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> Delete</button> 
-      -->
+      
+      <!-- <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Update</button>  -->
+      <button @click="deleteAppt" type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-ban"></i> Delete</button> 
+      
   </div>
     
 </template>
 <script>
+import DoctorService from '../services/DoctorService.js';
 export default{
   props:{
       appointmentDetails:{
           type: Object,
           required: true
       }
+  },
+  methods: {
+        deleteAppt(){
+           DoctorService.deleteAppointments(appointmentDetails.appointmentId).then(
+
+           ).catch(
+
+           );
+        }
   },
   data(){
       return{

@@ -181,6 +181,24 @@ public class DoctorController {
         return newService;
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/provider/appointment/{apptId}")
+    public void deleteAppointments(@PathVariable int apptId){
+        int check = 0;
+
+        try{
+            check =  appointmentDao.deleteAppointmentById(apptId);
+            if(check == 0){
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            }
+
+        }catch(DaoException error){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
+
+    }
+
 
 
 }
