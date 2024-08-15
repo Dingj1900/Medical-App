@@ -26,7 +26,8 @@ public class JdbcAppointmentDao implements AppointmentDao {
 
         List<AppointmentDto> appointmentsDto = new ArrayList<>();
         String sql = "SELECT appointment_id, first_name, last_name, service_details, office_name, office_address, " +
-                "office.phone_number, appt_date, is_notified, is_approved, services.service_id, office.office_id, patient_id, appointment.doctor_id " +
+                "office.phone_number, appt_date, is_notified, is_approved, services.service_id, office.office_id, patient_id, appointment.doctor_id, " +
+                "gender, email, users.phone_number, date_of_birth "+
                 "FROM appointment " +
                 "JOIN office ON office.office_id = appointment.office_id " +
                 "JOIN services ON services.service_id = appointment.service_id " +
@@ -65,6 +66,19 @@ public class JdbcAppointmentDao implements AppointmentDao {
             throw new DaoException("Unable to connect to server or database", e);
         }
         return appointmentsDto;
+    }
+    @Override
+    public int deleteAppointmentById(int appointmentId) {
+        int numberOfRows = 0;
+        String sql = "DELETE FROM appointment WHERE appointment_id = ?;";
+        try {
+            numberOfRows = jdbcTemplate.update(sql, appointmentId);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return numberOfRows;
     }
 
     public Appointment createAppointment(Appointment appointment){

@@ -53,7 +53,7 @@
           return this.$store.state.token != '';
         },
         isProvider() {
-          return this.$store.state.user?.authorities?.some(authority => authority.name == 'ROLE_PROVIDER');
+          return this.$store.state.user?.authorities?.some(authority => authority.name === 'ROLE_PROVIDER');
         },
       }
     

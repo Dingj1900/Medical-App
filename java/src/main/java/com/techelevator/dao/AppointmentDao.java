@@ -10,5 +10,5 @@ public interface AppointmentDao {
     List<AppointmentDto> getAppointmentsByDoctorId(int doctorId);
 
     Appointment createAppointment(Appointment appointment);
-
+    public int deleteAppointmentById(int appointmentId);
 }

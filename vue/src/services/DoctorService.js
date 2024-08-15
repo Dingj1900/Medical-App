@@ -32,6 +32,10 @@ createService(servicesObject){
   },
 updateDoctor(doctor){
   return axios.put('/user/update', doctor)
+},
+
+deleteAppointments(apptId){
+  return axios.delete('/provider/appointment/' + apptId)
 }
 
 
