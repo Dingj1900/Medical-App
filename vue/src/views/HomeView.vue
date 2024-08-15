@@ -35,7 +35,7 @@ Discover a seamless way to connect with healthcare professionals who meet your n
             <div class="col-md-6">
               <div class="image-container image-left" style="background-image: url('https://thumbs.dreamstime.com/b/doctors-office-cartoon-doctors-office-cartoon-patient-vector-illustration-graphic-design-113897631.jpg')">
                 <!-- First image on the left side -->
-                <p class="blockquote blockquote-primary">"I found a kick ass doctor thanks to HealMeNow!"</p>
+                <p class="blockquote blockquote-primary">"I found a kick ass doctor thanks to HealMeNow"</p>
               </div>
               <!-- Second image on the left side of the article -->
               <div class="image-container" style="background-image: url('https://www.ghp-news.com/wp-content/uploads/2020/06/doctors-office-1920-x-1080.jpg')"></div>
