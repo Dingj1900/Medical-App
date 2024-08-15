@@ -128,13 +128,13 @@
       <br>
       
       <!-- Alert Box -->
-      <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+     <!-- <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
         <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
           <i class="fa fa-remove"></i>
         </span>
         <p><strong>Hey!</strong></p>
         <p>Someone Just Booked a New Appointment</p>
-      </div>
+      </div>-->
     
     <!-- End Left Column -->
     </div>
@@ -142,7 +142,7 @@
     <!-- Middle Column -->
     <div class="w3-col m7">
     
-      <div class="w3-row-padding">
+      <!--<div class="w3-row-padding">
         <div class="w3-col m12">
           <div class="w3-card w3-round w3-white">
             <div class="w3-container w3-padding">
@@ -151,7 +151,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
 
       <ProviderAppointment v-for = "appointment in appointments" :key ="appointment.appointmentId" :appointmentDetails="appointment"/>
         
@@ -175,14 +175,14 @@
       
       <br>
       
-      <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
+      <!--<div class="w3-card w3-round w3-white w3-padding-16 w3-center">
         <p>ADS because we're broke</p>
       </div>
       <br>
       
       <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
         <p>Reviews</p>
-      </div>
+      </div>-->
       
     <!-- End Right Column -->
     </div>
@@ -196,7 +196,6 @@
 
 <!-- Footer -->
 <footer class="w3-container w3-theme-d3 w3-padding-16">
-  <h5>Footer</h5>
 </footer>
 
 <footer class="w3-container w3-theme-d5">
