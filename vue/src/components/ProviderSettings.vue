@@ -153,9 +153,9 @@
           </select></h5>
 
 
-        <h5>Office name    : <input type="text"></h5>
-        <h5>Office address : <input type="text"></h5>
-        <h5>Office phone   : <input type="text"></h5>
+        <h5>Office name    : <input type="text" v-model="newOffice.officeName"></h5>
+        <h5>Office address : <input type="text" v-model="newOffice.officeAddress"></h5>
+        <h5>Office phone   : <input type="text" v-model="newOffice.phoneNumber"></h5>
 
         
         <input id ="enter" type="submit" @click.prevent = "updateProfile" value ="Update Profile" />
@@ -318,6 +318,7 @@ export default {
           (response)=>{
             if(response.status == 200){
               this.$store.commit('SET_USER', response.data.user);
+              this.newDoctor = {};
             }
           }
         ).catch(
@@ -358,6 +359,7 @@ export default {
           (response)=>{
             if(response.status == 200){
               this.doctorOffice = response.data;
+              this.newOffice = {};
             }
           }
         ).catch(
