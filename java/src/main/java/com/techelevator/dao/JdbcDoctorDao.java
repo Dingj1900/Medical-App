@@ -95,14 +95,32 @@ public class JdbcDoctorDao implements DoctorDao {
     @Override
     public Office updateOfficeById(Office office, int doctorId){
 
-        Office updatedOffice = null;
+        Office updatedOffice = getOfficeByDoctor(doctorId);
+
+        if(office.getOfficeName() != null){
+            updatedOffice.setOfficeName(office.getOfficeName());
+        }
+        if(office.getOfficeAddress() != null){
+            updatedOffice.setOfficeAddress(office.getOfficeAddress());
+        }
+        if(office.getPhoneNumber() != null){
+            updatedOffice.setPhoneNumber(office.getPhoneNumber());
+        }
+        if(office.getHoursFrom() != null){
+            updatedOffice.setHoursFrom(office.getHoursFrom());
+        }
+        if(office.getHoursTo() != null){
+            updatedOffice.setHoursTo(office.getHoursTo());
+        }
+
+
         String sql = "UPDATE office SET office_name = ?, office_address = ?, phone_number = ?, " +
                 "hours_from = ?, hours_to = ? " +
                 "WHERE office_id = ?";
 
         try {
-            int numberOfRows = jdbcTemplate.update(sql, office.getOfficeName(), office.getOfficeAddress(),
-                    office.getPhoneNumber(), office.getHoursFrom(), office.getHoursTo(), office.getOfficeId());
+            int numberOfRows = jdbcTemplate.update(sql, updatedOffice.getOfficeName(), updatedOffice.getOfficeAddress(),
+                    updatedOffice.getPhoneNumber(), updatedOffice.getHoursFrom(), updatedOffice.getHoursTo(), updatedOffice.getOfficeId());
 
             if (numberOfRows == 0) {
                 throw new DaoException("Zero rows affected, expected at least one");

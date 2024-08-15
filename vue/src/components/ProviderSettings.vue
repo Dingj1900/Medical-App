@@ -76,7 +76,7 @@
         </h5>
 
         <h5>Hours to       : 
-          <select name="hoursTo" id="hoursTo" v-model="newDoctor.hoursTo" required autofocus>
+          <select  v-model="newDoctor.hoursTo" required autofocus>
             <option disabled selected>Hours From</option>
             <option value="00:00:00">12:00am</option>
             <option value="01:00:00">1:00am</option>
@@ -207,6 +207,45 @@ export default {
       
       if(Object.keys(this.newDoctor).length != 0){
 
+        if(this.newDoctor.hasOwnProperty('hoursFrom')){
+          if(!this.newDoctor.hoursFrom){
+            this.newDoctor.hoursFrom = this.doctor.hoursFrom;
+            
+          }else{
+            //if exist update office hours too
+            this.newOffice.hoursFrom = this.newDoctor.hoursTo;
+          }
+        }else{
+          this.newDoctor.hoursFrom = this.doctor.hoursFrom;
+        }
+
+        if(this.newDoctor.hasOwnProperty('hoursTo')){
+          if(!this.newDoctor.hoursTo){
+            this.newDoctor.hoursTo = this.doctor.hoursTo;
+          }
+          else{
+            //if exist update office hours too
+            this.newOffice.hoursTo = this.newDoctor.hoursTo;
+          }
+        }else{
+          this.newDoctor.hoursTo = this.doctor.hoursTo;
+        }
+
+        if(this.newDoctor.hoursFrom > this.newDoctor.hoursTo){
+          alert("Hours from must be smaller than hours to");
+          this.newDoctor = {};
+          this.newOffice = {};
+          return;
+        }
+
+        
+        if(this.newDoctor.hoursFrom === this.newDoctor.hoursTo){
+          alert("Hours from must not be equal to hours to");
+          this.newDoctor = {};
+          this.newOffice = {};
+          return;
+        }
+
         DoctorService.updateDoctor(this.newDoctor).then(
           (response)=>{
             if(response.status == 200){
@@ -224,7 +263,6 @@ export default {
       }
 
       if(Object.keys(this.newOffice).length != 0){
-
         if(this.newOffice.hasOwnProperty('officeName')){
           if(!this.newOffice.officeName){
             this.newOffice.officeName = this.doctorOffice.officeName;
