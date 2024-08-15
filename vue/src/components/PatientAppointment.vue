@@ -8,9 +8,10 @@
         <h4>Dr. {{ appointmentDetails.doctorLastName }} {{ appointmentDetails.doctorFirstName }}</h4><br>
         <hr class="w3-clear">
 
-            <p>{{ appointmentDetails.officeName }}</p>
-            <p>{{ appointmentDetails.officeAddress }}</p>
-            <p>{{ appointmentDetails.officePhone }}</p>
+            <p>Gender: {{ appointmentDetails.gender }}</p>
+            <p>{{ appointmentDetails.dateOfBirth }}</p>
+            <p>{{ appointmentDetails.email }}</p>
+            <p>{{ appointmentDetails.phone_number }}</p>
             <p>Service: {{ appointmentDetails.serviceDescription }}</p>
         
         <div class="w3-row-padding" style="margin:0 -16px">
