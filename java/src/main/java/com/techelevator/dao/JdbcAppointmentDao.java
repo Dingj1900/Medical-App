@@ -48,11 +48,12 @@ public class JdbcAppointmentDao implements AppointmentDao {
 
         List<AppointmentDto> appointmentsDto = new ArrayList<>();
         String sql = "SELECT appointment_id, first_name, last_name, service_details, office_name, office_address, " +
-                "office.phone_number, appt_date, is_notified, is_approved, services.service_id, office.office_id, patient_id, appointment.doctor_id " +
+                "office.phone_number, appt_date, is_notified, is_approved, services.service_id, office.office_id, " +
+                "patient_id, appointment.doctor_id, gender, email, users.phone_number, date_of_birth " +
                 "FROM appointment " +
                 "JOIN office ON office.office_id = appointment.office_id " +
                 "JOIN services ON services.service_id = appointment.service_id " +
-                "JOIN users ON users.user_id = appointment.doctor_id " +
+                "JOIN users ON users.user_id = appointment.patient_id " +
                 "WHERE appointment.doctor_id = ?;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
@@ -120,6 +121,17 @@ public class JdbcAppointmentDao implements AppointmentDao {
 
         appointment.setNotified(rs.getBoolean("is_notified"));
         appointment.setApproved(rs.getBoolean("is_approved"));
+
+        appointment.setGender(rs.getString("gender"));
+        appointment.setEmail(rs.getString("email"));
+        appointment.setPhone_number(rs.getString("phone_number"));
+        try{
+            if(rs.getString("date_of_birth") != null){
+                appointment.setDateOfBirth(rs.getDate("date_of_birth").toLocalDate());
+            }
+        }catch(NullPointerException error){
+            throw new DaoException("Null pointer, date of birth");
+        }
 
         return appointment;
     }
