@@ -5,9 +5,9 @@ DROP TABLE IF EXISTS users, roles, userRole CASCADE;
 DROP TABLE IF EXISTS office, appointment, medication, time_period, prescription,
 doctor_services,services,review,doctor_office CASCADE;
 
-
+create sequence users_user_id_seq;
 CREATE TABLE users (
-	user_id SERIAL,
+	user_id int not null default nextval('users_user_id_seq'),
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
@@ -44,6 +44,7 @@ CREATE TABLE users (
 																	  'OK', 'MN', 'MS',  'MO', 'MT', 'NE', 'NV', 'NH',  'NJ',  'NM',  'NY',  'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI',
 																	  'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'))
 );
+
 
 
 CREATE TABLE office(
