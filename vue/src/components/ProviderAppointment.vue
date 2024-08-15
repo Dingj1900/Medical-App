@@ -28,7 +28,7 @@
       </div>
       
       <!-- <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Update</button>  -->
-      <button @click="deleteAppt" type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-ban"></i> Delete</button> 
+      <!-- <button @click="deleteAppt" type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-ban"></i> Delete</button>  -->
       
   </div>
     
@@ -44,7 +44,7 @@ export default{
   },
   methods: {
         deleteAppt(){
-           DoctorService.deleteAppointments(appointmentDetails.appointmentId).then(
+           DoctorService.deleteAppointments(this.appointmentDetails.appointmentId).then(
 
            ).catch(
 
