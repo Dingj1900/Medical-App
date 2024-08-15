@@ -52,12 +52,12 @@ Discover a seamless way to connect with healthcare professionals who meet your n
     </div>
     <div class="section section-team text-center">
       <div class="container">
-        <h2 class="title">Some of our top doctors:</h2>
+        <h2 class="title">Examples of top doctors:</h2>
         <div class="team">
           <div class="row">
             <div class="col-md-4">
               <div class="team-player">
-                <img src="https://mdxvitals-res.cloudinary.com/private_images/q_auto/professionals/1946986/photo.jpg" alt="Dr. Rodney Mulligan" class="rounded-circle img-fluid img-raised" style="border-radius: 50%; /* Makes the image circular */
+                <img src="https://mdxvitals-res.cloudinary.com/private_images/q_auto/professionals/1946986/photo.jpg" alt="Dr. Rodney Mulligan" class="rounded-circle img-fluid img-raised" style="border-radius: 50%; height: 200px;
     width: 150px; /* Set a specific width */
     height: 150px; /* Set a specific height */
     max-width: 80%; /* Responsive sizing */
@@ -655,7 +655,6 @@ body {
   display: inline-block;
   font: normal normal normal 14px/1 'Nucleo Outline';
   font-size: inherit;
-  speak: none;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -813,8 +812,6 @@ img {
 .img-raised {
   box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.3);
 }
-
-
 
 .landing-page .header {
   height: 100vh;
