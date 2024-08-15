@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS office, appointment, medication, time_period, prescription,
 doctor_services,services,review,doctor_office CASCADE;
 
 create sequence users_user_id_seq;
+create sequence services_service_id_seq;
 CREATE TABLE users (
 	user_id int not null default nextval('users_user_id_seq'),
 	username varchar(50) NOT NULL UNIQUE,
@@ -73,7 +74,7 @@ CONSTRAINT pk_doctor_offices PRIMARY KEY(doctor_id,office_id)
 );
 
 CREATE TABLE services(
-	service_id Serial,
+	service_id int not null default nextval('services_service_id_seq'),
 	service_name varchar(50) NOT NULL,
 	service_details varchar(200)NOT NULL,
 	hourly_rate numeric(9,2) NOT NULL,

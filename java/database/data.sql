@@ -63,5 +63,6 @@ VALUES (7, 100),
 
 
 alter sequence users_user_id_seq restart with 1000 increment by 1;
+alter sequence services_service_id_seq restart with 1000 increment by 1;
 
 COMMIT TRANSACTION;
