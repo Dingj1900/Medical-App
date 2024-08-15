@@ -120,7 +120,7 @@ public class DoctorController {
         int doctorId = userDao.getUserByUsername(principal.getName()).getId(); // needed to validate that you are the Dr of this office
 
         try {
-            updatedOffice = doctorDao.updateOfficeById(office);
+            updatedOffice = doctorDao.updateOfficeById(office, doctorId);
 
             // updateOffice method needs to be created in the JDBC
             // return Office object, takes in Office AND Doctor ID
