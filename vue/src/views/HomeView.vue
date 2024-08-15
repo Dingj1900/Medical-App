@@ -57,7 +57,12 @@ Discover a seamless way to connect with healthcare professionals who meet your n
           <div class="row">
             <div class="col-md-4">
               <div class="team-player">
-                <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/avatar.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
+                <img src="https://mdxvitals-res.cloudinary.com/private_images/q_auto/professionals/1946986/photo.jpg" alt="Dr. Rodney Mulligan" class="rounded-circle img-fluid img-raised" style="border-radius: 50%; /* Makes the image circular */
+    width: 150px; /* Set a specific width */
+    height: 150px; /* Set a specific height */
+    max-width: 80%; /* Responsive sizing */
+    height: auto; /* Maintain aspect ratio */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */">
                 <h4 class="title">Dr. Rodney Mulligan</h4>
                 <p class="category text-primary">ProHealth Clinic</p>
                 <p class="description">Dr. Rodney Mulligan is well-regarded for his extensive experience in family medicine. He is known for his attentive care, accurate diagnoses, and personalized treatment plans, earning the trust of patients in his community.</p>
@@ -65,7 +70,12 @@ Discover a seamless way to connect with healthcare professionals who meet your n
             </div>
             <div class="col-md-4">
               <div class="team-player">
-                <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/ryan.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
+                <img src="https://www.bombayhospitalindore.com/resources/assets/images/team/dr-abhinav-anand.jpg" alt="Dr. Derrick Samson" class="rounded-circle img-fluid img-raised" style="border-radius: 50%; /* Makes the image circular */
+    width: 150px; /* Set a specific width */
+    height: 150px; /* Set a specific height */
+    max-width: 80%; /* Responsive sizing */
+    height: auto; /* Maintain aspect ratio */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */">
                 <h4 class="title">Dr. Derrick Samson</h4>
                 <p class="category text-primary">Premier Health Center Location</p>
                 <p class="description">Dr. Derrick Samson is a skilled general practitioner with a strong focus on patient-centered care. He is respected for his thorough approach to diagnosing and treating a wide range of health conditions, ensuring his patients receive the highest quality of care.</p>
@@ -73,7 +83,12 @@ Discover a seamless way to connect with healthcare professionals who meet your n
             </div>
             <div class="col-md-4">
               <div class="team-player">
-                <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/eva.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
+                <img src="https://www.purdue.edu/fnr/sites/ma/wp-content/uploads/sites/3/2017/12/Zhao-Ma_preview.jpeg" alt="Dr. Cindy Zhao" class="rounded-circle img-fluid img-raised" style="border-radius: 50%; /* Makes the image circular */
+    width: 150px; /* Set a specific width */
+    height: 150px; /* Set a specific height */
+    max-width: 80%; /* Responsive sizing */
+    height: auto; /* Maintain aspect ratio */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */">
                 <h4 class="title">Dr. Cindy Zhao</h4>
                 <p class="category text-primary">TrustCare Medical Group</p>
                 <p class="description">Dr. Cindy Zhao is a dedicated physician known for her empathetic and thorough approach to patient care. She excels in providing personalized treatment and is highly regarded for her ability to connect with patients and address their healthcare needs effectively.</p>
@@ -263,6 +278,11 @@ export default {
   font-size: 1em;
   border-radius: 0.25rem;
   padding: 15px 48px;
+}
+
+.custom-rounded-circle{
+  width: 150px;
+  height: auto;
 }
 
 .form-control::-moz-placeholder {
@@ -1340,7 +1360,6 @@ img {
   display: inline-block;
   font: normal normal normal 14px/1 'Nucleo Outline';
   font-size: inherit;
-  speak: none;
   text-transform: none;
   /* Better Font Rendering */
   -webkit-font-smoothing: antialiased;
