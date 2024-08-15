@@ -12,7 +12,7 @@ public interface DoctorDao {
 //    Appointment getAppointmentByDoctor(int doctorId);
 
 
-    Office updateOfficeById(Office office); //good
+    Office updateOfficeById(Office office, int doctorId); //good
 
     int createDoctorOffice(Office office, int doctorId); //good
 
