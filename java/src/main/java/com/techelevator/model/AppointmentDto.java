@@ -1,5 +1,6 @@
 package com.techelevator.model;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class AppointmentDto {
@@ -19,7 +20,31 @@ public class AppointmentDto {
         private boolean approved;
         private String apptDate;
 
-        public AppointmentDto () {}
+        private String gender;
+
+        private String email;
+
+        private String phone_number;
+
+        private LocalDate dateOfBirth;
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public LocalDate getDateOfBirth() {
+            return dateOfBirth;
+        }
+
+        public void setDateOfBirth(LocalDate dateOfBirth) {
+            this.dateOfBirth = dateOfBirth;
+        }
+
+    public AppointmentDto () {}
 
 //        public AppointmentDto(String doctorName, String serviceDescription, String officeName, String officeAddress, String officePhone, int appointmentId, int serviceId, int officeId, int patientId, int doctorId, LocalTime apptFrom, LocalTime apptTo, boolean openMonday, boolean openTuesday, boolean openWednesday, boolean openThursday, boolean openFriday, boolean openSaturday, boolean openSunday, boolean notified, boolean approved) {
 //        this.doctorName = doctorName;
@@ -44,6 +69,30 @@ public class AppointmentDto {
 //        this.notified = notified;
 //        this.approved = approved;
 
+
+    public boolean isNotified() {
+        return notified;
+    }
+
+    public boolean isApproved() {
+        return approved;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
 
     public String getApptDate() {
         return apptDate;

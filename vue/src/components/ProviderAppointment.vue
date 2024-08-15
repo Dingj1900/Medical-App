@@ -5,7 +5,7 @@
           <p>Time: {{ appointmentDetails.apptDate }} </p>
       </span>
 
-      <h4>Patient: {{ appointmentDetails.patientName }}</h4><br>
+      <h4>Patient: {{ appointmentDetails.doctorFirstName }} {{ appointmentDetails.doctorLastName }}</h4><br>
       <hr class="w3-clear">
 
           <p>{{ appointmentDetails.patientDOB }}</p>

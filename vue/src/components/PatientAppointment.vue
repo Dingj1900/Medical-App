@@ -10,6 +10,10 @@
 
             <p><i>{{ appointmentDetails.officeAddress }}</i></p>
             <p><i>{{ appointmentDetails.officePhone }}</i></p>
+            <p>Gender: {{ appointmentDetails.gender }}</p>
+            <p>{{ appointmentDetails.dateOfBirth }}</p>
+            <p>{{ appointmentDetails.email }}</p>
+            <p>{{ appointmentDetails.phone_number }}</p>
             <p>Service: {{ appointmentDetails.serviceDescription }}</p>
         
         <div class="w3-row-padding" style="margin:0 -16px">
