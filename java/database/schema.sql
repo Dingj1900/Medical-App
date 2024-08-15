@@ -39,7 +39,7 @@ CREATE TABLE users (
 
     CONSTRAINT pk_user PRIMARY KEY (user_id),
 	CONSTRAINT gender_check CHECK (gender IN ('Male', 'Female', 'Other')),
-	CONSTRAINT state_abbreviation_check CHECK (state_abbreviation IN ('AL',  'AK ',  'AZ', 'AR', 'CA',  'CO',  'CT',  'DE',  'FL', 'GA', 'HI', 'ID', 'IL',  'IN', 'IA',  'KS',  'KY',
+	CONSTRAINT state_abbreviation_check CHECK (state_abbreviation IN ('AL',  'AK',  'AZ', 'AR', 'CA',  'CO',  'CT',  'DE',  'FL', 'GA', 'HI', 'ID', 'IL',  'IN', 'IA',  'KS',  'KY',
 																	  'LA',  'ME', 'MD', 'MA', 'MI', 'MN', 'MS',  'MO', 'MT', 'NE', 'NV', 'NH' , 'NJ', 'NM' , 'NY', 'NC', 'ND', 'OH',
 																	  'OK', 'MN', 'MS',  'MO', 'MT', 'NE', 'NV', 'NH',  'NJ',  'NM',  'NY',  'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI',
 																	  'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'))
