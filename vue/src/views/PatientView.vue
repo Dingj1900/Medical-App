@@ -106,7 +106,7 @@
     <div class="w3-col m7">
     
       <!-- will be our filter for appointment eventually -->
-      <div class="w3-row-padding">
+      <!-- <div class="w3-row-padding">
         <div class="w3-col m12">
           <div class="w3-card w3-round w3-white">
             <div class="w3-container w3-padding">
@@ -116,7 +116,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       
       <!-- For loop for appointment-->
       <PatientAppointment v-for = " appointment in appointments" v-bind:key = "appointment.appointmentId" :appointmentDetails = "appointment"/>

@@ -4,10 +4,10 @@
 
     <section>
         <nav>
-                <router-link active-class="back" v-bind:to = "{ name: 'patientView' }">Back to Profile</router-link>
+            <router-link active-class="back" v-bind:to = "{ name: 'patientView' }">Back to Profile</router-link>
         </nav>
             
-        <h1> Services </h1>
+        <h1>Services</h1>
         
         <body>
 

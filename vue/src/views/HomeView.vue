@@ -35,7 +35,7 @@ Discover a seamless way to connect with healthcare professionals who meet your n
             <div class="col-md-6">
               <div class="image-container image-left" style="background-image: url('https://thumbs.dreamstime.com/b/doctors-office-cartoon-doctors-office-cartoon-patient-vector-illustration-graphic-design-113897631.jpg')">
                 <!-- First image on the left side -->
-                <p class="blockquote blockquote-primary">"I found a kick ass doctor thanks to HealMeNow!"</p>
+                <p class="blockquote blockquote-primary">"It's so easy to connect with doctors across multiple offices, and scheduling is so efficient!"</p>
               </div>
               <!-- Second image on the left side of the article -->
               <div class="image-container" style="background-image: url('https://www.ghp-news.com/wp-content/uploads/2020/06/doctors-office-1920-x-1080.jpg')"></div>
@@ -54,30 +54,30 @@ Discover a seamless way to connect with healthcare professionals who meet your n
     </div>
     <div class="section section-team text-center">
       <div class="container">
-        <h2 class="title">A few of our top Doctors:</h2>
+        <h2 class="title">Some of our top doctors:</h2>
         <div class="team">
           <div class="row">
             <div class="col-md-4">
               <div class="team-player">
                 <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/avatar.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
-                <h4 class="title">Dr. Romina Hadid</h4>
-                <p class="category text-primary">Pediatrician</p>
+                <h4 class="title">Dr. Rodney Mulligan</h4>
+                <p class="category text-primary">ProHealth Clinic</p>
                 <p class="description">Add information about Doctors in your area or the top providers overall!</p>
               </div>
             </div>
             <div class="col-md-4">
               <div class="team-player">
                 <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/ryan.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
-                <h4 class="title">Ryan Johnson, AOCNP</h4>
-                <p class="category text-primary">Oncology Nurse Practitioner</p>
+                <h4 class="title">Dr. Derrick Samson</h4>
+                <p class="category text-primary">Premier Health Center Location</p>
                 <p class="description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some</p>
               </div>
             </div>
             <div class="col-md-4">
               <div class="team-player">
                 <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/eva.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
-                <h4 class="title">Dr. Eva Jenner</h4>
-                <p class="category text-primary">Obstetrician</p>
+                <h4 class="title">Dr. Cindy Zhao</h4>
+                <p class="category text-primary">TrustCare Medical Group</p>
                 <p class="description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some</p>
                   
               </div>

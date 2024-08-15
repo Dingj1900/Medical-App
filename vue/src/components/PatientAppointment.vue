@@ -2,15 +2,14 @@
     <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
 
         <span class="w3-right w3-opacity">
-            <p>Time: {{ appointmentDetails.apptDate }} </p>
+            <p>Time: {{ formatDate(appointmentDetails.apptDate) }} </p>
         </span>
 
-        <h4>Dr. {{ appointmentDetails.doctorLastName }} {{ appointmentDetails.doctorFirstName }}</h4><br>
+        <h4>Dr. {{ appointmentDetails.doctorFirstName }} {{ appointmentDetails.doctorLastName }}</h4>
         <hr class="w3-clear">
 
-            <p>{{ appointmentDetails.officeName }}</p>
-            <p>{{ appointmentDetails.officeAddress }}</p>
-            <p>{{ appointmentDetails.officePhone }}</p>
+            <p><i>{{ appointmentDetails.officeAddress }}</i></p>
+            <p><i>{{ appointmentDetails.officePhone }}</i></p>
             <p>Service: {{ appointmentDetails.serviceDescription }}</p>
         
         <div class="w3-row-padding" style="margin:0 -16px">
@@ -44,8 +43,39 @@ export default{
 
 
         };
+    },
+    methods: {
+        formatDate(incomingDate) {
+            // 2024-08-21 14:00:00.0
+            if (incomingDate) {
+                const noMillis = incomingDate.substring(0, incomingDate.length - 5);
+                const dateString = noMillis.split(" ")[0];
+                const timeString = noMillis.split(" ")[1];
+
+                const year = dateString.split("-")[0];
+                const month = dateString.split("-")[1];
+                const date = dateString.split("-")[2];
+
+                let hour = parseInt(timeString.split(":")[0]);
+
+                let ampm = 'am';
+                if (hour >= 12) {
+                    ampm = 'pm';
+                    
+                    if (hour > 12) {
+                        hour -=12;
+                    }
+                }
+
+                return `${month}/${date}/${year} at ${hour}:00 ${ampm}`;
+            }
+            return '';
+        }
     }
 }
 </script>
+
+
 <style scoped>
+
 </style>
