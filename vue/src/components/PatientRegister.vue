@@ -99,6 +99,7 @@
             <option value="WY">WY</option>
    </select>
    </div>
+   
    <div class="form-input-group">
     <label for="zipcode">Zipcode</label>
           <input type="text" id="zipcode" v-model="user.zipcode" required autofocus />

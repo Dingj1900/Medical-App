@@ -29,13 +29,12 @@ Discover a seamless way to connect with healthcare professionals who meet your n
 </h5>
           </div>
         </div>
-        <div class="separator separator-primary"></div>
         <div class="section-story-overview">
           <div class="row">
             <div class="col-md-6">
               <div class="image-container image-left" style="background-image: url('https://thumbs.dreamstime.com/b/doctors-office-cartoon-doctors-office-cartoon-patient-vector-illustration-graphic-design-113897631.jpg')">
                 <!-- First image on the left side -->
-                <p class="blockquote blockquote-primary">"I found a kick ass doctor thanks to HealMeNow"</p>
+                <p class="blockquote blockquote-primary">"It's so easy to connect with doctors across multiple offices, and scheduling is so efficient!"</p>
               </div>
               <!-- Second image on the left side of the article -->
               <div class="image-container" style="background-image: url('https://www.ghp-news.com/wp-content/uploads/2020/06/doctors-office-1920-x-1080.jpg')"></div>
@@ -46,7 +45,6 @@ Discover a seamless way to connect with healthcare professionals who meet your n
               <h3>Why use our services?</h3>
               <p>We connect patients with doctors! Our platform simplifies your healthcare journey by matching you with the right doctor based on your specific needs and preferences. Enjoy the convenience of online appointment booking, access to verified and highly rated professionals, and detailed doctor profiles with patient reviews. We save you time with our efficient scheduling and offer 24/7 support to address any questions or concerns. Experience personalized, reliable, and hassle-free healthcare—start connecting with the perfect doctor today.
               </p>
-             
             </div>
           </div>
         </div>
@@ -54,31 +52,46 @@ Discover a seamless way to connect with healthcare professionals who meet your n
     </div>
     <div class="section section-team text-center">
       <div class="container">
-        <h2 class="title">A few of our top Doctors:</h2>
+        <h2 class="title">Some of our top doctors:</h2>
         <div class="team">
           <div class="row">
             <div class="col-md-4">
               <div class="team-player">
-                <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/avatar.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
-                <h4 class="title">Dr. Romina Hadid</h4>
-                <p class="category text-primary">Pediatrician</p>
-                <p class="description">Add information about Doctors in your area or the top providers overall!</p>
+                <img src="https://mdxvitals-res.cloudinary.com/private_images/q_auto/professionals/1946986/photo.jpg" alt="Dr. Rodney Mulligan" class="rounded-circle img-fluid img-raised" style="border-radius: 50%; /* Makes the image circular */
+    width: 150px; /* Set a specific width */
+    height: 150px; /* Set a specific height */
+    max-width: 80%; /* Responsive sizing */
+    height: auto; /* Maintain aspect ratio */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */">
+                <h4 class="title">Dr. Rodney Mulligan</h4>
+                <p class="category text-primary">ProHealth Clinic</p>
+                <p class="description">Dr. Rodney Mulligan is well-regarded for his extensive experience in family medicine. He is known for his attentive care, accurate diagnoses, and personalized treatment plans, earning the trust of patients in his community.</p>
               </div>
             </div>
             <div class="col-md-4">
               <div class="team-player">
-                <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/ryan.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
-                <h4 class="title">Ryan Johnson, AOCNP</h4>
-                <p class="category text-primary">Oncology Nurse Practitioner</p>
-                <p class="description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some</p>
+                <img src="https://www.bombayhospitalindore.com/resources/assets/images/team/dr-abhinav-anand.jpg" alt="Dr. Derrick Samson" class="rounded-circle img-fluid img-raised" style="border-radius: 50%; /* Makes the image circular */
+    width: 150px; /* Set a specific width */
+    height: 150px; /* Set a specific height */
+    max-width: 80%; /* Responsive sizing */
+    height: auto; /* Maintain aspect ratio */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */">
+                <h4 class="title">Dr. Derrick Samson</h4>
+                <p class="category text-primary">Premier Health Center Location</p>
+                <p class="description">Dr. Derrick Samson is a skilled general practitioner with a strong focus on patient-centered care. He is respected for his thorough approach to diagnosing and treating a wide range of health conditions, ensuring his patients receive the highest quality of care.</p>
               </div>
             </div>
             <div class="col-md-4">
               <div class="team-player">
-                <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/eva.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
-                <h4 class="title">Dr. Eva Jenner</h4>
-                <p class="category text-primary">Obstetrician</p>
-                <p class="description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some</p>
+                <img src="https://www.purdue.edu/fnr/sites/ma/wp-content/uploads/sites/3/2017/12/Zhao-Ma_preview.jpeg" alt="Dr. Cindy Zhao" class="rounded-circle img-fluid img-raised" style="border-radius: 50%; /* Makes the image circular */
+    width: 150px; /* Set a specific width */
+    height: 150px; /* Set a specific height */
+    max-width: 80%; /* Responsive sizing */
+    height: auto; /* Maintain aspect ratio */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */">
+                <h4 class="title">Dr. Cindy Zhao</h4>
+                <p class="category text-primary">TrustCare Medical Group</p>
+                <p class="description">Dr. Cindy Zhao is a dedicated physician known for her empathetic and thorough approach to patient care. She excels in providing personalized treatment and is highly regarded for her ability to connect with patients and address their healthcare needs effectively.</p>
                   
               </div>
             </div>
@@ -265,6 +278,11 @@ export default {
   font-size: 1em;
   border-radius: 0.25rem;
   padding: 15px 48px;
+}
+
+.custom-rounded-circle{
+  width: 150px;
+  height: auto;
 }
 
 .form-control::-moz-placeholder {
@@ -1342,7 +1360,6 @@ img {
   display: inline-block;
   font: normal normal normal 14px/1 'Nucleo Outline';
   font-size: inherit;
-  speak: none;
   text-transform: none;
   /* Better Font Rendering */
   -webkit-font-smoothing: antialiased;
