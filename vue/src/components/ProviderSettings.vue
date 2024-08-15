@@ -24,7 +24,7 @@
         <h5>Open Saturday  : {{ doctor.openSaturday }}</h5>
 
 
-        <h5>Office name    : {{ doctorOffice.officeName }}</h5>
+        <h5>Office name    : {{ doctorOffice.officeName }} </h5>
         <h5>Office address : {{ doctorOffice.officeAddress }}</h5>
         <h5>Office phone   : {{ doctorOffice.phoneNumber }}</h5>
     </div>
@@ -35,10 +35,18 @@
         <h5>Last name      : <input type="text" v-model = "newDoctor.lastName"></h5>
         <h5>Email          : <input type="text" v-model = "newDoctor.email"></h5>
         <h5>Phone Number   : <input type="text" v-model = "newDoctor.phoneNumber"></h5>
-        <h5>Gender         : <input type="text" v-model = "newDoctor.gender"></h5>
+
+        <h5>Gender         : 
+          <select v-model="newDoctor.gender">
+            <option disabled selected>Please select one</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </h5>
 
         <h5>Hours from     : 
-          <select name="hoursFrom" id="hoursFrom" v-model="newDoctor.hoursFrom" required autofocus>
+          <select  v-model="newDoctor.hoursFrom" required autofocus>
             <option disabled selected>Hours From</option>
             <option value="00:00:00">12:00am</option>
             <option value="01:00:00">1:00am</option>
@@ -150,12 +158,13 @@
             <option disabled selected>Please select one</option>
             <option value="True">True</option>
             <option value="False">False</option>
-          </select></h5>
+          </select>
+        </h5>
 
 
-        <h5>Office name    : <input type="text" v-model="newOffice.officeName"></h5>
-        <h5>Office address : <input type="text" v-model="newOffice.officeAddress"></h5>
-        <h5>Office phone   : <input type="text" v-model="newOffice.phoneNumber"></h5>
+        <h5>Office name    : <input type="text" v-model="newOffice.officeName"/> </h5>
+        <h5>Office address : <input type="text" v-model="newOffice.officeAddress"/> </h5>
+        <h5>Office phone   : <input type="text" v-model="newOffice.phoneNumber"/> </h5>
 
         
         <input id ="enter" type="submit" @click.prevent = "updateProfile" value ="Update Profile" />
@@ -179,7 +188,7 @@ export default {
   data() {
     return {
 
-      doctor : this.$store.state.user,
+      doctor : {},
 
       newDoctor : {},
 
@@ -198,126 +207,11 @@ export default {
       
       if(Object.keys(this.newDoctor).length != 0){
 
-        if(this.newDoctor.hasOwnProperty('firstName')){
-          if(!this.newDoctor.firstName){
-            this.newDoctor.firstName = this.doctor.firstName;
-          }
-        }else{
-          this.newDoctor.firstName = this.doctor.firstName;
-        }
-
-        if(this.newDoctor.hasOwnProperty('lastName')){
-          if(!this.newDoctor.lastName){
-            this.newDoctor.lastName = this.doctor.lastName;
-          }
-        }else{
-          this.newDoctor.lastName = this.doctor.lastName;
-        }
-
-        if(this.newDoctor.hasOwnProperty('email')){
-          if(!this.newDoctor.email){
-            this.newDoctor.email = this.doctor.email;
-          }
-        }else{
-          this.newDoctor.email = this.doctor.email;
-        }
-        
-        if(this.newDoctor.hasOwnProperty('phoneNumber')){
-          if(!this.newDoctor.phoneNumber){
-            this.newDoctor.phoneNumber = this.doctor.phoneNumber;
-          }
-        }else{
-          this.newDoctor.phoneNumber = this.doctor.phoneNumber;
-        }
-
-        if(this.newDoctor.hasOwnProperty('gender')){
-          if(!this.newDoctor.gender){
-            this.newDoctor.gender = this.doctor.gender;
-          }
-        }else{
-          this.newDoctor.gender = this.doctor.gender;
-        }
-
-        if(this.newDoctor.hasOwnProperty('hoursFrom')){
-          if(!this.newDoctor.hoursFrom){
-            this.newDoctor.hoursFrom = this.doctor.hoursFrom;
-          }
-        }else{
-          this.newDoctor.hoursFrom = this.doctor.hoursFrom;
-        }
-        
-        if(this.newDoctor.hasOwnProperty('hoursTo')){
-          if(!this.newDoctor.hoursTo){
-            this.newDoctor.hoursTo = this.doctor.hoursTo;
-          }
-        }else{
-          this.newDoctor.hoursTo = this.doctor.hoursTo;
-        }
-
-        if(this.newDoctor.hoursFrom > this.newDoctor.hoursTo){
-          alert("hours from cannot be higher than hours to");
-          return;
-        }
-        
-        if(this.newDoctor.hasOwnProperty('openMonday')){
-          if(!this.newDoctor.openMonday){
-            this.newDoctor.openMonday = this.doctor.openMonday;
-          }
-        }else{
-          this.newDoctor.openMonday = this.doctor.openMonday;
-        }
-
-        if(this.newDoctor.hasOwnProperty('openTuesday')){
-          if(!this.newDoctor.openTuesday){
-            this.newDoctor.openTuesday = this.doctor.openTuesday;
-          }
-        }else{
-          this.newDoctor.openTuesday = this.doctor.openTuesday;
-        }
-        if(this.newDoctor.hasOwnProperty('openWednesday')){
-          if(!this.newDoctor.openWednesday){
-            this.newDoctor.openWednesday = this.doctor.openWednesday;
-          }
-        }else{
-          this.newDoctor.openWednesday = this.doctor.openWednesday;
-        }
-
-        if(this.newDoctor.hasOwnProperty('openThursday')){
-          if(!this.newDoctor.openThursday){
-            this.newDoctor.openThursday = this.doctor.openThursday;
-          }
-        }else{
-          this.newDoctor.openThursday = this.doctor.openThursday;
-        }
-
-        if(this.newDoctor.hasOwnProperty('openFriday')){
-          if(!this.newDoctor.openFriday){
-            this.newDoctor.openFriday = this.doctor.openFriday;
-          }
-        }else{
-          this.newDoctor.openFriday = this.doctor.openFriday;
-        }
-
-        if(this.newDoctor.hasOwnProperty('openSaturday')){
-          if(!this.newDoctor.openSaturday){
-            this.newDoctor.openSaturday = this.doctor.openSaturday;
-          }
-        }else{
-          this.newDoctor.openSaturday = this.doctor.openSaturday;
-        }
-        
-        if(this.newDoctor.hasOwnProperty('openSunday')){
-          if(!this.newDoctor.openSunday){
-            this.newDoctor.openSunday = this.doctor.openSunday;
-          }
-        }else{
-          this.newDoctor.openSunday = this.doctor.openSunday;
-        }
-
         DoctorService.updateDoctor(this.newDoctor).then(
           (response)=>{
             if(response.status == 200){
-              this.$store.commit('SET_USER', response.data.user);
+              this.$store.commit('SET_USER', response.data);
+              this.doctor = response.data;
               this.newDoctor = {};
             }
           }
@@ -355,6 +249,8 @@ export default {
           this.newOffice.phoneNumber = this.doctorOffice.phoneNumber;
         }
 
+        this.newOffice.officeId = this.doctorOffice.officeId;
+
         DoctorService.updateOffice(this.newOffice).then(
           (response)=>{
             if(response.status == 200){
@@ -374,6 +270,9 @@ export default {
   },
 
   created() {
+
+    this.doctor = this.$store.state.user,
+
     DoctorService.getOfficeByDoctor().then(
       (response) => {
         if (response.status == 200) {

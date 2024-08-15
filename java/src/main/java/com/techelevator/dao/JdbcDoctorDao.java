@@ -93,7 +93,7 @@ public class JdbcDoctorDao implements DoctorDao {
         return newOfficeId;
     }
     @Override
-    public Office updateOfficeById(Office office){
+    public Office updateOfficeById(Office office, int doctorId){
 
         Office updatedOffice = null;
         String sql = "UPDATE office SET office_name = ?, office_address = ?, phone_number = ?, " +
@@ -107,7 +107,7 @@ public class JdbcDoctorDao implements DoctorDao {
             if (numberOfRows == 0) {
                 throw new DaoException("Zero rows affected, expected at least one");
             } else {
-                updatedOffice = getOfficeByDoctor(office.getOfficeId());
+                updatedOffice = getOfficeByDoctor(doctorId);
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);

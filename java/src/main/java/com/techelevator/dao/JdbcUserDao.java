@@ -195,6 +195,53 @@ public class JdbcUserDao implements UserDao {
 
         User updatedUser = getUserById(userId);
 
+        if(user.getFirstName() != null){
+            updatedUser.setFirstName(user.getFirstName());
+        }
+        if(user.getLastName()!= null){
+            updatedUser.setLastName(user.getLastName());
+        }
+        if(user.getMiddleInitials() != null){
+            updatedUser.setMiddleInitials(user.getMiddleInitials());
+        }
+        if(user.getGender() != null){
+            updatedUser.setGender(user.getGender());
+        }
+        if(user.getPhoneNumber()!= null){
+            updatedUser.setPhoneNumber(user.getPhoneNumber());
+        }
+        if(user.getEmail()!= null){
+            updatedUser.setEmail(user.getEmail());
+        }
+        if(user.getDateOfBirth()!= null){
+            updatedUser.setDateOfBirth(user.getDateOfBirth());
+        }
+        if(user.getAddress()!= null){
+            updatedUser.setAddress(user.getAddress());
+        }
+        if(user.getCity() != null){
+            updatedUser.setAddress(user.getAddress());
+        }
+        if(user.getStateAbbreviation()!= null){
+            updatedUser.setStateAbbreviation(user.getStateAbbreviation());
+        }
+        if(user.getZipcode()!= null){
+            updatedUser.setZipcode(user.getZipcode());
+        }
+        if(user.getHoursFrom()!= null){
+            updatedUser.setHoursFrom(user.getHoursFrom());
+        }
+        if(user.getHoursTo()!= null){
+            updatedUser.setHoursTo(user.getHoursTo());
+        }
+
+        updatedUser.setOpenMonday(user.isOpenMonday());
+        updatedUser.setOpenTuesday(user.isOpenTuesday());
+        updatedUser.setOpenWednesday(user.isOpenWednesday());
+        updatedUser.setOpenThursday(user.isOpenThursday());
+        updatedUser.setOpenFriday(user.isOpenFriday());
+        updatedUser.setOpenSaturday(user.isOpenSaturday());
+        updatedUser.setOpenSunday(user.isOpenSunday());
 
         String sql = "UPDATE users SET " +
                 "first_name = ?, " +
@@ -221,26 +268,26 @@ public class JdbcUserDao implements UserDao {
 
         try{
             int rowsAffected = jdbcTemplate.update(sql,
-                    user.getFirstName(),
-                    user.getLastName(),
-                    user.getMiddleInitials(),
-                    user.getGender(),
-                    user.getPhoneNumber(),
-                    user.getEmail(),
-                    user.getDateOfBirth(),
-                    user.getAddress(),
-                    user.getCity(),
-                    user.getStateAbbreviation(),
-                    user.getZipcode(),
-                    user.getHoursFrom(),
-                    user.getHoursTo(),
-                    user.isOpenMonday(),
-                    user.isOpenTuesday(),
-                    user.isOpenWednesday(),
-                    user.isOpenThursday(),
-                    user.isOpenFriday(),
-                    user.isOpenSaturday(),
-                    user.isOpenSunday(),
+                    updatedUser.getFirstName(),
+                    updatedUser.getLastName(),
+                    updatedUser.getMiddleInitials(),
+                    updatedUser.getGender(),
+                    updatedUser.getPhoneNumber(),
+                    updatedUser.getEmail(),
+                    updatedUser.getDateOfBirth(),
+                    updatedUser.getAddress(),
+                    updatedUser.getCity(),
+                    updatedUser.getStateAbbreviation(),
+                    updatedUser.getZipcode(),
+                    updatedUser.getHoursFrom(),
+                    updatedUser.getHoursTo(),
+                    updatedUser.isOpenMonday(),
+                    updatedUser.isOpenTuesday(),
+                    updatedUser.isOpenWednesday(),
+                    updatedUser.isOpenThursday(),
+                    updatedUser.isOpenFriday(),
+                    updatedUser.isOpenSaturday(),
+                    updatedUser.isOpenSunday(),
                     userId
                     );
             if(rowsAffected == 0){
