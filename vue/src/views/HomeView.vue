@@ -29,7 +29,6 @@ Discover a seamless way to connect with healthcare professionals who meet your n
 </h5>
           </div>
         </div>
-        <div class="separator separator-primary"></div>
         <div class="section-story-overview">
           <div class="row">
             <div class="col-md-6">
@@ -46,7 +45,6 @@ Discover a seamless way to connect with healthcare professionals who meet your n
               <h3>Why use our services?</h3>
               <p>We connect patients with doctors! Our platform simplifies your healthcare journey by matching you with the right doctor based on your specific needs and preferences. Enjoy the convenience of online appointment booking, access to verified and highly rated professionals, and detailed doctor profiles with patient reviews. We save you time with our efficient scheduling and offer 24/7 support to address any questions or concerns. Experience personalized, reliable, and hassle-free healthcare—start connecting with the perfect doctor today.
               </p>
-             
             </div>
           </div>
         </div>
@@ -62,7 +60,7 @@ Discover a seamless way to connect with healthcare professionals who meet your n
                 <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/avatar.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
                 <h4 class="title">Dr. Rodney Mulligan</h4>
                 <p class="category text-primary">ProHealth Clinic</p>
-                <p class="description">Add information about Doctors in your area or the top providers overall!</p>
+                <p class="description">Dr. Rodney Mulligan is well-regarded for his extensive experience in family medicine. He is known for his attentive care, accurate diagnoses, and personalized treatment plans, earning the trust of patients in his community.</p>
               </div>
             </div>
             <div class="col-md-4">
@@ -70,7 +68,7 @@ Discover a seamless way to connect with healthcare professionals who meet your n
                 <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/ryan.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
                 <h4 class="title">Dr. Derrick Samson</h4>
                 <p class="category text-primary">Premier Health Center Location</p>
-                <p class="description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some</p>
+                <p class="description">Dr. Derrick Samson is a skilled general practitioner with a strong focus on patient-centered care. He is respected for his thorough approach to diagnosing and treating a wide range of health conditions, ensuring his patients receive the highest quality of care.</p>
               </div>
             </div>
             <div class="col-md-4">
@@ -78,7 +76,7 @@ Discover a seamless way to connect with healthcare professionals who meet your n
                 <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/eva.jpg" alt="Thumbnail Image" class="rounded-circle img-fluid img-raised">
                 <h4 class="title">Dr. Cindy Zhao</h4>
                 <p class="category text-primary">TrustCare Medical Group</p>
-                <p class="description">You can write here details about one of your team members. You can give more details about what they do. Feel free to add some</p>
+                <p class="description">Dr. Cindy Zhao is a dedicated physician known for her empathetic and thorough approach to patient care. She excels in providing personalized treatment and is highly regarded for her ability to connect with patients and address their healthcare needs effectively.</p>
                   
               </div>
             </div>
