@@ -65,6 +65,19 @@ public class JdbcAppointmentDao implements AppointmentDao {
         }
         return appointmentsDto;
     }
+    @Override
+    public int deleteAppointmentById(int appointmentId) {
+        int numberOfRows = 0;
+        String sql = "DELETE FROM appointment WHERE appointment_id = ?;";
+        try {
+            numberOfRows = jdbcTemplate.update(sql, appointmentId);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return numberOfRows;
+    }
 
     public Appointment createAppointment(Appointment appointment){
         int newAppointmentId = 0;

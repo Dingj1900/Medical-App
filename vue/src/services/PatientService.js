@@ -21,6 +21,7 @@ export default {
         getServiceInfo(serviceName){
             return axios.get("/patient/services/" + serviceName);
         }
+        //delete
 
         
 

@@ -9,7 +9,7 @@
 
             <div>
                 <label class="details" for="srvcDeets">Service Details:</label> 
-                <textarea name="srvcDeets" v-model="serviceObject.serviceDetails"></textarea>
+                <input name="srvcDeets" v-model="serviceObject.serviceDetails" />
             </div>
 
             <div>
@@ -82,7 +82,7 @@ textarea {
     width: 120%;
 }
 .details {
-    font-size: 10px;
+    font-size: 15px;
 }
 .rate {
     width: 50%;
