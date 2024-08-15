@@ -3,22 +3,22 @@
 
         <form>
             <div>
-                <label for="srvcName">Service Name:</label>
+                <label class="name" for="srvcName">Service Name:</label>
                 <input name="srvcName" type="text" v-model="serviceObject.serviceName" />
             </div>
 
             <div>
-                <label for="srvcDeets">Service Details:</label>
+                <label class="details" for="srvcDeets">Service Details:</label> 
                 <textarea name="srvcDeets" v-model="serviceObject.serviceDetails"></textarea>
             </div>
 
             <div>
                 <label for="srvcRate">Hourly Rate:</label>
-                <input name="srvcRate" type="number" v-model="serviceObject.hourlyRate" />
+                <input class="rate" name="srvcRate" type="number" v-model="serviceObject.hourlyRate" />
             </div>
 
-            <button @click.prevent="save">Save!</button>
-            <button @click.prevent="cancel">Cancel</button>
+            <button class="save" @click.prevent="save">Save!</button>
+            <button class="cancel" @click.prevent="cancel">Cancel</button>
 
         </form>
 
@@ -69,5 +69,23 @@ export default {
 </script>
 
 <style scoped>
+
+form {
+    display: flex;
+        justify-content: center;
+        justify-content: space-between;
+        align-items: stretch;
+        font-size: 15px;
+        border-bottom: 15px solid white;
+}
+textarea {
+    width: 120%;
+}
+.details {
+    font-size: 10px;
+}
+.rate {
+    width: 50%;
+}
 
 </style>

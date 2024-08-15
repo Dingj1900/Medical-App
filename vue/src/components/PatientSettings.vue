@@ -1,7 +1,5 @@
 <template>
-
         <h2>Patient Information</h2>
-
 
  <div class="card">
   <div class="container">
