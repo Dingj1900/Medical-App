@@ -1,4 +1,5 @@
-Welcome to HealMeNow, your trusted companion for convenient and efficient healthcare management. HealMeNow is a comprehensive medical app that allows you to effortlessly book appointments with doctors directly through our platform. Our goal is to simplify your healthcare experience and provide seamless access to the medical professionals you need.
+## Medical App - Heal Me Now
+Welcome to Heal Me Now, your trusted companion for convenient and efficient healthcare management. Heal Me Now is a comprehensive medical app that allows you to effortlessly book appointments with doctors directly through our platform. Our goal is to simplify your healthcare experience and provide seamless access to the medical professionals you need.
 
 ## Features
 
